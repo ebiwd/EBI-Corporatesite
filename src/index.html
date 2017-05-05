@@ -317,7 +317,7 @@
     {{#each this}}
       <span class="tag">{{this.json.bundle_name}}</span> <span class="label">{{smartDates this.json.starts.value this.json.starts.value2}}</span>
       <h5><a href="{{this.path}}">{{this.json.title}}</a></h5>
-      <p><a class="no-underline" href="{{this.path}}">{{{this.json.short_description.safe_value}}}</a></p>
+      <p><a class="no-underline" href="{{this.path}}">{{{truncate this.json.short_description.safe_value 150}}}</a></p>
     {{/each}}
   </script>
 
@@ -328,6 +328,23 @@
       $('#visulisation-parent').prepend('<iframe class="medium-7 large-12 visulisation" src="https://ebiwd.github.io/EBI-Search-index-visulisation/force.html" style="" scrolling="no"></iframe>');
 
       // handlebars stuff
+      Handlebars.registerHelper('truncate', function (str, len) {
+        if (str.length > len) {
+          var new_str = str.substr (0, len+1);
+          while (new_str.length) {
+            var ch = new_str.substr ( -1 );
+            new_str = new_str.substr ( 0, -1 );
+            if (ch == ' ') { break; }
+          }
+
+          if ( new_str == '' ) {
+              new_str = str.substr ( 0, len );
+          }
+
+          return new Handlebars.SafeString ( new_str +'...' );
+        }
+        return str;
+      });
       function formatDate(date){
         if (typeof(date) == "undefined") { return "Unknown"; }
 
@@ -381,7 +398,7 @@
       }
       HandlebaRss.prototype.init = function(){
         $.ajax({
-          url: 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22'+ encodeURIComponent(this.feedUrl)+'%22&format=json&diagnostics=false&_maxage=3600',
+          url: 'http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22'+ encodeURIComponent(this.feedUrl)+'%22limit%206&&format=json&diagnostics=false&_maxage=3600',
           template:    this.template,
           destination: this.destination
         }).done( function(data) {
