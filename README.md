@@ -17,8 +17,9 @@ We're working on a build process that:
 
 ### Demo
 Obviously the github server is not production, but this compares the static page before/after
-Before: https://ebiwd.github.io/EBI-Corporatesite/src
-After: https://ebiwd.github.io/EBI-Corporatesite/dist
+
+- Before: https://ebiwd.github.io/EBI-Corporatesite/src
+- After: https://ebiwd.github.io/EBI-Corporatesite/dist
 
 ## To do?
 - Handlebars optimisations?
