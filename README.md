@@ -13,7 +13,9 @@ Front:    src/index.html           >  dist/index.html           >  www.ebi.ac.uk
 Training: src/training/index.html  >  dist/training/index.html  >  www.ebi.ac.uk/training
 ```
 
-## Coming soon
+## The build process
+
+Code should be committed to the master branch which will then be [built and deployed by Travis to gh-pages](https://travis-ci.org/ebiwd/EBI-Corporatesite/builds).
 
 Optimisations are done using gulp. So you'll also need NPM. To run, just type `gulp`; it:
 
