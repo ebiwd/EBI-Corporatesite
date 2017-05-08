@@ -6,7 +6,7 @@ var minifyInline = require('gulp-minify-inline');
 
 // Translate any src images to base64
 gulp.task('inline-images', function(cb){
-    return gulp.src(['src/*.html'])
+    return gulp.src(['src/*.html','src/*/*.html'])
       .pipe(inlineImages({/* options */}))
       .pipe(gulp.dest('dist/'));
 });
@@ -15,7 +15,7 @@ gulp.task('inline-images', function(cb){
 // https://github.com/addyosmani/critical
 // https://github.com/addyosmani/critical-path-css-demo
 gulp.task('critical', ['inline-images'], function (cb) {
-    return gulp.src('dist/*.html')
+    return gulp.src(['dist/*.html','dist/*/*.html'])
         // .pipe(critical({base: 'src/', inline: true, css: ['']}))
         .pipe(critical({base: 'dist/', inline: true, width: 900, height: 2200, minify: true, ignore: [/icon-/,'@font-face']}))
         .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
@@ -38,7 +38,7 @@ var optionsminify = {
 };
 
 gulp.task('minify-inline', ['critical'], function(cb) {
-  gulp.src('dist/*.html')
+  gulp.src(['dist/*.html','dist/*/*.html'])
     .pipe(minifyInline(optionsminify))
     .pipe(gulp.dest('dist/'))
 });
