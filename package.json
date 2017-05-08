@@ -1,0 +1,28 @@
+{
+  "name": "EBI-Corporatesite",
+  "version": "1.0.0",
+  "description": "Static pages for the main www.ebi.ac.uk site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ebiwd/EBI-Corporatesite.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ebiwd/EBI-Corporatesite/issues"
+  },
+  "homepage": "https://github.com/ebiwd/EBI-Corporatesite#readme",
+  "dependencies": {
+    "critical": "^0.8.4"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-inline-images": "^1.2.6",
+    "gulp-minify-inline": "^0.2.1"
+  }
+}
