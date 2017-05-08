@@ -28,11 +28,9 @@
   <meta name="msapplication-TileColor" content="#2b5797" /> <!-- MS Icons -->
   <meta name="msapplication-TileImage" content="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.2/images/logos/EMBL-EBI/favicons/mstile-144x144.png" />
 
-  <!-- build:css tidy.css -->
   <link rel="stylesheet" href="https://www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.2/libraries/foundation-6/css/foundation.min.css" type="text/css" media="all" />
   <link rel="stylesheet" href="https://www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.2/css/ebi-global.min.css" type="text/css" media="all" />
   <link rel="stylesheet" href="https://www.ebi.ac.uk/web_guidelines/EBI-Icon-fonts/v1.2/fonts.css" type="text/css" media="all" />
-  <!-- /build -->
 </head>
 
 <body class="level2"><!-- add any of your classes or IDs -->
@@ -84,11 +82,12 @@
                   </div>
                   <div class="show-for-large margin-bottom-xlarge"><!--spacer--></div>
                 </div>
-                <div id="visulisation-parent" class="columns show-for-medium medium-9" style="position: relative; z-index: 3">
+                <div class="columns show-for-medium medium-9" style="position: relative; z-index: 3">
                   <!-- iFrame data vis to be inserted here -->
+                  <div id="visulisation-parent" class="medium-7 large-12 visulisation"></div>
                   <style type="text/css">
                   .masthead { background: #111;}
-                  .visulisation { border:0; width: 800px; height: 315px; overflow: hidden; }
+                  .visulisation, .visulisation iframe { border:0; width: 800px; height: 315px; overflow: hidden; }
                   @media screen and (min-width: 64em) {
                     .visulisation {
                       float: right;
@@ -101,7 +100,7 @@
                     .visulisation-legend {
                       float: left;
                     }
-                    iframe.visulisation {
+                    .visulisation iframe {
                       -moz-transform-origin: 0 0;
                       -o-transform-origin: 0 0;
                       -webkit-transform-origin: 0 0;
@@ -267,7 +266,7 @@
             </div>
           </div>
           <div class="column with-overlay">
-            <img src="../images/MACDOWELL_Mark_AKEN_Bronwen_2016.jpg" alt="Photo of Uranus.">
+            <!-- <img src="../images/MACDOWELL_Mark_AKEN_Bronwen_2016.jpg" alt="Photo of Uranus."> -->
             <div class="caption">
               <a href="//www.ebi.ac.uk/about/about/people" class="inner"><div style="padding-right: 50px; position: absolute;bottom: 0px;">Find a staff member</div></a>
             </div>
@@ -325,7 +324,7 @@
   document.onreadystatechange = function () {
     if (document.readyState === "complete") {
       // insert data vis
-      $('#visulisation-parent').prepend('<iframe class="medium-7 large-12 visulisation" src="https://ebiwd.github.io/EBI-Search-index-visulisation/force.html" style="" scrolling="no"></iframe>');
+      $('#visulisation-parent').html('<iframe src="https://ebiwd.github.io/EBI-Search-index-visulisation/force.html" style="" scrolling="no"></iframe>');
 
       // handlebars stuff
       Handlebars.registerHelper('truncate', function (str, len) {
