@@ -16,10 +16,15 @@ We're working on a build process that:
 3. Minifies any inline css/js
 
 ### Demo
-Obviously the github server is not production, but this compares the static page before/after
+The Github server is not production, but this compares the static page before/after:
 
 - Before: https://ebiwd.github.io/EBI-Corporatesite/src
 - After: https://ebiwd.github.io/EBI-Corporatesite/dist
+
+#### Results
+
+[![alt text](assets/readme/performance-timings.png "Performance timings")](https://www.webpagetest.org/video/compare.php?tests=170508_5G_bbac80592e8a6982bb442dfce733f626,170508_66_5c3bd9d66aeb872d713be241f738dba4,170508_4X_18331d7513ef3beae9ddbfec1c8eaf0a)
+A comparison of the above two URLs. [View the more detailed report](https://www.webpagetest.org/video/compare.php?tests=170508_5G_bbac80592e8a6982bb442dfce733f626,170508_66_5c3bd9d66aeb872d713be241f738dba4,170508_4X_18331d7513ef3beae9ddbfec1c8eaf0a)
 
 ## To do?
 - Handlebars optimisations?
