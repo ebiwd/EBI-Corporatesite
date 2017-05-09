@@ -18,6 +18,7 @@ variables:
     - mkdir ~/.ssh
     - echo -e "${SSH_KEY}" >> ~/.ssh/${SSH_USER} && chmod 400 ~/.ssh/${SSH_USER}
     - echo -e "Host *\n\tIdentityFile ~/.ssh/%r\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+    - echo "search ebi.ac.uk" >> /etc/resolv.conf
 
 stages:
   - build
