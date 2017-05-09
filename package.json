@@ -23,6 +23,7 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-inline-images": "^1.2.6",
-    "gulp-minify-inline": "^0.2.1"
+    "gulp-minify-inline": "^0.2.1",
+    "through2": "^2.0.3"
   }
 }
