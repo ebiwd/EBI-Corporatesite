@@ -39,7 +39,7 @@ deploy_dev:
   <<: *deploy_setup
   stage: deploy
   script:
-    - for _DEV_SERVER in ${DEV_SERVER}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/_site/. ${SSH_USER}@${_DEV_SERVER}:${DEV_PATH}/; done 
+    - for _DEV_SERVER in ${DEV_SERVER}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_USER}@${_DEV_SERVER}:${DEV_PATH}/; done 
   only:
     - master
   environment:
@@ -50,7 +50,7 @@ deploy_prod:
   <<: *deploy_setup
   stage: deploy
   script:
-    - for _PROD_SERVER in ${PROD_SERVER}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/_site/. ${SSH_USER}@${_PROD_SERVER}:${PROD_PATH}/; done 
+    - for _PROD_SERVER in ${PROD_SERVER}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_USER}@${_PROD_SERVER}:${PROD_PATH}/; done 
   only:
     - tags
   environment:
