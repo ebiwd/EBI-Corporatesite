@@ -2,7 +2,7 @@ image: netroby/alpine-rsync
 
 #project specific variables can be defines here, or overridden project settings
 variables:
-  DEV_SERVER: vex-hx-10.ebi.ac.uk ves-hx-11.ebi.ac.uk ves-hx-12.ebi.ac.uk ves-hx-13.ebi.ac.uk
+  DEV_SERVER: ves-hx-10.ebi.ac.uk ves-hx-11.ebi.ac.uk ves-hx-12.ebi.ac.uk ves-hx-13.ebi.ac.uk
   DEV_PATH: /var/www/drupal/html/staticpages
   DEV_URL: wwwdev.ebi.ac.uk
   PROD_SERVER: ves-oy-10.ebi.ac.uk ves-oy-11.ebi.ac.uk ves-oy-12.ebi.ac.uk ves-oy-13.ebi.ac.uk ves-pg-10.ebi.ac.uk ves-pg-11.ebi.ac.uk ves-pg-12.ebi.ac.uk ves-pg-13.ebi.ac.uk
