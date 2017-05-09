@@ -7,7 +7,7 @@ var through = require('through2');
 
 // Translate any src images to base64
 gulp.task('inline-images', function(cb){
-    return gulp.src(['src/*.html','src/*/*.html','src/*/*/*.html'])
+    return gulp.src(['src/*.html','src/**/*.html'])
       .pipe(inlineImages({/* options */}))
       .pipe(gulp.dest('dist/'));
 });
@@ -16,7 +16,7 @@ gulp.task('inline-images', function(cb){
 // https://github.com/addyosmani/critical
 // https://github.com/addyosmani/critical-path-css-demo
 gulp.task('critical', ['inline-images'], function (cb) {
-  return gulp.src(['dist/*.html','dist/*/*.html','dist/*/*/*.html'])
+  return gulp.src(['dist/*.html','dist/**/*.html'])
     // .pipe(critical({base: 'src/', inline: true, css: ['']}))
     .pipe(critical({base: 'dist/', inline: true, width: 900, height: 2200, minify: true, ignore: [/icon-/,'@font-face']}))
     .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
@@ -39,7 +39,7 @@ var optionsminify = {
 };
 
 gulp.task('minify-inline', ['critical'], function(cb) {
-  gulp.src(['dist/*.html','dist/*/*.html','dist/*/*/*.html'])
+  gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(minifyInline(optionsminify))
     .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
     .pipe(gulp.dest('dist/'));
@@ -57,7 +57,7 @@ gulp.task('apache-config', ['critical'], function(cb) {
   var fileName = 'dist/.htaccess';
   var endOfLine = '\r\n';
   require('fs').writeFileSync(fileName, '# Static page mappings built with gulp');
-  gulp.src(['dist/*.html','dist/*/*.html','dist/*/*/*.html'])
+  gulp.src(['dist/*.html','dist/**/*.html'])
     // .pipe(pipeFunction());
   .pipe(through.obj(function (file, enc, cb) {
     var localFilePath = file.path.split('/dist/')[1];
