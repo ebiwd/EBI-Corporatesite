@@ -9,19 +9,24 @@ variables:
   PROD_PATH: /var/www/drupal/html/staticpages
   PROD_URL: http://www.ebi.ac.uk
 # do not define here, put in project variables
-  SSH_USER: username
-  SSH_KEY: secret-key
+  SSH_OWNER: username
+  SSH_OWNER_KEY: secret-key
+  SSH_APACHE: username
+  SSH_APACHE_KEY: secret-key
+
   
 #setup ssh keys
 .deploy_setup: &deploy_setup
   before_script:
     - mkdir ~/.ssh
-    - echo -e "${SSH_KEY}" >> ~/.ssh/${SSH_USER} && chmod 400 ~/.ssh/${SSH_USER}
+    - echo -e "${SSH_OWNER_KEY}" >> ~/.ssh/${SSH_OWNER} && chmod 400 ~/.ssh/${SSH_OWNER}
+    - echo -e "${SSH_APACHE_KEY}" >> ~/.ssh/${SSH_APACHE} && chmod 400 ~/.ssh/${SSH_APACHE}
     - echo -e "Host *\n\tIdentityFile ~/.ssh/%r\n\tStrictHostKeyChecking no" >> ~/.ssh/config
 
 stages:
   - build
   - deploy
+  - restart
 
 build:
   stage: build
@@ -39,20 +44,24 @@ deploy_dev:
   <<: *deploy_setup
   stage: deploy
   script:
-    - for _DEV_SERVER in ${DEV_SERVER}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_USER}@${_DEV_SERVER}:${DEV_PATH}/; done 
+    - for VM in ${DEV_SERVER}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${VM}:${DEV_PATH}/; done 
   only:
     - master
   environment:
     name: dev
     url: ${DEV_URL}
 
-deploy_prod:
+restart_dev:
   <<: *deploy_setup
-  stage: deploy
-  script:
-    - for _PROD_SERVER in ${PROD_SERVER}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_USER}@${_PROD_SERVER}:${PROD_PATH}/; done 
+  stage: restart
   only:
-    - tags
-  environment:
-    name: prod
-    url: ${PROD_URL}
+    - master
+  script:
+    # stop apache, etc
+    - for VM in ${DEV_SERVER}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop'; done || true
+    # start apache, etc
+    - for VM in ${DRUPAL_VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd start; sudo /etc/init.d/memcached start; sudo /etc/init.d/rh-php56-php-fpm start'; done
+    # check apache status
+    - for VM in ${DRUPAL_VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd status && sudo /etc/init.d/memcached status && sudo /etc/init.d/rh-php56-php-fpm status'; done
+
+
