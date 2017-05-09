@@ -66,7 +66,6 @@ gulp.task('apache-config', ['critical'], function(cb) {
     require('fs').appendFile(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'$ /staticpages/'+localFilePath+' [L]');
     cb(null, file)
   }));
-  // require('fs').appendFile(fileName, endOfLine); // new line
 });
 
 // Build it all
