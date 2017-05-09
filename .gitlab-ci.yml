@@ -60,8 +60,8 @@ restart_dev:
     # stop apache, etc
     - for VM in ${DEV_SERVER}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop'; done || true
     # start apache, etc
-    - for VM in ${DRUPAL_VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd start; sudo /etc/init.d/memcached start; sudo /etc/init.d/rh-php56-php-fpm start'; done
+    - for VM in ${DEV_SERVER}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd start; sudo /etc/init.d/memcached start; sudo /etc/init.d/rh-php56-php-fpm start'; done
     # check apache status
-    - for VM in ${DRUPAL_VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd status && sudo /etc/init.d/memcached status && sudo /etc/init.d/rh-php56-php-fpm status'; done
+    - for VM in ${DEV_SERVER}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd status && sudo /etc/init.d/memcached status && sudo /etc/init.d/rh-php56-php-fpm status'; done
 
 
