@@ -2,10 +2,10 @@ image: netroby/alpine-rsync
 
 #project specific variables can be defines here, or overridden project settings
 variables:
-  DEV_SERVER: vex-hx-10 ves-hx-11 ves-hx-12 ves-hx-13
+  DEV_SERVER: vex-hx-10.ebi.ac.uk ves-hx-11.ebi.ac.uk ves-hx-12.ebi.ac.uk ves-hx-13.ebi.ac.uk
   DEV_PATH: /var/www/drupal/html/staticpages
   DEV_URL: wwwdev.ebi.ac.uk
-  PROD_SERVER: ves-oy-10 ves-oy-11 ves-oy-12 ves-oy-13 ves-pg-10 ves-pg-11 ves-pg-12 ves-pg-13
+  PROD_SERVER: ves-oy-10.ebi.ac.uk ves-oy-11.ebi.ac.uk ves-oy-12.ebi.ac.uk ves-oy-13.ebi.ac.uk ves-pg-10.ebi.ac.uk ves-pg-11.ebi.ac.uk ves-pg-12.ebi.ac.uk ves-pg-13.ebi.ac.uk
   PROD_PATH: /var/www/drupal/html/staticpages
   PROD_URL: http://www.ebi.ac.uk
 # do not define here, put in project variables
@@ -18,7 +18,6 @@ variables:
     - mkdir ~/.ssh
     - echo -e "${SSH_KEY}" >> ~/.ssh/${SSH_USER} && chmod 400 ~/.ssh/${SSH_USER}
     - echo -e "Host *\n\tIdentityFile ~/.ssh/%r\n\tStrictHostKeyChecking no" >> ~/.ssh/config
-    - echo "search ebi.ac.uk" >> /etc/resolv.conf
 
 stages:
   - build
