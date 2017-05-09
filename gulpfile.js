@@ -63,7 +63,7 @@ gulp.task('apache-config', ['critical'], function(cb) {
     var localFilePath = file.path.split('/dist/')[1];
     console.log('Mapping: ',localFilePath);
     require('fs').appendFile(fileName, endOfLine); // new line
-    require('fs').appendFile(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'$ /staticpages/'+localFilePath+' [L]');
+    require('fs').appendFile(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');
     cb(null, file)
   }));
 });
