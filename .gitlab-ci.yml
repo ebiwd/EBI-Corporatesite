@@ -28,7 +28,7 @@ build:
   image: myprod/gulp
   before_script:
     - cd ${CI_PROJECT_DIR}
-    - npm install
+    - npm install --quiet
   script:
     - gulp
   artifacts:
