@@ -1,0 +1,57 @@
+image: netroby/alpine-rsync
+
+#project specific variables can be defines here, or overridden project settings
+variables:
+  DEV_SERVER: ebi-cli.ebi.ac.uk
+  DEV_PATH: /nfs/public/rw/webdevel/projects/static/test/wwwdev.ebi.ac.uk/static
+  DEV_URL: http://wwwdev.ebi.ac.uk
+  PROD_SERVER: ebi-cli.ebi.ac.uk pg-001.ebi.ac.uk
+  PROD_PATH: /nfs/public/rw/webdevel/projects/static/live/www.ebi.ac.uk/static
+  PROD_URL: http://www.ebi.ac.uk
+# do not define here, put in project variables
+  SSH_USER: username
+  SSH_KEY: secret-key
+  
+#setup ssh keys
+.deploy_setup: &deploy_setup
+  before_script:
+    - mkdir ~/.ssh
+    - echo -e "${SSH_KEY}" >> ~/.ssh/${SSH_USER} && chmod 400 ~/.ssh/${SSH_USER}
+    - echo -e "Host *\n\tIdentityFile ~/.ssh/%r\n\tStrictHostKeyChecking no" >> ~/.ssh/config
+
+stages:
+  - build
+  - deploy
+
+build:
+  image: myprod/gulp
+  before_script:
+    - cd ${CI_PROJECT_DIR}
+    - npm install
+  script:
+    - gulp
+  artifacts:
+    paths:
+      - dist
+
+deploy_dev:
+  <<: *deploy_setup
+  stage: deploy
+  script:
+    - for _DEV_SERVER in ${DEV_SERVER}; do rsync -auv --delete ${CI_PROJECT_DIR}/_site/. ${SSH_USER}@${_DEV_SERVER}:${DEV_PATH}/; done 
+  only:
+    - master
+  environment:
+    name: dev
+    url: ${DEV_URL}
+
+deploy_prod:
+  <<: *deploy_setup
+  stage: deploy
+  script:
+    - for _PROD_SERVER in ${PROD_SERVER}; do rsync -auv --delete ${CI_PROJECT_DIR}/_site/. ${SSH_USER}@${_PROD_SERVER}:${PROD_PATH}/; done 
+  only:
+    - tags
+  environment:
+    name: prod
+    url: ${PROD_URL}
