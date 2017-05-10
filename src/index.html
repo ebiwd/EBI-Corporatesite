@@ -47,7 +47,7 @@
       <ul id="global-nav" class="menu">
         <!-- set active class as appropriate -->
         <li class="home-mobile"><a href="//www.ebi.ac.uk"></a></li>
-        <li class="home active"><a href="//www.ebi.ac.uk">EMBL-EBI</a></li>
+        <li class="home active"><a href="//www.ebi.ac.uk"></a></li>
         <li class="services"><a href="//www.ebi.ac.uk/services">Services</a></li>
         <li class="research"><a href="//www.ebi.ac.uk/research">Research</a></li>
         <li class="training"><a href="//www.ebi.ac.uk/training">Training</a></li>
@@ -114,14 +114,17 @@
                 </div>
               </div>
               <div class="row padding-top-xlarge padding-bottom-xlarge">
-                <div class="columns medium-7">
-                  <p>EBI Search provides easy and uniform access to dozens of biological data resources, <a class="readmore" href="//www.ebi.ac.uk/ebisearch/overview.ebi">more about EBI Search</a></p>
+                <div class="columns small-12 large-7 medium-6">
+                  <span class="label show-for-small-only white-color">EBI Search</span>
+                  <p class="show-for-medium">EBI Search provides easy and uniform access to dozens of biological data
+                    resources<span class="show-for-large">, <a class="readmore" href="//www.ebi.ac.uk/ebisearch/overview.ebi">more about EBI Search</a></span>
+                  </p>
                   <form id="ebi_search" action="https://www.ebi.ac.uk/ebisearch/search.ebi">
                     <fieldset>
                       <div class="margin-bottom-none small-collapse">
-                        <div class="columns medium-3 small-4 margin-bottom-small">
+                        <div class="columns small-2 margin-bottom-small">
                           <select name="db" id="db" tabindex="1" class="margin-bottom-none" style="opacity: .8">
-                            <option value="allebi">Search everything</option>
+                            <option value="allebi">All</option>
                             <optgroup label="Science search">
                               <option value="genomes">Genomes &amp; metagenomes</option>
                               <option value="nucleotideSequences">Nucleotide sequences</option>
@@ -141,10 +144,10 @@
                             </optgroup>
                           </select>
                         </div>
-                        <div class="columns medium-8 small-7  margin-bottom-none">
+                        <div class="columns small-8  margin-bottom-none">
                           <input id="query" class="margin-bottom-none" title="EBI Search" tabindex="2" type="text" name="query" value="" size="35" maxlength="2048" placeholder="Find a gene, protein or chemical"/>
                         </div>
-                        <div class="columns medium-1 small-1 margin-bottom-none">
+                        <div class="columns small-2 margin-bottom-none">
                           <input id="search_submit" class="button icon icon-functional margin-bottom-none" tabindex="3" type="submit" name="submit1" value="1" style="line-height:.9"/>
                         </div>
                         <!-- <input id="allebi" type="hidden" name="db" value="allebi" checked="checked" /> -->
@@ -152,21 +155,28 @@
                       </div>
                     </fieldset>
                     <fieldset>
-                      <div id="example" class="medium-push-3 medium-9 columns small">
+                      <div id="example" class="medium-push-2 medium-10 columns small">
                         Example searches: <a href="/ebisearch/search.ebi?db=allebi&amp;requestFrom=ebi_index&amp;query=blast">blast</a> <a href="/ebisearch/search.ebi?db=allebi&amp;query=keratin&amp;requestFrom=ebi_index">keratin</a> <a href="/ebisearch/search.ebi?db=allebi&amp;query=bfl1&amp;requestFrom=ebi_index">bfl1</a>
                       </div>
                     </fieldset>
                   </form>
                 </div>
-                <div class="columns medium-2 show-for-medium">
+                <div class="columns large-2 medium-3 show-for-medium">
                   <div>
                     <p>Select your tool for data analysis.</p>
                     <a href="#" class="button readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="("></i> Find a tool</a>
                   </div>
                 </div>
-                <div class="columns medium-3 show-for-medium">
+                <div class="columns large-3 medium-3 small-6 show-for-medium">
                   <div>
                     <p>Share your scientific data with the world.</p>
+                    <a href="#" class="button readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="q"></i> Deposit data</a>
+                  </div>
+                </div>
+                <div class="columns small-12 show-for-small-only padding-top-large">
+                  <span class="label show-for-small-only white-color">Access and share data</span>
+                  <div>
+                    <a href="#" class="button readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="("></i> Find a tool</a>
                     <a href="#" class="button readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="q"></i> Deposit data</a>
                   </div>
                 </div>
