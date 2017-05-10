@@ -287,8 +287,8 @@
       </div> -->
 
       <div class="row">
-        <h3><a href="//www.ebi.ac.uk/about" class="readmore">About EMBL-EBI's culture and impact</a></h3>
-        <div class="row  medium-up-5 small-up-2 padding-bottom-large ">
+        <h3 class="show-for-large"><a href="//www.ebi.ac.uk/about" class="readmore">About EMBL-EBI's culture and impact</a></h3>
+        <div class="row large-up-5 medium-up-3 small-up-2 padding-bottom-large " data-equalizer data-equalize-on="small" >
           <div class="column">
             <a href="//www.ebi.ac.uk/about/jobs">
               <img src="//www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/Events/all-at-ebi_stepping_down_EBI.jpg" alt="Staff outside Hindton Hall.">
@@ -318,6 +318,13 @@
               <img src="https://ebiwd.github.io/EBI-Pattern-library/sample-site-v1.2/images/MACDOWELL_Mark_AKEN_Bronwen_2016.jpg" alt="Staff working at EMBL-EBI.">
             </a>
             <a href="//www.ebi.ac.uk/about/about/people" class="highlight-caption readmore">Find a staff member</a>
+          </div>
+          <div class="column hide-for-large" >
+            <a href="//www.ebi.ac.uk/about">
+              <div style="width:100%;" class="">
+                <h3><a href="//www.ebi.ac.uk/about" class="readmore"><br/>More about<br/> EMBL-EBI culture<br/> and impact</a></h3>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -366,8 +373,8 @@
     {{#each this}}
       <span class="label">{{smartDates this.json.starts.value this.json.starts.value2}}</span>
       <span class="label">| {{this.json.bundle_name}}</span>
-      <h5><a href="{{this.path}}">{{this.json.title}}</a></h5>
-      <p><a class="no-underline" href="{{this.path}}">{{{truncate this.json.short_description.safe_value 150}}}</a></p>
+      <h5><a href="//www.ebi.ac.uk/{{this.json.path}}">{{this.json.title}}</a></h5>
+      <p><a class="no-underline" href="//www.ebi.ac.uk/{{this.json.path}}">{{{truncate this.json.short_description.safe_value 150}}}</a></p>
     {{/each}}
   </script>
 
