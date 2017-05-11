@@ -116,7 +116,7 @@
               <div class="row padding-top-xlarge padding-bottom-xlarge">
                 <div class="columns small-12 large-7 medium-6">
                   <span class="label show-for-small-only white-color">EBI Search</span>
-                  <p class="show-for-medium">Our unique Search service helps you explore dozens of biological data resources. <span class="show-for-large"><a class="readmore" href="//www.ebi.ac.uk/ebisearch/overview.ebi">More about EBI Search</a></span>
+                  <p class="show-for-medium">Our unique Search service helps you explore dozens of biological data resources. <span class="show-for-large inline-block"><a class="readmore" href="//www.ebi.ac.uk/ebisearch/overview.ebi">More about EBI Search</a></span>
                   </p>
                   <form id="ebi_search" action="https://www.ebi.ac.uk/ebisearch/search.ebi">
                     <fieldset>
@@ -273,13 +273,13 @@
           <div class="column with-overlay">
             <img src="//www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/field/image/Data_centre_shutdown_2016.jpg?itok=fy5v2YZu" alt="EMBL-EBI data centre.">
             <div class="caption">
-              <a href="//www.ebi.ac.uk/about/about/impact" class="inner"><div style="padding-right: 50px; position: absolute;bottom: 0px;">Our impact</div></a>
+              <a href="//www.ebi.ac.uk/about/impact" class="inner"><div style="padding-right: 50px; position: absolute;bottom: 0px;">Our impact</div></a>
             </div>
           </div>
           <div class="column with-overlay">
             <img src="https://ebiwd.github.io/EBI-Pattern-library/sample-site-v1.2/images/MACDOWELL_Mark_AKEN_Bronwen_2016.jpg" alt="Staff working at EMBL-EBI.">
             <div class="caption">
-              <a href="//www.ebi.ac.uk/about/about/people" class="inner"><div style="padding-right: 50px; position: absolute;bottom: 0px;">Find a staff member</div></a>
+              <a href="//www.ebi.ac.uk/about/people" class="inner"><div style="padding-right: 50px; position: absolute;bottom: 0px;">Find a staff member</div></a>
             </div>
           </div>
         </div>
@@ -307,16 +307,16 @@
             <a href="//www.ebi.ac.uk/about/travel" class="highlight-caption readmore">Visit us</a>
           </div>
           <div class="column">
-            <a href="//www.ebi.ac.uk/about/about/impact">
+            <a href="//www.ebi.ac.uk/about/impact">
               <img src="//www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/field/image/Data_centre_shutdown_2016.jpg?itok=fy5v2YZu" alt="EMBL-EBI data centre.">
             </a>
-            <a href="//www.ebi.ac.uk/about/about/impact" class="highlight-caption readmore">Our impact</a>
+            <a href="//www.ebi.ac.uk/about/impact" class="highlight-caption readmore">Our impact</a>
           </div>
           <div class="column">
-            <a href="//www.ebi.ac.uk/about/about/people">
+            <a href="//www.ebi.ac.uk/about/people">
               <img src="https://ebiwd.github.io/EBI-Pattern-library/sample-site-v1.2/images/MACDOWELL_Mark_AKEN_Bronwen_2016.jpg" alt="Staff working at EMBL-EBI.">
             </a>
-            <a href="//www.ebi.ac.uk/about/about/people" class="highlight-caption readmore">Find a staff member</a>
+            <a href="//www.ebi.ac.uk/about/people" class="highlight-caption readmore">Find a staff member</a>
           </div>
           <div class="column hide-for-large" >
             <a href="//www.ebi.ac.uk/about">
@@ -434,9 +434,9 @@
         // are the two dates in the same month?
         if (new Date(date1).getMonth() == new Date(date2).getMonth()) {
           // if it's the same day, don't list the date twice ...
-          // if (new Date(date1).getDay() == new Date(date2).getDay()) {
-          //   return formatDate(date1);
-          // }
+          if (new Date(date1).getDay() == new Date(date2).getDay()) {
+            return formatDate(date1);
+          }
           //don't return the month on the second date..
           jointDate = formatDate(date1) + ' - ' + formatDate(date2).split(' ')[0] + ' ' + formatDate(date2).split(' ')[1];
           return jointDate;
@@ -522,6 +522,16 @@
     opacity: .8;
   }
   </style>
+  <script type="text/javascript">
+  // resize dropdown on change
+  // $(document).ready(function(){
+  //   $('#db').change(function(){
+  //     console.log(this);
+  //     $("#width_tmp_option").html($('#resizing_select option:selected').text());
+  //     $(this).width($("#width_tmp_select").width());
+  //   });
+  // });
+  </script>
 
 </body>
 </html>
