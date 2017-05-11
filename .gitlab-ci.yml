@@ -1,22 +1,25 @@
-image: netroby/alpine-rsync
-
 #project specific variables can be defines here, or overridden project settings
 variables:
-  DEV_SERVER: ves-hx-10.ebi.ac.uk ves-hx-11.ebi.ac.uk ves-hx-12.ebi.ac.uk ves-hx-13.ebi.ac.uk
-  DEV_PATH: /var/www/drupal/html/staticpages
+  DEST_PATH: /var/www/drupal/html/staticpages
+
+  DEV_SERVER: ves-hx-10.ebi.ac.uk ves-hx-12.ebi.ac.uk
   DEV_URL: wwwdev.ebi.ac.uk
+
+  STAGE_SERVER: ves-hx-11.ebi.ac.uk ves-hx-13.ebi.ac.uk
+  STAGE_URL: stage.ebi7.ebi.ac.uk
+
   PROD_SERVER: ves-oy-10.ebi.ac.uk ves-oy-11.ebi.ac.uk ves-oy-12.ebi.ac.uk ves-oy-13.ebi.ac.uk ves-pg-10.ebi.ac.uk ves-pg-11.ebi.ac.uk ves-pg-12.ebi.ac.uk ves-pg-13.ebi.ac.uk
-  PROD_PATH: /var/www/drupal/html/staticpages
   PROD_URL: http://www.ebi.ac.uk
+
 # do not define here, put in project variables
   SSH_OWNER: username
   SSH_OWNER_KEY: secret-key
   SSH_APACHE: username
   SSH_APACHE_KEY: secret-key
-
   
 #setup ssh keys
 .deploy_setup: &deploy_setup
+  image: netroby/alpine-rsync
   before_script:
     - mkdir ~/.ssh
     - echo -e "${SSH_OWNER_KEY}" >> ~/.ssh/${SSH_OWNER} && chmod 400 ~/.ssh/${SSH_OWNER}
@@ -26,7 +29,6 @@ variables:
 stages:
   - build
   - deploy
-  - restart
 
 build:
   stage: build
@@ -40,28 +42,40 @@ build:
     paths:
       - dist
 
-deploy_dev:
+deploy_dev: &deploy
   <<: *deploy_setup
+  variables:
+    DRUPAL_ENV: dev
+    URL: ${DEV_URL}
+    VMS: ${DEV_SERVER}
   stage: deploy
   script:
-    - for VM in ${DEV_SERVER}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${VM}:${DEV_PATH}/; done 
+    # update code
+    - for VM in ${VMS}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${VM}:${DEST_PATH}/; done 
+    # stop apache, etc
+    - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop'; done || true
+    # start apache, etc
+    - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd start; sudo /etc/init.d/memcached start; sudo /etc/init.d/rh-php56-php-fpm start'; done
+    # check apache status
+    - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd status && sudo /etc/init.d/memcached status && sudo /etc/init.d/rh-php56-php-fpm status'; done
   only:
     - master
   environment:
-    name: dev
-    url: ${DEV_URL}
+    name: ${DRUPAL_ENV}
+    url: ${URL}
 
-restart_dev:
-  <<: *deploy_setup
-  stage: restart
+deploy_stage: 
+  <<: *deploy
+  variables:
+    DRUPAL_ENV: stage
+    URL: ${STAGE_URL}
+    VMS: ${STAGE_SERVER}
+
+deploy_prod: 
+  <<: *deploy
   only:
-    - master
-  script:
-    # stop apache, etc
-    - for VM in ${DEV_SERVER}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop'; done || true
-    # start apache, etc
-    - for VM in ${DEV_SERVER}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd start; sudo /etc/init.d/memcached start; sudo /etc/init.d/rh-php56-php-fpm start'; done
-    # check apache status
-    - for VM in ${DEV_SERVER}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd status && sudo /etc/init.d/memcached status && sudo /etc/init.d/rh-php56-php-fpm status'; done
-
-
+    - tags
+  variables:
+    DRUPAL_ENV: prod
+    URL: ${PROD_URL}
+    VMS: ${PROD_SERVER}
