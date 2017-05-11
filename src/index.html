@@ -121,8 +121,8 @@
                   <form id="ebi_search" action="https://www.ebi.ac.uk/ebisearch/search.ebi">
                     <fieldset>
                       <div class="margin-bottom-none small-collapse">
-                        <div class="columns small-2 margin-bottom-small">
-                          <select name="db" id="db" tabindex="1" class="margin-bottom-none" style="opacity: .8">
+                        <div class="columns small-2 margin-bottom-small search-options-wrapper">
+                          <select name="db" id="db" tabindex="1" class="margin-bottom-none" style="opacity: .8;">
                             <option value="allebi">All</option>
                             <optgroup label="Science search">
                               <option value="genomes">Genomes &amp; metagenomes</option>
@@ -143,7 +143,7 @@
                             </optgroup>
                           </select>
                         </div>
-                        <div class="columns small-8  margin-bottom-none">
+                        <div class="columns small-8  margin-bottom-none search-text-wrapper">
                           <input id="query" class="margin-bottom-none" title="EBI Search" tabindex="2" type="text" name="query" value="" size="35" maxlength="2048" placeholder="Find a gene, protein or chemical"/>
                         </div>
                         <div class="columns small-2 margin-bottom-none">
@@ -169,14 +169,14 @@
                 <div class="columns large-3 medium-3 small-6 show-for-medium">
                   <div>
                     <p>Share your scientific data with the world.</p>
-                    <a href="//www.ebi.ac.uk/submission/" class="button readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="q"></i> Deposit data</a>
+                    <a href="//www.ebi.ac.uk/submission/" class="button readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-functional" data-icon="D"></i> Deposit data</a>
                   </div>
                 </div>
                 <div class="columns small-12 show-for-small-only padding-top-large">
                   <span class="label show-for-small-only white-color">Access and share data</span>
                   <div>
-                    <a href="//www.ebi.ac.uk/services/" class="button readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="("></i> Find a tool</a>
-                    <a href="//www.ebi.ac.uk/submission/" class="button readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="q"></i> Deposit data</a>
+                    <a href="//www.ebi.ac.uk/services/"   class="button no-underline readmore"  style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="("></i> Find a tool</a>
+                    <a href="//www.ebi.ac.uk/submission/" class="button no-underline readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="q"></i> Deposit data</a>
                   </div>
                 </div>
               </div>
@@ -225,7 +225,7 @@
         </div>
 
         <div class="medium-4 columns callout">
-          <h3>Latest news</h3>
+          <h3><a href="//www.ebi.ac.uk/about/news" class="no-underline">Latest news</a></h3>
           <span class="label">Reseach highlights, service updates and more</span>
           <div class="row collapse">
             <div class="with-overlay">
@@ -242,11 +242,11 @@
           </div>
         </div>
         <div class="medium-8 columns">
-          <h3 class="padding-top-large">What's happening at EMBL-EBI</h3>
+          <h3 class="padding-top-large"><a href="//www.ebi.ac.uk/about/events" class="no-underline">Our events</a></h3>
           <div id="upcoming-events">
             <!-- loaded by handlebars -->
           </div>
-          <a class="readmore button margin-top-large margin-bottom-xlarge" href="//www.ebi.ac.uk/about/events">See all events at EMBL-EBI </a>
+          <a class="readmore button margin-top-large margin-bottom-xlarge" href="//www.ebi.ac.uk/about/events">See all EMBL-EBI events</a>
         </div>
       </div>
       <!-- <div class="row">
@@ -286,7 +286,7 @@
       </div> -->
 
       <div class="row">
-        <h3 class="show-for-large"><a href="//www.ebi.ac.uk/about" class="readmore">About EMBL-EBI's culture and impact</a></h3>
+        <h3 class="show-for-large"><a href="//www.ebi.ac.uk/about" class="readmore no-underline">About EMBL-EBI's culture and impact</a></h3>
         <div class="row large-up-5 medium-up-3 small-up-2 padding-bottom-large " data-equalizer data-equalize-on="small" >
           <div class="column">
             <a href="//www.ebi.ac.uk/about/jobs">
@@ -316,7 +316,8 @@
             <a href="//www.ebi.ac.uk/about/people">
               <img src="https://ebiwd.github.io/EBI-Pattern-library/sample-site-v1.2/images/MACDOWELL_Mark_AKEN_Bronwen_2016.jpg" alt="Staff working at EMBL-EBI.">
             </a>
-            <a href="//www.ebi.ac.uk/about/people" class="highlight-caption readmore">Find a staff member</a>
+            <a href="//www.ebi.ac.uk/about/people" class="highlight-caption readmore show-for-medium">Find a staff member</a>
+            <a href="//www.ebi.ac.uk/about/people" class="highlight-caption readmore show-for-small-only">Find people</a>
           </div>
           <div class="column hide-for-large" >
             <a href="//www.ebi.ac.uk/about">
@@ -523,14 +524,21 @@
   }
   </style>
   <script type="text/javascript">
-  // resize dropdown on change
-  // $(document).ready(function(){
-  //   $('#db').change(function(){
-  //     console.log(this);
-  //     $("#width_tmp_option").html($('#resizing_select option:selected').text());
-  //     $(this).width($("#width_tmp_select").width());
-  //   });
-  // });
+  // resize search dropdown on change
+  // this way text doesn't get cut off
+  $(document).ready(function(){
+    $('#db').change(function(){
+      if ($(this).find(":selected").text().length > 10) {
+      $('div.search-options-wrapper').removeClass('small-2').addClass('small-4');
+      $('div.search-text-wrapper').removeClass('small-8').addClass('small-6');
+      } else {
+        $('div.search-options-wrapper').removeClass('small-4').addClass('small-2');
+        $('div.search-text-wrapper').removeClass('small-6').addClass('small-8');
+      }
+      $('input#query').attr('placeholder', 'Enter your search').focus();
+      $('input#query').focus();
+    });
+  });
   </script>
 
 </body>
