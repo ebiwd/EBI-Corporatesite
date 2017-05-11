@@ -18,7 +18,7 @@ gulp.task('inline-images', function(cb){
 gulp.task('critical', ['inline-images'], function (cb) {
   return gulp.src(['dist/*.html','dist/**/*.html'])
     // .pipe(critical({base: 'src/', inline: true, css: ['']}))
-    .pipe(critical({base: 'dist/', inline: true, width: 900, height: 2200, minify: true, ignore: [/icon-/,'@font-face']}))
+    .pipe(critical({base: 'dist/', inline: true, width: 900, height: 2200, minify: true, ignore: [/icon-/,'/.svg/','@font-face']}))
     .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
     .pipe(gulp.dest('dist'));
 });
