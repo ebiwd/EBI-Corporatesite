@@ -354,8 +354,20 @@
         analyticsTrackInteraction(e.target,'Homepage search',customText);
       });
 
-      // insert data vis
-      $('#visulisation-parent').html('<iframe src="https://ebiwd.github.io/EBI-Search-index-visulisation/force.html" style="" scrolling="no"></iframe>');
+      // Insert data vis
+      // We load it only if the div is visible, and schedule a check if not
+      function conditionallyLoadDatavis() {
+        if ($('#visulisation-parent').is(':visible')) {
+          $('#visulisation-parent').html('<iframe src="https://ebiwd.github.io/EBI-Search-index-visulisation/force.html" style="" scrolling="no"></iframe>');
+        } else {
+          // Check again if the screen resizes
+          // We schedule only one check -- if that check fails, we schedule again
+          $(window).one('resize.datavischeck', function() {
+            conditionallyLoadDatavis();
+          });
+        }
+      }
+      conditionallyLoadDatavis();
 
       // handlebars stuff
       Handlebars.registerHelper('truncate', function (str, len) {
