@@ -62,17 +62,12 @@ If you wish to test the optimisation process on your local machine, here's what 
 NOTE: Only developers would have the need do this.
 
 1. Clone the repo
-
-2a. Where you have npm installed locally, 
-- Install the npm instance: `npm install`
-- Install gulp: `npm install -g gulp`
-- Run the default gulp script: `gulp`
-
+2a. Where you have npm installed locally 
+  - Install the npm instance: `npm install`
+  - Install gulp: `npm install -g gulp`
+  - Run the default gulp script: `gulp`
 2b. Where you have docker installed
-```
-docker run -it --rm -v $PWD:/workspace -w /workspace myprod/gulp bash -c 'npm install --quiet && gulp'
-```
-
+  - `docker run -it --rm -v $PWD:/workspace -w /workspace myprod/gulp bash -c 'npm install --quiet && gulp'`
 3. Serve files from your dev environment, Jekyll works well: `jekyll serve --port 88`
 
 ### What the optimisations get you
