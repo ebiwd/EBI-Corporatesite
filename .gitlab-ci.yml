@@ -38,6 +38,9 @@ build:
     - npm install --quiet
   script:
     - gulp
+  cache:
+    paths:
+      - node_modules
   artifacts:
     paths:
       - dist
