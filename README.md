@@ -62,10 +62,18 @@ If you wish to test the optimisation process on your local machine, here's what 
 NOTE: Only developers would have the need do this.
 
 1. Clone the repo
-2. Install the npm instance: `npm install`
-3. Install gulp: `npm install -g gulp`
-4. Run the default gulp script: `gulp`
-5. Serve files from your dev environment, Jekyll works well: `jekyll serve --port 88`
+
+2a. Where you have npm installed locally, 
+- Install the npm instance: `npm install`
+- Install gulp: `npm install -g gulp`
+- Run the default gulp script: `gulp`
+
+2b. Where you have docker installed
+```
+docker run -it --rm -v $PWD:/workspace -w /workspace myprod/gulp bash -c 'npm install --quiet && gulp'
+```
+
+3. Serve files from your dev environment, Jekyll works well: `jekyll serve --port 88`
 
 ### What the optimisations get you
 
@@ -79,3 +87,4 @@ A comparison of the above two URLs. [View the more detailed report](https://www.
 
 - Handlebars optimisations?
 - Concat all external css/js?
+
