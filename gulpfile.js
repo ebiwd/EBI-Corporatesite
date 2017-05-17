@@ -1,5 +1,6 @@
 var gulp = require('gulp');
 var gutil = require('gulp-util');
+var replace = require('gulp-replace');
 var inlineImages = require('gulp-inline-images');
 var critical = require('critical').stream;
 var minifyInline = require('gulp-minify-inline');
@@ -7,9 +8,9 @@ var through = require('through2');
 
 // Translate any src images to base64
 gulp.task('inline-images', function(cb){
-    return gulp.src(['src/*.html','src/**/*.html'])
-      .pipe(inlineImages({/* options */}))
-      .pipe(gulp.dest('dist/'));
+  return gulp.src(['src/*.html','src/**/*.html'])
+    .pipe(inlineImages({/* options */}))
+    .pipe(gulp.dest('dist/'));
 });
 
 // Generate & Inline Critical-path CSS
@@ -17,8 +18,18 @@ gulp.task('inline-images', function(cb){
 // https://github.com/addyosmani/critical-path-css-demo
 gulp.task('critical', ['inline-images'], function (cb) {
   return gulp.src(['dist/*.html','dist/**/*.html'])
-    // .pipe(critical({base: 'src/', inline: true, css: ['']}))
-    .pipe(critical({base: 'dist/', inline: true, width: 900, height: 2200, minify: true, ignore: [/icon-/,/.svg/,'@font-face']}))
+    .pipe(replace('\'//www.ebi', '\'https://www.ebi')) // make all protical relative //ebi.ac.uk to https://
+    .pipe(replace('"//www.ebi', '"https://www.ebi')) // for double quote
+    .pipe(critical({base: 'dist/', inline: true,
+      dimensions: [{
+          height: 600,
+          width: 400
+      }, {
+          height: 900,
+          width: 1500
+      }],
+      minify: true, ignore: [/icon-/,/.svg/,'@font-face']
+    }))
     .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
     .pipe(gulp.dest('dist'));
 });
@@ -40,6 +51,7 @@ var optionsminify = {
 
 gulp.task('minify-inline', ['critical'], function(cb) {
   gulp.src(['dist/*.html','dist/**/*.html'])
+    .pipe(replace(/('|")http(s)?\:\/\/www.ebi/g, '$1//www.ebi')) // make all http/s ebi urls //
     .pipe(minifyInline(optionsminify))
     .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
     .pipe(gulp.dest('dist/'));
