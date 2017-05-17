@@ -58,6 +58,8 @@ gulp.task('apache-config', ['critical'], function(cb) {
   var endOfLine = '\r\n';
   require('fs').writeFileSync(fileName, '# Static page mappings built with gulp');
   require('fs').appendFile(fileName, endOfLine); // new line
+  require('fs').appendFile(fileName, 'AddOutputFilterByType DEFLATE text/html');
+  require('fs').appendFile(fileName, endOfLine); // new line
   require('fs').appendFile(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=shib_login');
   gulp.src(['dist/*.html','dist/**/*.html'])
     // .pipe(pipeFunction());
