@@ -434,14 +434,14 @@
 
       // feed processor
       function HandlebaRss(feedUrl,template,destination){
-        this.feedUrl = feedUrl;
+        this.feedUrl = 'https:' + feedUrl; // always https
         this.template = template;
         this.destination = destination;
       }
       HandlebaRss.prototype.init = function(){
         function queryData(properties) {
           $.ajax({
-            url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22'+ encodeURIComponent(properties.feedUrl)+'%22limit%205&&format=json&diagnostics=false&_maxage=3600',
+            url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22'+ encodeURIComponent(properties.feedUrl)+'%22limit%205&format=json&diagnostics=false&_maxage=3600',
             template:    properties.template,
             destination: properties.destination
           }).done( function(data) {
@@ -458,8 +458,8 @@
         queryData(this);
       }
 
-      newsLeadItem = new HandlebaRss("https://www.ebi.ac.uk/about/news/press.xml",  "#feed-template-news-lead-item","#news-lead-item").init();
-      newsUpdates =  new HandlebaRss("https://www.ebi.ac.uk/about/news/service.xml","#feed-template-news-updates",  "#news-updates"  ).init();
+      newsLeadItem = new HandlebaRss("//www.ebi.ac.uk/about/news/press.xml",  "#feed-template-news-lead-item","#news-lead-item").init();
+      newsUpdates =  new HandlebaRss("//www.ebi.ac.uk/about/news/service.xml","#feed-template-news-updates",  "#news-updates"  ).init();
 
       // $.getJSON('temp/events-common-fields-feed-upcoming-events.json', function(data) {
       // select json.title, json.bundle_name, json.path, json.short_description, json.starts from json where url='https://www.ebi.ac.uk/sites/ebi.ac.uk/files/data/events-common-fields-feed-upcoming-events.json' limit 6
