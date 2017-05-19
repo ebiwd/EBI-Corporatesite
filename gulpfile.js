@@ -10,7 +10,11 @@ var through = require('through2');
 gulp.task('inline-images', function(cb){
   return gulp.src(['src/*.html','src/**/*.html'])
     .pipe(inlineImages({/* options */}))
-    .pipe(gulp.dest('dist/'));
+    .pipe(gulp.dest('dist/'))
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red(err.message));
+      process.exit(1)
+    });
 });
 
 // Generate & Inline Critical-path CSS
@@ -30,7 +34,10 @@ gulp.task('critical', ['inline-images'], function (cb) {
       }],
       minify: true, ignore: [/icon-/,/.svg/,'@font-face']
     }))
-    .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red(err.message));
+      process.exit(1)
+    })
     .pipe(gulp.dest('dist'));
 });
 
@@ -50,10 +57,13 @@ var optionsminify = {
 };
 
 gulp.task('minify-inline', ['critical'], function(cb) {
-  gulp.src(['dist/*.html','dist/**/*.html'])
+  return gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(replace(/('|")http(s)?\:\/\/www.ebi/g, '$1//www.ebi')) // make all http/s ebi urls //
     .pipe(minifyInline(optionsminify))
-    .on('error', function(err) { gutil.log(gutil.colors.red(err.message)); })
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red(err.message));
+      process.exit(1)
+    })
     .pipe(gulp.dest('dist/'));
 });
 
@@ -73,15 +83,22 @@ gulp.task('apache-config', ['critical'], function(cb) {
   require('fs').appendFile(fileName, 'AddOutputFilterByType DEFLATE text/html');
   require('fs').appendFile(fileName, endOfLine); // new line
   require('fs').appendFile(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=shib_login');
-  gulp.src(['dist/*.html','dist/**/*.html'])
-    // .pipe(pipeFunction());
-  .pipe(through.obj(function (file, enc, cb) {
-    var localFilePath = file.path.split('/dist/')[1];
-    console.log('Mapping: ',localFilePath);
-    require('fs').appendFile(fileName, endOfLine); // new line
-    require('fs').appendFile(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');
-    cb(null, file)
-  }));
+  return gulp.src(['dist/*.html','dist/**/*.html'])
+    .pipe(through.obj(function (file, enc, cb) {
+      var localFilePath = file.path.split('/dist/')[1];
+      gutil.log(gutil.colors.green('Mapping: ',localFilePath));
+      require('fs').appendFile(fileName, endOfLine); // new line
+      require('fs').appendFile(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');
+      cb(null, file)
+      })
+      .on('finish', function (status) {
+        gutil.log(gutil.colors.green('Finished writing .htaccess'));
+      })
+      .on('error', function(err) {
+        gutil.log(gutil.colors.red(err.message));
+        process.exit(1)
+      })
+    );
 });
 
 // Build it all
