@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/ebiwd/EBI-Corporatesite.svg?branch=master)](https://travis-ci.org/ebiwd/EBI-Corporatesite)
+
 # EBI 'Corporate site' static pages
 
 Static pages for the main www.ebi.ac.uk 'corporate' site.
@@ -63,7 +65,7 @@ NOTE: Only developers would have the need do this.
 
 1. Clone the repo
 
-2. Where you have npm installed locally 
+2. Where you have npm installed locally
 - Install the npm instance: `npm install`
 - Install gulp: `npm install -g gulp`
 - Run the default gulp script: `gulp`
@@ -85,4 +87,3 @@ A comparison of the above two URLs. [View the more detailed report](https://www.
 
 - Handlebars optimisations?
 - Concat all external css/js?
-
