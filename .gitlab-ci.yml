@@ -32,7 +32,7 @@ stages:
 
 build:
   stage: build
-  image: myprod/gulp
+  image: simonvanderveldt/node-bower-gulp:6
   before_script:
     - cd ${CI_PROJECT_DIR}
     - npm install --quiet
