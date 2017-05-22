@@ -28,6 +28,7 @@ variables:
 
 stages:
   - build
+  - test
   - deploy
 
 build:
@@ -45,6 +46,15 @@ build:
     paths:
       - dist
 
+test:
+  stage: test
+  image: netroby/alpine-rsync
+  script:
+    # test .htaccess has been generated
+    - if [ ! -f ${CI_PROJECT_DIR}/dist/.htaccess ]; then echo "Missing .htaccess"; exit 1; fi 
+    # test index.html has been generated
+    - if [ ! -f ${CI_PROJECT_DIR}/dist/index.html ]; then echo "Missing index.html"; exit 1; fi
+
 deploy_dev: &deploy
   <<: *deploy_setup
   variables:
@@ -55,6 +65,8 @@ deploy_dev: &deploy
   script:
     # update code
     - for VM in ${VMS}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${VM}:${DEST_PATH}/; done 
+    # test apache config etc
+    - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} '/etc/init.d/httpd configtest'; done
     # stop apache, etc
     - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop'; done || true
     # start apache, etc
