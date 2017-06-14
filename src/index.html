@@ -306,12 +306,12 @@
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
 
   <script id="feed-template-news-lead-item" type="text/x-handlebars-template">
-    {{#each item}}
+    {{#each this}}
       {{#if @first}}
-        {{{description}}}
+        <img src="{{node.field_image.src}}"/>
         <div class="caption">
-          <a href="{{link}}" class="inner">{{title}}</a>
-          <p>{{pubDate}}</p>
+          <a href="{{node.path}}" class="inner">{{node.title}}</a>
+          <p>{{node.created}}</p>
         </div>
       {{else}}
         <!-- Only show first -->
@@ -319,15 +319,11 @@
     {{/each}}
   </script>
   <script id="feed-template-news-updates" type="text/x-handlebars-template">
-    {{#each item}}
-      {{#if @first}}
-        <!-- do not show first -->
-      {{else}}
+    {{#each this}}
       <div class="padding-top-medium">
-        <span class="label">{{pubDate}}</span>
-        <h6><a href="{{link}}">{{title}}</a></h6>
+        <span class="label">{{node.created}}</span>
+        <h6><a href="{{node.path}}">{{node.title}}</a></h6>
       </div>
-      {{/if}}
     {{/each}}
   </script>
   <script id="template-upcoming-events" type="text/x-handlebars-template">
@@ -432,37 +428,50 @@
         return jointDate;
       });
 
-      // feed processor
-      // pass template and desitnation as arrays and the results will be mapped to multiple templates/locations
-      function HandlebaRss(feedUrl,template,destination){
-        this.feedUrl = 'https:' + feedUrl; // always https
-        this.template = template;
-        this.destination = destination;
+      // simple filter for json data
+      function simpleFilter(array, test){
+          var passedTest =[];
+          for (var i = 0; i < array.length; i++) {
+             if(test( array[i]))
+                passedTest.push(array[i]);
+          }
+
+          return passedTest;
       }
-      HandlebaRss.prototype.init = function(){
-        function queryData(properties) {
-          $.ajax({
-            url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22'+ encodeURIComponent(properties.feedUrl+'?cacheStamp='+unixMinute)+'%22limit%205&format=json&diagnostics=false&_maxage=3600&cacheStamp='+unixMinute,
-            template:    properties.template,
-            destination: properties.destination
-          }).done( function(data) {
-            if (data.query.results.item.length > 0) {
-              for (var i = 0; i < properties.template.length; i++) {
-                var template = Handlebars.compile($(properties.template[i]).html());
-                $(properties.destination[i]).html(template(data.query.results));
-              }
-            } else {
-              // retry if 0 length
-              window.setTimeout(queryData(properties), 500);
-            }
+
+
+
+      // pull json from http://www.ebi.ac.uk/admin/structure/views/view/news_rollup/edit/page_1
+      function getNewsData() {
+        // $.getJSON("feed.json?cachedate="+unixMinute, function(data) { // local testing
+        $.getJSON("http://www.ebi.ac.uk/about/news/feed.json?cachedate="+unixMinute, function(data) {
+
+          // keep only press releases
+          var topNewsItem = simpleFilter(data.nodes,function(node){
+             return (node.node.type === 'News');
           });
-        }
 
-        queryData(this);
+
+          var sourceTopItem = $('#feed-template-news-lead-item').html();
+          $('#news-lead-item').html(Handlebars.compile(sourceTopItem)(topNewsItem));
+
+          // drop the first press release as it's already been shown
+          var matchFound = false;
+          // and only keep five items
+          var itemsPassed = 0;
+          var secondaryItems = simpleFilter(data.nodes,function(node){
+            if ((node.node.type === 'News' && !matchFound) || (itemsPassed > 4)) {
+              matchFound = true;
+              return false;
+            }
+            itemsPassed++;
+            return true; // keep all others
+          });
+          var sourceUpdates = $('#feed-template-news-updates').html();
+          $('#news-updates').html(Handlebars.compile(sourceUpdates)(secondaryItems));
+        });
       }
-
-      newsLeadItem = new HandlebaRss("//www.ebi.ac.uk/about/news/press.xml",  ["#feed-template-news-lead-item","#feed-template-news-updates"],["#news-lead-item","#news-updates"]).init();
-      // newsUpdates =  new HandlebaRss("//www.ebi.ac.uk/about/news/service.xml","#feed-template-news-updates",  "#news-updates"  ).init();
+      getNewsData();
 
       // $.getJSON('temp/events-common-fields-feed-upcoming-events.json', function(data) {
       // select json.title, json.bundle_name, json.path, json.short_description, json.starts from json where url='https://www.ebi.ac.uk/sites/ebi.ac.uk/files/data/events-common-fields-feed-upcoming-events.json' limit 6
