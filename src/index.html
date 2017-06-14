@@ -320,10 +320,14 @@
   </script>
   <script id="feed-template-news-updates" type="text/x-handlebars-template">
     {{#each item}}
+      {{#if @first}}
+        <!-- do not show first -->
+      {{else}}
       <div class="padding-top-medium">
         <span class="label">{{pubDate}}</span>
         <h6><a href="{{link}}">{{title}}</a></h6>
       </div>
+      {{/if}}
     {{/each}}
   </script>
   <script id="template-upcoming-events" type="text/x-handlebars-template">
@@ -429,6 +433,7 @@
       });
 
       // feed processor
+      // pass template and desitnation as arrays and the results will be mapped to multiple templates/locations
       function HandlebaRss(feedUrl,template,destination){
         this.feedUrl = 'https:' + feedUrl; // always https
         this.template = template;
@@ -442,8 +447,10 @@
             destination: properties.destination
           }).done( function(data) {
             if (data.query.results.item.length > 0) {
-              var template = Handlebars.compile($(properties.template).html());
-              $(properties.destination).html(template(data.query.results));
+              for (var i = 0; i < properties.template.length; i++) {
+                var template = Handlebars.compile($(properties.template[i]).html());
+                $(properties.destination[i]).html(template(data.query.results));
+              }
             } else {
               // retry if 0 length
               window.setTimeout(queryData(properties), 500);
@@ -454,8 +461,8 @@
         queryData(this);
       }
 
-      newsLeadItem = new HandlebaRss("//www.ebi.ac.uk/about/news/press.xml",  "#feed-template-news-lead-item","#news-lead-item").init();
-      newsUpdates =  new HandlebaRss("//www.ebi.ac.uk/about/news/service.xml","#feed-template-news-updates",  "#news-updates"  ).init();
+      newsLeadItem = new HandlebaRss("//www.ebi.ac.uk/about/news/press.xml",  ["#feed-template-news-lead-item","#feed-template-news-updates"],["#news-lead-item","#news-updates"]).init();
+      // newsUpdates =  new HandlebaRss("//www.ebi.ac.uk/about/news/service.xml","#feed-template-news-updates",  "#news-updates"  ).init();
 
       // $.getJSON('temp/events-common-fields-feed-upcoming-events.json', function(data) {
       // select json.title, json.bundle_name, json.path, json.short_description, json.starts from json where url='https://www.ebi.ac.uk/sites/ebi.ac.uk/files/data/events-common-fields-feed-upcoming-events.json' limit 6
