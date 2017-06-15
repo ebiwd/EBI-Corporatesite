@@ -63,7 +63,6 @@
     <div id="masthead" class="masthead" data-sticky data-sticky-on="disabled" data-top-anchor="content:top" data-btm-anchor="content:bottom">
       <header>
         <div class="masthead-background" style="position: relative; z-index: 1;  height: 380px; opacity: .7;">
-          <!-- <img src="//www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/wide-imagery/EVA_logo_news_wide_EMBL-EBI.jpg" style="width: 100%;  "> -->
         </div>
         <div class="with-overlay" style="position: relative; z-index: 2; top: -380px; height: 380px; ">
           <div class="caption"></div>
@@ -99,13 +98,6 @@
                   .masthead-inner .button {
                     text-shadow: none;
                   }
-                  .masthead-background {
-                    /*background: url('//www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/wide-imagery/EVA_logo_news_wide_EMBL-EBI.jpg') no-repeat;*/
-                    background: url('https://www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/News/Bioimaging_EMBL-EBI-homepage.jpg') no-repeat;
-                    background-color: rgb(116,119,140);
-                    background-size: 1300px;
-                    background-position: 100% 100%;
-                  }
                   .masthead .with-overlay .caption {
                     background: -moz-linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* ff3.6+ */
                     background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0))); /* safari4+,chrome */
@@ -121,12 +113,13 @@
                     text-shadow: 0 2px 0 rgba(0,0,0,.8);
                   }
                   .visulisation, .visulisation iframe { border:0; width: 800px; height: 315px; overflow: hidden; }
-                  @media screen and (min-width: 64em) {
-                    .visulisation {
-                      float: right;
-                    }
-                    .visulisation-legend {
-                      /*position: absolute; z-index: 5;right: 1%; top: 2.5rem;*/
+                  @media screen and (min-width: 40rem) {
+                    .masthead-background {
+                      /*background: url('//www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/wide-imagery/EVA_logo_news_wide_EMBL-EBI.jpg') no-repeat;*/
+                      background: url('https://www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/News/Bioimaging_EMBL-EBI-homepage.jpg') no-repeat;
+                      background-color: rgb(116,119,140);
+                      background-size: 1300px;
+                      background-position: 100% 100%;
                     }
                   }
                   @media screen and (max-width: 64em) {
