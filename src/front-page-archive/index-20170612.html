@@ -63,6 +63,7 @@
     <div id="masthead" class="masthead" data-sticky data-sticky-on="disabled" data-top-anchor="content:top" data-btm-anchor="content:bottom">
       <header>
         <div class="masthead-background" style="position: relative; z-index: 1;  height: 380px; opacity: .7;">
+          <div class="row masthead-background-inner"></div>
         </div>
         <div class="with-overlay" style="position: relative; z-index: 2; top: -380px; height: 380px; ">
           <div class="caption"></div>
@@ -104,9 +105,9 @@
                     background: -webkit-linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* safari5.1+,chrome10+ */
                     background: -o-linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* opera 11.10+ */
                     background: -ms-linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* ie10+ */
-                    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* w3c */
+                    background: linear-gradient(270deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 30%); /* w3c */
                     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
-                    width: 40%;
+                    width: 100%;
                     padding: 5%;
                     color: #fff;
                     opacity: 1;
@@ -116,10 +117,14 @@
                   @media screen and (min-width: 40rem) {
                     .masthead-background {
                       /*background: url('//www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/wide-imagery/EVA_logo_news_wide_EMBL-EBI.jpg') no-repeat;*/
-                      background: url('https://www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/News/Bioimaging_EMBL-EBI-homepage.jpg') no-repeat;
                       background-color: rgb(116,119,140);
+                    }
+                    .masthead-background-inner {
+                      background: url('https://www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/News/Bioimaging_EMBL-EBI-homepage.jpg') no-repeat;
                       background-size: 1300px;
                       background-position: 100% 100%;
+                      height: 380px;
+
                     }
                   }
                   @media screen and (max-width: 64em) {
