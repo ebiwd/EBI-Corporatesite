@@ -1,0 +1,130 @@
+{
+  "nodes": [
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/press-releases/image-data-resource",
+        "type": "News",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/News/Bioimaging_EMBL-EBI_500x375.jpg?itok=h-CX4D2U",
+          "alt": "Image Data Resource samples"
+        },
+        "created": "13 Jun 2017",
+        "title": "Open imaging data for biology",
+        "body": "\nThe Image Data Resource: prototype of the first open, online repository linking imaging and molecular data \n",
+        "field_meta_keywords": "imaging, EuroBioImaging, Alvis Brazma, big data"
+      }
+    },
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/announcements/pistoia-alliance-ux-workshop-2017",
+        "type": "News",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/News/Pistoia_Alliance_UX_EMBL-EBI_500x375.jpg?itok=lXROncSp",
+          "alt": "Revathi Nathaniel, UX expert at EMBL-EBI"
+        },
+        "created": "15 Jun 2017",
+        "title": "UX toolkit aids industry R&D",
+        "body": "\nUser Experience designers rarely specialise in the life sciences – EMBL-EBI and the Pistoia Alliance look to fill the gap\n",
+        "field_meta_keywords": "Industry, event, Software, Tools"
+      }
+    },
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/press-releases/2017-hca-data-platform-czi",
+        "type": "News",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/News/Human_Cell_Atlas_2017_Spencer_Phillips_EMBL-EBI_500x375.jpg?itok=nDGsNqoC",
+          "alt": "Human Cell Atlas logo"
+        },
+        "created": "01 Jun 2017",
+        "title": "Human Cell Atlas data platform kicks off with support from CZI",
+        "body": "\nEMBL-EBI, the Broad Institute and UCSC Genomics Institute will partner in developing a data coordination platform for the Human Cell Atlas, supported by CZI\n",
+        "field_meta_keywords": "Human Cell Atlas, John Marioni, single-cell sequencing, RNAseq, CZI, Chan Zuckerberg, Grants, major collaborations, Data Coordination Platform"
+      }
+    },
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/service-news/2017-sifting-through-sequence-space-pdbe",
+        "type": "Service news",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/field/image/PDBe_logo_news_500x375.jpg?itok=uk1xgLF4",
+          "alt": "Protein Data Bank in Europe logo"
+        },
+        "created": "31 May 2017",
+        "title": "SIFT-ing through sequence space in the PDB",
+        "body": "\nThe new, improved SIFTS service offers more targeted cross referencing. For example, it maps molecular structures in PDBe to the most appropriate isoform within a UniProt accession.\n",
+        "field_meta_keywords": "protein complexes, SIFTS, PDBe, Sameer Valenkar"
+      }
+    },
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/service-news/rnacentral-release-7",
+        "type": "Service news",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/field/image/RNAcentral_icon_small_0.png?itok=SgypkBAJ",
+          "alt": "RNAcentral logo"
+        },
+        "created": "16 May 2017",
+        "title": "RNAcentral Release 7",
+        "body": "\n\nThe latest version of the RNAcentral database is now available.\n",
+        "field_meta_keywords": "RNAcentral, RNA"
+      }
+    },
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/announcements/omicsdi-2017",
+        "type": "News",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/News/OmicsDI_data_sharing_EMBL-EBI_500x375_0.jpg?itok=eRgMU9Ag",
+          "alt": "Omics DI search motif"
+        },
+        "created": "15 May 2017",
+        "title": "Omics Discovery Index boosts FAIR data sharing",
+        "body": "\nA global index led by EMBL-EBI emerges as the ‘PubMed Central of life-science datasets’\n",
+        "field_meta_keywords": "FAIR, standards, multiomics, data integration"
+      }
+    },
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/press-releases/hipsci-stem-cell-healthy-donors",
+        "type": "News",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/News/Hipsci_Stem_cell_healthy_donnors_EBI_500x375.jpg?itok=ukuRPt3r",
+          "alt": "HipSci stem cell bank"
+        },
+        "created": "09 May 2017",
+        "title": "HipSci: The human stem cell bank of tomorrow",
+        "body": "\nUK’s largest resource of human stem cells from healthy donors unveiled\n",
+        "field_meta_keywords": "HipSci, stem cells, iPSC, Oliver Stegle, Stegle"
+      }
+    },
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/press-releases/eva-issues-long-term-ids-non-human-variants",
+        "type": "News",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/News/EVA_news_0.jpg?itok=puf2Rbry",
+          "alt": "The European Variation Archive logo"
+        },
+        "created": "09 May 2017",
+        "title": "EVA issues long-term IDs for non-human variants",
+        "body": "\ndbSNP and EVA to share responsibility for maintaining reliable, long-term accession numbers for genetic variation data\n",
+        "field_meta_keywords": "EVA, Thomas Keane, NCBI, genetic variation, accession numbers, partnerships"
+      }
+    },
+    {
+      "node": {
+        "path": "http://www.ebi.ac.uk/about/news/service-news/InterPro-63.0",
+        "type": "Service news",
+        "field_image": {
+          "src": "http://www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/field/image/logo_interpro_notext_342_0.png?itok=zjBcouhs",
+          "alt": "InterPro logo"
+        },
+        "created": "09 May 2017",
+        "title": "New releases: InterPro 63.0 and InterProScan 5.24-63.0",
+        "body": "\nNew releases: InterPro database (version 63.0) and InterProScan (5.24-63.0) for functional analysis. InterPro now covers over 80.5% of the UniProt Knowledgebase and predicts GO terms for over 50 million proteins.\n",
+        "field_meta_keywords": "Protein families, InterProScan, InterPro, Protein, protein family, protein motif"
+      }
+    }
+  ]
+}
