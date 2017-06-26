@@ -62,6 +62,12 @@
   <div data-sticky-container>
     <div id="masthead" class="masthead" data-sticky data-sticky-on="disabled" data-top-anchor="content:top" data-btm-anchor="content:bottom">
       <header>
+        <div class="masthead-background" style="position: relative; z-index: 1;  height: 380px; opacity: .7;">
+          <div class="row masthead-background-inner"></div>
+        </div>
+        <div class="with-overlay" style="position: relative; z-index: 2; top: -380px; height: 380px; ">
+          <div class="caption"></div>
+        </div>
         <div class="masthead-inner padding-top-none">
           <!-- local-title -->
           <div class="" id="local-title">
@@ -71,37 +77,59 @@
                   <div class="margin-top-xlarge padding-top-xlarge"><!--spacer--></div>
                   <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.2/images/logos/EMBL-EBI/EMBL_EBI_Logo_white.svg" style="width:300px;position:relative;z-index: 5;">
                   <p>The home for big data in biology</p>
-                  <div class="small show-for-medium visulisation-legend medium-12 large-2">
-                    Visualisation: EBI Search is an index of biological resources, sites, and enables scientific queries. <a href="//www.ebi.ac.uk/ebisearch/overview.ebi" class="readmore">Learn more</a>
-                  </div>
                   <div class="show-for-large margin-bottom-xlarge"><!--spacer--></div>
                 </div>
-                <div class="columns show-for-medium medium-9" style="position: relative; z-index: 3; overflow: hidden;">
-                  <!-- iFrame data vis to be inserted here -->
-                  <div id="visulisation-parent" class="medium-7 large-12 visulisation"></div>
+                <div class="columns show-for-medium medium-9" style="">
+                  <div class="margin-top-xlarge padding-top-xlarge"><!--spacer--></div>
+                  <div class="callout white-color small float-right show-for-medium visulisation-legend medium-5 large-4"
+                       style="width: 16rem; background: none;">
+                       About this image: An <a href="http://idr.openmicroscopy.org/webclient/?show=plate-4751">entry from the Tara Oceans expedition</a> in the prototype Image Data Repository, built by scientists at the University of Dundee, EMBL-EBI, the University of Bristol and the University of Cambridge.
+                      <a href="//www.ebi.ac.uk/about/news/press-releases/image-data-resource" class="readmore" style="/* color: #222 */">Learn more</a>
+                  </div>
                   <style type="text/css">
-                  .masthead { background: #111;}
+                  .masthead {
+                    background-color: rgb(17, 17, 17); margin-top: 0px; bottom: auto; top: 0px; max-width: 1663px;
+                    height: 380px;
+                    overflow: hidden;
+                  }
+                  .masthead-inner{
+                    padding-top:0; position: relative; z-index: 3; top: -800px; margin-bottom: -400px; text-shadow: 1px 1px 3px #000;
+                  }
+                  .masthead-inner .callout,
+                  .masthead-inner .button {
+                    text-shadow: none;
+                  }
+                  .masthead .with-overlay .caption {
+                    background: -moz-linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* ff3.6+ */
+                    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0,0,0,1)), color-stop(100%, rgba(0,0,0,0))); /* safari4+,chrome */
+                    background: -webkit-linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* safari5.1+,chrome10+ */
+                    background: -o-linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* opera 11.10+ */
+                    background: -ms-linear-gradient(360deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%); /* ie10+ */
+                    background: linear-gradient(270deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 30%); /* w3c */
+                    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000',GradientType=1 ); /* ie6-9 */
+                    width: 100%;
+                    padding: 5%;
+                    color: #fff;
+                    opacity: 1;
+                    text-shadow: 0 2px 0 rgba(0,0,0,.8);
+                  }
                   .visulisation, .visulisation iframe { border:0; width: 800px; height: 315px; overflow: hidden; }
-                  @media screen and (min-width: 64em) {
-                    .visulisation {
-                      float: right;
+                  @media screen and (min-width: 40rem) {
+                    .masthead-background {
+                      /*background: url('//www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/wide-imagery/EVA_logo_news_wide_EMBL-EBI.jpg') no-repeat;*/
+                      background-color: rgb(116,119,140);
                     }
-                    .visulisation-legend {
-                      position: absolute; z-index: 5;right: 1%; top: 2.5rem;
+                    .masthead-background-inner {
+                      background: url('https://www.ebi.ac.uk/sites/ebi.ac.uk/files/groups/external_relations/images/News/Bioimaging_EMBL-EBI-homepage.jpg') no-repeat;
+                      background-size: 1300px;
+                      background-position: 100% 100%;
+                      height: 380px;
+
                     }
                   }
                   @media screen and (max-width: 64em) {
                     .visulisation-legend {
                       float: left;
-                    }
-                    .visulisation iframe {
-                      -moz-transform-origin: 0 0;
-                      -o-transform-origin: 0 0;
-                      -webkit-transform-origin: 0 0;
-                      -ms-zoom: 0.85;
-                      -moz-transform: scale(0.85);
-                      -o-transform: scale(0.85);
-                      -webkit-transform: scale(0.85);
                     }
                   }
                   </style>
@@ -128,7 +156,7 @@
                               <option value="reactionsPathways">Reactions, pathways &amp; diseases</option>
                               <option value="proteinFamilies">Protein families</option>
                               <option value="literature">Literature</option>
-                              <option value="ontologies">Samples & ontologies</option>
+                              <option value="ontologies">Samples &amp; ontologies</option>
                             </optgroup>
                             <optgroup label="Search web content">
                               <option value="ebiweb_people">EMBL-EBI People</option>
@@ -138,13 +166,13 @@
                           </select>
                         </div>
                         <div class="columns small-8  margin-bottom-none search-text-wrapper">
-                          <input id="query" class="margin-bottom-none clearable" title="EBI Search" tabindex="2" type="text" name="query" value="" size="35" maxlength="2048" placeholder="Find a gene, protein or chemical"/>
+                          <input id="query" class="margin-bottom-none" title="EBI Search" tabindex="2" type="text" name="query" value="" size="35" maxlength="2048" placeholder="Find a gene, protein or chemical">
                         </div>
                         <div class="columns small-2 margin-bottom-none">
-                          <input id="search_submit" class="button icon icon-functional margin-bottom-none" tabindex="3" type="submit" name="submit1" value="1" style="line-height:.9"/>
+                          <input id="search_submit" class="button icon icon-functional margin-bottom-none" tabindex="3" type="submit" name="submit1" value="1" style="line-height:.9">
                         </div>
                         <!-- <input id="allebi" type="hidden" name="db" value="allebi" checked="checked" /> -->
-                        <input type="hidden" name="requestFrom" value="ebi_index" />
+                        <input type="hidden" name="requestFrom" value="ebi_index">
                       </div>
                     </fieldset>
                     <fieldset>
@@ -169,7 +197,7 @@
                 <div class="columns small-12 show-for-small-only padding-top-large">
                   <span class="label show-for-small-only white-color">Access and share data</span>
                   <div>
-                    <a href="//www.ebi.ac.uk/services/"   class="button no-underline readmore"  style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="("></i> Find a tool</a>
+                    <a href="//www.ebi.ac.uk/services/" class="button no-underline readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="("></i> Find a tool</a>
                     <a href="//www.ebi.ac.uk/submission/" class="button no-underline readmore" style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="q"></i> Deposit data</a>
                   </div>
                 </div>
@@ -348,18 +376,18 @@
 
       // Insert data vis
       // We load it only if the div is visible, and schedule a check if not
-      function conditionallyLoadDatavis() {
-        if ($('#visulisation-parent').is(':visible')) {
-          $('#visulisation-parent').html('<iframe src="https://ebiwd.github.io/EBI-Search-index-visulisation/force.html" style="" scrolling="no"></iframe>');
-        } else {
-          // Check again if the screen resizes
-          // We schedule only one check -- if that check fails, we schedule again
-          $(window).one('resize.datavischeck', function() {
-            conditionallyLoadDatavis();
-          });
-        }
-      }
-      conditionallyLoadDatavis();
+      // function conditionallyLoadDatavis() {
+      //   if ($('#visulisation-parent').is(':visible')) {
+      //     $('#visulisation-parent').html('<iframe src="https://ebiwd.github.io/EBI-Search-index-visulisation/force.html" style="" scrolling="no"></iframe>');
+      //   } else {
+      //     // Check again if the screen resizes
+      //     // We schedule only one check -- if that check fails, we schedule again
+      //     $(window).one('resize.datavischeck', function() {
+      //       conditionallyLoadDatavis();
+      //     });
+      //   }
+      // }
+      // conditionallyLoadDatavis();
 
       // today's date as YYYYMMDD
       // we round unix time down to change every 5 minutes for cachebusting
@@ -439,18 +467,14 @@
           return passedTest;
       }
 
-
-
       // pull json from http://www.ebi.ac.uk/admin/structure/views/view/news_rollup/edit/page_1
       function getNewsData() {
-        // $.getJSON("feed.json?cachedate="+unixMinute, function(data) { // local testing
-        $.getJSON("http://www.ebi.ac.uk/about/news/feed.json?cachedate="+unixMinute, function(data) {
-
+        // $.getJSON("/feed.json?cachedate="+unixMinute, function(data) { // local testing
+        $.getJSON("//www.ebi.ac.uk/about/news/feed.json?cachedate="+unixMinute, function(data) {
           // keep only press releases
           var topNewsItem = simpleFilter(data.nodes,function(node){
              return (node.node.type === 'News');
           });
-
 
           var sourceTopItem = $('#feed-template-news-lead-item').html();
           $('#news-lead-item').html(Handlebars.compile(sourceTopItem)(topNewsItem));
