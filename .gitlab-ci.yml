@@ -1,6 +1,6 @@
-#project specific variables can be defines here, or overridden project settings
+#project specific variables can be defined here, or overridden project settings
 variables:
-  DEST_PATH: /var/www/drupal/html/staticpages
+  DEST_PATH: /var/www/drupal/staticpages
 
   DEV_SERVER: ves-hx-10.ebi.ac.uk ves-hx-12.ebi.ac.uk
   DEV_URL: wwwdev.ebi.ac.uk
