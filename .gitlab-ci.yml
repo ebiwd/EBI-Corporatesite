@@ -1,14 +1,16 @@
+image: ebiwd/alpine-ssh:3.6
+
 #project specific variables can be defined here, or overridden project settings
 variables:
   DEST_PATH: /var/www/drupal/staticpages
 
-  DEV_SERVER: ves-hx-10.ebi.ac.uk ves-hx-12.ebi.ac.uk
-  DEV_URL: wwwdev.ebi.ac.uk
+  DEV_SERVER: ves-hx-10 ves-hx-12
+  DEV_URL: http://wwwdev.ebi.ac.uk
 
-  STAGE_SERVER: ves-hx-11.ebi.ac.uk ves-hx-13.ebi.ac.uk
-  STAGE_URL: stage.ebi7.ebi.ac.uk
+  STAGE_SERVER: ves-hx-11 ves-hx-13
+  STAGE_URL: http://stage.ebi7.ebi.ac.uk
 
-  PROD_SERVER: ves-oy-10.ebi.ac.uk ves-oy-11.ebi.ac.uk ves-oy-12.ebi.ac.uk ves-oy-13.ebi.ac.uk ves-pg-10.ebi.ac.uk ves-pg-11.ebi.ac.uk ves-pg-12.ebi.ac.uk ves-pg-13.ebi.ac.uk
+  PROD_SERVER: ves-oy-10 ves-oy-11 ves-oy-12 ves-oy-13 ves-pg-10 ves-pg-11 ves-pg-12 ves-pg-13
   PROD_URL: http://www.ebi.ac.uk
 
 # do not define here, put in project variables
@@ -17,19 +19,11 @@ variables:
   SSH_APACHE: username
   SSH_APACHE_KEY: secret-key
   
-#setup ssh keys
-.deploy_setup: &deploy_setup
-  image: netroby/alpine-rsync
-  before_script:
-    - mkdir ~/.ssh
-    - echo -e "${SSH_OWNER_KEY}" >> ~/.ssh/${SSH_OWNER} && chmod 400 ~/.ssh/${SSH_OWNER}
-    - echo -e "${SSH_APACHE_KEY}" >> ~/.ssh/${SSH_APACHE} && chmod 400 ~/.ssh/${SSH_APACHE}
-    - echo -e "Host *\n\tIdentityFile ~/.ssh/%r\n\tStrictHostKeyChecking no" >> ~/.ssh/config
-
 stages:
   - build
   - test
   - deploy
+  - validate
 
 build:
   stage: build
@@ -48,12 +42,17 @@ build:
 
 test:
   stage: test
-  image: netroby/alpine-rsync
   script:
     # test .htaccess has been generated
     - if [ ! -f ${CI_PROJECT_DIR}/dist/.htaccess ]; then echo "Missing .htaccess"; exit 1; fi 
     # test index.html has been generated
     - if [ ! -f ${CI_PROJECT_DIR}/dist/index.html ]; then echo "Missing index.html"; exit 1; fi
+
+#setup ssh keys
+.deploy_setup: &deploy_setup
+  before_script:
+    - add-ssh-key ${SSH_OWNER} "${SSH_OWNER_KEY}" ${SSH_APACHE} "${SSH_APACHE_KEY}"
+    - add-search-domain ebi.ac.uk
 
 deploy_dev: &deploy
   <<: *deploy_setup
@@ -63,16 +62,13 @@ deploy_dev: &deploy
     VMS: ${DEV_SERVER}
   stage: deploy
   script:
-    # update code
-    - for VM in ${VMS}; do rsync -auv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${VM}:${DEST_PATH}/; done 
-    # test apache config etc
-    - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} '/etc/init.d/httpd configtest'; done
-    # stop apache, etc
-    - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop'; done || true
-    # start apache, etc
-    - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd start; sudo /etc/init.d/memcached start; sudo /etc/init.d/rh-php56-php-fpm start'; done
-    # check apache status
-    - for VM in ${VMS}; do ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd status && sudo /etc/init.d/memcached status && sudo /etc/init.d/rh-php56-php-fpm status'; done
+    - for VM in ${VMS}; do 
+        rsync -acv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${VM}:${DEST_PATH}/;
+        ssh -tt ${SSH_APACHE}@${VM} '/etc/init.d/httpd configtest';
+        ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop' || true;
+        ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd start && sudo /etc/init.d/memcached start && sudo /etc/init.d/rh-php56-php-fpm start';
+        ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd status && sudo /etc/init.d/memcached status && sudo /etc/init.d/rh-php56-php-fpm status';
+      done
   only:
     - master
   environment:
@@ -94,3 +90,17 @@ deploy_prod:
     DRUPAL_ENV: prod
     URL: ${PROD_URL}
     VMS: ${PROD_SERVER}
+    
+validate_dev:
+  stage: validate
+  script:
+    - curl ${DEV_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
+  only: 
+    - master
+
+validate_prod:
+  stage: validate
+  script:
+    - curl ${PROD_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
+  only: 
+    - tags
