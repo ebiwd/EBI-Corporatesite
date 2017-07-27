@@ -149,16 +149,16 @@
 
                 </div>
 
-                <h3>On this page</h3>
+                <span class="label padding-left-large">On this page</span>
                 <div data-sticky-container>
                   <div class="white-background columns medium-12 padding-left-none" data-sticky data-margin-top="2.25"  data-sticky-on="large" data-top-anchor="technology-overview:top" data-btm-anchor="technology-overview:bottom" id="page-menu">
-                    <ul class="menu no-underline " data-magellan>
-                      <li class=""><a href="#Access">Access</a></li>
-                      <li class=""><a href="#Delivery">Delivery</a></li>
-                      <li class=""><a href="#Analysis">Analysis</a></li>
-                      <li class=""><a href="#Coordination">Coordination</a></li>
-                      <li class=""><a href="#Interfaces">Interfaces</a></li>
-                      <li class=""><a href="#Partnership">Partnership</a></li>
+                    <ul class="menu no-underline " data-magellan data-active-class="active">
+                      <li class=""><a href="#access">Access</a></li>
+                      <li class=""><a href="#delivery">Delivery</a></li>
+                      <li class=""><a href="#analysis">Analysis</a></li>
+                      <li class=""><a href="#coordination">Coordination</a></li>
+                      <li class=""><a href="#interfaces">Interfaces</a></li>
+                      <li class=""><a href="#partnership">Partnership</a></li>
                     </ul>
                   </div>
                 </div>
@@ -170,18 +170,77 @@
                   <div class="columns medium-3">
                     <div class="callout">
                       <h3>About us</h3>
-                      <p>Based on the Wellcome Genome Campus in the Cambridge bio-cluster, we are at the centre of one of the highest concentrations of scientific and technical expertise in the world.</p>
-                      <p>We are part of the European Molecular Biology Laboratory, a science and technology powerhouse with six locations in Europe (LINK TO EMBL TECHNOLOGY PAGE).</p>
+                      <p>Based on the <a href="https://www.wellcomegenomecampus.org/" target="_blank">Wellcome Genome Campus in the Cambridge bio-cluster</a>, we are at the centre of one of the highest concentrations of scientific and technical expertise in the world.</p>
+                      <p>We are part of the <a href="http://embl.org/" target="_blank">European Molecular Biology Laboratory</a>, a science and technology powerhouse with six locations in Europe.</p>
                       <p>Like all of EMBL, our technology teams promote learning and exploration. They are highly collaborative, with staff members often working on development and engineering projects shared between several teams throughout the organisation.</p>
                     </div>
 
-                    <div class="callout">
+                    <div class="callout industry-background white-color">
                       <h3>What's happening</h3>
-                      <span class="label">News from the blog</span>
-                      <p>(e.g. how-to posts, deeply technical reports, techical seminar write-ups)</p>
+                      <span class="label white-color">News from the blog</span>
+                      <div class="news-from-the-blog"></div>
+                      <p><a href="https://www.ebi.ac.uk/about/technology/" class="readmore">More at the blog</a></p>
+                    </div>
 
-                      <span class="label">Jobs, career profiles</span>
-                      <p>Can link to existing content from http://www.ebi.ac.uk/about/jobs/career-profiles</p>
+                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.8/handlebars.min.js"></script>
+                    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+                    <script tryp="text/javascript">
+                    document.addEventListener('DOMContentLoaded', function(){
+                      var DateFormats = {
+                             short: " DD MMMM",
+                             long: "dddd DD.MM.YYYY HH:mm"
+                      };
+                      Handlebars.registerHelper("formatDate", function(datetime, format) {
+                        if (moment) {
+                          // can use other formats like 'lll' too
+                          format = DateFormats[format] || format;
+                          return moment(datetime).format(format);
+                        }
+                        else {
+                          return datetime;
+                        }
+                      });
+
+                      var feedTemplate = '{{#each item}}'+
+                          '<div class="padding-top-medium">'+
+                            '<span class="label white-color">{{formatDate pubDate "short"}}</span>'+
+                            '<h6><a href="{{link}}" class="">{{title}}</a></h6>'+
+                          '</div>'+
+                        '{{/each}}';
+
+                      // feed processor
+                      function feedImporter(feedUrl,template,destination){
+                        this.feedUrl = feedUrl;
+                        this.template = template;
+                        this.destination = destination;
+                      }
+                      feedImporter.prototype.init = function(){
+                        function queryData(properties) {
+                          $.ajax({
+                            // here we use YQL to translate the RSS into JSON, but you could easily pass in your JSON here
+                            url: 'https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss%20where%20url%3D%22'+ encodeURIComponent(properties.feedUrl)+'%22limit%206&&format=json&diagnostics=false&_maxage=3600',
+                            template:    properties.template,
+                            destination: properties.destination
+                          }).done( function(data) {
+                            // here you need to map your JSON structure
+                            var mappedData = data.query.results,
+                                template = Handlebars.compile(properties.template);
+                            $(properties.destination).html(template(mappedData));
+                          });
+                        }
+                        queryData(this); // bootstrap
+                      }
+                      newsUpdates = new feedImporter("http://www.ebi.ac.uk/about/technology/feed/",feedTemplate, ".news-from-the-blog").init();
+                  }, false);
+                  </script>
+
+
+
+                    <div class="callout">
+                      <h3 class="">Work with us</h3>
+                      <p>We're hiring <a href="http://www.ebi.ac.uk/about/jobs" class="readmore">See jobs</a></p>
+                      <p>Want to know what it's like to work at EMBL-EBI?
+                        <a href="http://www.ebi.ac.uk/about/jobs/career-profiles" class="readmore">Career profiles</a></p>
                     </div>
                   </div>
 
@@ -190,20 +249,20 @@
                       <h2>Core themes</h2>
                     </div>
                     <div class="row">
-                      <div class="columns medium-8">
-                        <h3 id="Access">Access</h3>
+                      <div class="columns medium-6">
+                        <h3 id="access" data-magellan-target="access">Access</h3>
                         <strong>Our technical infrastructure</strong>
 
-                        <h5>Choosing the best tool for the job</h5>
-                        <p>Insert statement about our technology ethos - Not constrained to using a shortlist of technologies, encouraged to learn and adopt new technologies if they get the job done better, empowering developers, etc.</p>
+                        <!-- <h5>Choosing the best tool for the job</h5> -->
+                        <!-- <p>Insert statement about our technology ethos - Not constrained to using a shortlist of technologies, encouraged to learn and adopt new technologies if they get the job done better, empowering developers, etc.</p>
 
-                        <h5>Data growth and usage</h5>
+                        <h5>Data growth and usage</h5> -->
                         <p>The open molecular data resources provided by EMBL-EBI have become the backbone of computational biology projects, and are used 24/7 by researchers throughout the world.</p>
                         <p>As the cost of generating data continued to fall in 2016, our core data resources continued their steady growth. Two areas of very rapid growth were metagenomics and metabolomics data; our Metagenomics data service grew by 11-fold in 2016. Growth in all data types - both established and emerging - is still exponential.</p>
                         <p>Our technical service teams ensure that users' jobs can be run, 24/7, and that our data centres are able to absorb spikes in usage, in terms of uploading, downloading and running analyses.</p>
 
                       </div>
-                      <div class="columns medium-4 small">
+                      <div class="columns medium-6 small">
                         <h3>&nbsp;</h3>
                         <h5>Data Usage Facts & Figures</h5>
                         <ul>
@@ -226,14 +285,15 @@
                         </ul>
                       </div>
                     </div>
+                    <hr/>
                     <div class="row">
-                      <div class="columns medium-8">
-                        <h3 id="Delivery">Delivery</h3>
+                      <div class="columns medium-6">
+                        <h3 id="delivery" data-magellan-target="delivery">Delivery</h3>
                         <strong>Processing and storage</strong>
                         <p>Demands for the open data resources at EMBL-EBI are growing at an exponential rate. In 2016 alone, our technical service teams installed 72 petabytes of raw storage, and our end-users are supported by thousands of high-performance and high-throughput cores. We are able to scale up our infrastructure to meet demand thanks to funding from our member states, including capital funding from the UK Government.</p>
                         <p>To ensure our scientific service teams can deliver open data resources for diverse areas of science, our technical teams employ a broad range of high-performing technologies. We are implementing a database virtualisation programme to meet ever-growing demand, and use a geo-dispersed Object Store to fulfill the greater part of our storage needs. This offers efficiencies in data resilience, reducing our data-centre footprint and overall costs and improving our environmental standing. We also employ a range of other storage solutions, which gives us maximum flexibility and required value for money in data archiving.</p>
                       </div>
-                      <div class="columns medium-4 small">
+                      <div class="columns medium-3 small">
                         <h3>&nbsp;</h3>
                         <h5>Storage Facts & figures</h5>
                         <ul>
@@ -253,6 +313,12 @@
                             <li>Database virtualisation</li>
                             <li>Collaboration with enterprise software company Delphix started in 2015.</li>
                           </ul>
+                        </ul>
+                      </div>
+                      <div class="columns medium-3 small">
+                        <h3>&nbsp;</h3>
+                        <h5>&nbsp;</h5>
+                        <ul>
                           <li>Storage solutions</li>
                           <ul>
                             <li>Geo-dispersed Object Store</li>
@@ -266,23 +332,24 @@
                         </ul>
                       </div>
                     </div>
+                    <hr/>
                     <div class="row">
-
-                      <div class="columns medium-8">
-                        <h3 id="Analysis">Analysis</h3>
+                      <div class="columns medium-12">
+                        <h3 id="analysis" data-magellan-target="analysis">Analysis</h3>
                         <strong>Chain of tools</strong>
-                        <p>EMBL-EBI offers programmatic and web access to about 150 computational tools. To help our users extract greater benefit from a wider range of EMBL-EBI services, we are making it easier for users to bring their own data and store their results for future reference.
-                        We are also making it easier for users to ‘chain’ tools so that we can provide workflows, rather than single tools.</p>
+                        <p>EMBL-EBI offers programmatic and web access to about 150 computational tools. To help our users extract greater benefit from a wider range of EMBL-EBI services, we are making it easier for users to bring their own data and store their results for future reference.</p>
+                        <p>We are also making it easier for users to ‘chain’ tools so that we can provide workflows, rather than single tools.</p>
                       </div>
-                      <div class="columns medium-4 small">
+                      <!-- <div class="columns medium-4 small">
                         <h3>&nbsp;</h3>
                         <h5>Tools Facts and Figures</h5>
-                        No idea
-                      </div>
+                        To come
+                      </div> -->
                     </div>
+                    <hr/>
                     <div class="row">
                       <div class="columns medium-8">
-                        <h3 id="Coordination">Coordination</h3>
+                        <h3 id="coordination" data-magellan-target="coordination">Coordination</h3>
                         <strong>Data coordination as a service</strong>
                         <p>EMBl-EBI infrastructure is applied increasingly in the area of data coordination. We ensure the smooth handling of complex data flows in research projects of all sizes. This makes it easier to share, analyse and publish experimental data during and beyond the lifetime of a project.</p>
 
@@ -299,40 +366,58 @@
                         </ul>
                       </div>
                     </div>
+                    <hr/>
                     <div class="row">
                       <div class="columns medium-8">
-                        <h3 id="Interfaces">Interfaces</h3>
+                        <h3 id="interfaces" data-magellan-target="interfaces">Interfaces</h3>
                         <strong>User Experience research and development</strong>
-                        <p>Things the Web Dev team offers external users</p>
-                        <p>Things the Web Dev team offers internal users</p>
+                        <p>The EMBL-EBI Web Development team provides assistance and guidance on helping teams build websites and user interfaces. We assist not only in helping choose the what (technology and look) but also why (what do users need and what works best).</p>
+                        <p>The Web Development team has developers, UX professionals, and information architecture specialists available to assist in the sturcutre and execution of porjects.</p>
+                        <!-- <p>Things the Web Dev team offers external users</p>
+                        <p>Things the Web Dev team offers internal users</p> -->
                       </div>
                       <div class="columns medium-4 small">
                         <h3>&nbsp;</h3>
-                        <h5>Technologies the Web Dev team used this week</h5>
-                        - xxxxx
+                        <h5>Technologies and methedologies currently used</h5>
+                        <ul>
+                          <li>UX research, design</li>
+                          <li>Gulp, npm, Docker, Sass, continuous integration</li>
+                          <li>Angular, Drupal 7 (and 8), Panini, Jekyll</li>
+                          <li>Metrics (Google Anlaytics, content goals, A/B testing)</li>
+                          <li>Github, Gitlab</li>
+                          <li>Information architecture, content modelling</li>
+                          <li>Kanban</li>
+                        </ul>
                       </div>
                     </div>
-
-                    <h3 id="Partnership">Partnership</h3>
+                    <hr/>
+                    <h3 id="partnership" data-magellan-target="partnership">Partnership</h3>
                     <div class="row">
                       <div class="columns medium-4">
                         <h5>ELIXIR</h5>
-                        <p>We provide a cloud portal to support EMBL-EBI and ELIXIR projects. This portal helps participating researchers select a cloud service provider (including our own internal OpenStack provision), retrieve the relevant software applications and deploy virtual machines or containers. We use GitHub as an application definition and sharing platform, which makes it easier for our cloud engineering teams to collaborate and streamlines versioning.</p>
+                        <p>We provide a cloud portal to support EMBL-EBI and ELIXIR projects. This portal helps participating researchers select a cloud service provider (including our own internal OpenStack provision), retrieve the relevant software applications and deploy virtual machines or containers.</p>
+                        <p>We use GitHub as an application definition and sharing platform, which makes it easier for our cloud engineering teams to collaborate and streamlines versioning.</p>
                       </div>
                       <div class="columns medium-4">
-                        <h5>Embassy</h5>
-                        <p>Embassy Cloud, our infrastructure-as-a-service, is based on the OpenStack cloud platform. It features private, secure “tenancies” hosted within EMBL-EBI’s data centres, providing users with direct access to data sets and services and negating the need to download large data resources before undertaking analyses. Embassy Cloud is currently used by external groups collaborating with EMBL-EBI teams.</p>
-                        <p>Embassy Cloud Facts & Figures</p>
-                        - Cores: 6000
-                        - RAM: 40 terabytes
-                        - SSD fast-scratch space: 50 terabytes
-                        - NFS: 2 petabytes
-                        - Storage (Object Store): 2 petabytes
-                        - Helix Nebula Science Clou
+                        <h5>Embassy Cloud</h5>
+                        <p>Infrastructure-as-a-service, Embassy Cloud based on the OpenStack cloud platform. It features private, secure “tenancies” hosted within EMBL-EBI’s data centres, providing users with direct access to data sets and services and negating the need to download large data resources before undertaking analyses. Embassy Cloud is currently used by external groups collaborating with EMBL-EBI teams.</p>
+                        <div class="callout">
+                          <p>Embassy Cloud Facts &amp; Figures</p>
+                          <ul>
+                            <li>Cores: 6000</li>
+                            <li>RAM: 40 terabytes</li>
+                            <li>SSD fast-scratch space: 50 terabytes</li>
+                            <li>NFS: 2 petabytes</li>
+                            <li>Storage (Object Store): 2 petabytes</li>
+                            <li>Helix Nebula Science Cloud</li>
+                          </ul>
+                        </div>
                       </div>
                       <div class="columns medium-4">
                         <h5>Large infrastructure</h5>
-                        <p>We are partners in several large infrastructure projects, for example the Helix Nebula Science Cloud (HNSciCloud), which aims to establish a European hybrid cloud platform to support the deployment of high-performance computing and big-data capabilities for scientific research. Helix partners include CERN, the European Space Agency, the European Grid Infrastructure and other institutes from across Europe. Launched in 2016, the technical specifications for this pre-commercial procurement tender were defined according to use cases: Pan-Cancer Analysis of Whole Genomes, EuroBioImaging and ELIXIR. The designs will be prototyped in 2017 before large-scale pilots in 2018.</p>
+                        <p>We are partners in several large infrastructure projects, for example the Helix Nebula Science Cloud (HNSciCloud), which aims to establish a European hybrid cloud platform to support the deployment of high-performance computing and big-data capabilities for scientific research.</p>
+                        <p>Helix partners include CERN, the European Space Agency, the European Grid Infrastructure and other institutes from across Europe. </p>
+                        <p>Launched in 2016, the technical specifications for this pre-commercial procurement tender were defined according to use cases: Pan-Cancer Analysis of Whole Genomes, EuroBioImaging and ELIXIR. The designs will be prototyped in 2017 before large-scale pilots in 2018.</p>
                       </div>
                     </div>
 
