@@ -512,7 +512,7 @@
             $('#upcoming-events').html(Handlebars.compile(source)(data));
           }
           if (willRetry) {
-            var retrying = window.setTimeout(getEventData(), 1200);
+            var retrying = window.setTimeout(getEventData, 1200);
           }
         });
       }
