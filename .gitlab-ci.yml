@@ -94,13 +94,13 @@ deploy_prod:
 validate_dev:
   stage: validate
   script:
-    - curl ${DEV_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
+    - curl -L ${DEV_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
   only: 
     - master
 
 validate_prod:
   stage: validate
   script:
-    - curl ${PROD_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
+    - curl -L ${PROD_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
   only: 
     - tags
