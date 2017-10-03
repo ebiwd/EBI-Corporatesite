@@ -82,7 +82,7 @@ gulp.task('apache-config', ['critical'], function(cb) {
   require('fs').appendFile(fileName, endOfLine); // new line
   require('fs').appendFile(fileName, 'AddOutputFilterByType DEFLATE text/html');
   require('fs').appendFile(fileName, endOfLine); // new line
-  require('fs').appendFile(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=shib_login');
+  require('fs').appendFile(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=');
   return gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(through.obj(function (file, enc, cb) {
       var localFilePath = file.path.split('/dist/')[1];
