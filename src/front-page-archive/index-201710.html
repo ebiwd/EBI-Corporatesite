@@ -587,24 +587,24 @@
     b2.reveal(revealTime);
 
     if (currentSlide == 1) {
-      b.text(currentText => '3.2 million');
-      b2.text(currentText => 'Unique IP addresses access EMBL-EBI websites every month.');
+      b.text(function(currentText){ return '3.2 million' })
+      b2.text(function(currentText){ return 'Unique IP addresses access EMBL-EBI websites every month.' })
     }
     if (currentSlide == 2) {
-      b.text(currentText => '27 million');
-      b2.text(currentText => 'Average requests per day to EMBL-EBI websites.');
+      b.text(function(currentText){ return '27 million' })
+      b2.text(function(currentText){ return 'Average requests per day to EMBL-EBI websites.' })
     }
     if (currentSlide == 3) {
-      b.text(currentText => '3.5 petabytes');
-      b2.text(currentText => 'Total volume of data downloaded.');
+      b.text(function(currentText){ return '3.5 petabytes' })
+      b2.text(function(currentText){ return 'Total volume of data downloaded.' })
     }
     if (currentSlide == 4) {
-      b.text(currentText => '82% programmatic');
-      b2.text(currentText => '56% via RESTful APIs, 26% via SOAP web services');
+      b.text(function(currentText){ return '82% programmatic' })
+      b2.text(function(currentText){ return '56% via RESTful APIs, 26% via SOAP web services.' })
     }
     if (currentSlide == 5) {
-      b.text(currentText => '18% webpage');
-      b2.text(currentText => 'Usage via web interfaces.');
+      b.text(function(currentText){ return '18% webpage' })
+      b2.text(function(currentText){ return 'Usage via web interfaces.' })
     }
 
     if (currentSlide > 4) { currentSlide = 0; }
