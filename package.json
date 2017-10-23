@@ -21,6 +21,7 @@
     "critical": "^0.8.4"
   },
   "devDependencies": {
+    "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-inline-images": "^1.2.6",
     "gulp-minify-inline": "^0.2.1",

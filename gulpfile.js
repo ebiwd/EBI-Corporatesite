@@ -5,6 +5,14 @@ var inlineImages = require('gulp-inline-images');
 var critical = require('critical').stream;
 var minifyInline = require('gulp-minify-inline');
 var through = require('through2');
+var del = require('del');
+
+// Ensure dist folder is reset
+gulp.task('purge', function(cb){
+  return del([
+    'dist/*'
+  ]);
+});
 
 // Translate any src images to base64
 gulp.task('inline-images', function(cb){
@@ -102,4 +110,4 @@ gulp.task('apache-config', ['critical'], function(cb) {
 });
 
 // Build it all
-gulp.task('default', ['inline-images','critical','minify-inline','apache-config']);
+gulp.task('default', ['purge','inline-images','critical','minify-inline','apache-config']);
