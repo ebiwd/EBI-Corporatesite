@@ -154,7 +154,6 @@
                       background-size: 1300px;
                       background-position: 100% 100%;
                       height: 380px;
-
                     }
                   }
                   @media screen and (max-width: 64em) {
@@ -587,27 +586,31 @@
     b2.reveal(revealTime);
 
     if (currentSlide == 1) {
+      b.text(function(currentText){ return 'Open data' })
+      b2.text(function(currentText){ return 'EMBL-EBI shares data from life science experiments.' })
+    }
+    if (currentSlide == 2) {
       b.text(function(currentText){ return '3.2 million' })
       b2.text(function(currentText){ return 'Unique IP addresses access EMBL-EBI websites every month.' })
     }
-    if (currentSlide == 2) {
+    if (currentSlide == 3) {
       b.text(function(currentText){ return '27 million' })
       b2.text(function(currentText){ return 'Average requests per day to EMBL-EBI websites.' })
     }
-    if (currentSlide == 3) {
+    if (currentSlide == 4) {
       b.text(function(currentText){ return '3.5 petabytes' })
       b2.text(function(currentText){ return 'Total volume of data downloaded.' })
     }
-    if (currentSlide == 4) {
+    if (currentSlide == 5) {
       b.text(function(currentText){ return '82% programmatic' })
       b2.text(function(currentText){ return '56% via RESTful APIs, 26% via SOAP web services.' })
     }
-    if (currentSlide == 5) {
+    if (currentSlide == 6) {
       b.text(function(currentText){ return '18% webpage' })
       b2.text(function(currentText){ return 'Usage via web interfaces.' })
     }
 
-    if (currentSlide > 4) { currentSlide = 0; }
+    if (currentSlide >= 6) { currentSlide = 0; }
     setTimeout(function () { slideLoop(); }, 3500);
   }
 
