@@ -169,7 +169,7 @@
                   <span class="label show-for-small-only white-color">EBI Search</span>
                   <p class="show-for-medium">Our unique Search service helps you explore dozens of biological data resources. <span class="show-for-large inline-block"><a class="readmore" href="//www.ebi.ac.uk/ebisearch/overview.ebi">More about EBI Search</a></span>
                   </p>
-                  <form id="ebi_search" action="https://www.ebi.ac.uk/ebisearch/search.ebi">
+                  <form id="ebi_search" action="https://www.ebi.ac.uk/ebisearch/search.ebi" data-abide novalidate>
                     <fieldset>
                       <div class="margin-bottom-none small-collapse">
                         <div class="columns small-2 margin-bottom-small search-options-wrapper">
@@ -195,7 +195,10 @@
                           </select>
                         </div>
                         <div class="columns small-8  margin-bottom-none search-text-wrapper">
-                          <input id="query" class="margin-bottom-none" title="EBI Search" tabindex="2" type="text" name="query" value="" size="35" maxlength="2048" placeholder="Find a gene, protein or chemical">
+                          <input id="query" class="margin-bottom-none" title="EBI Search" tabindex="2" type="text" name="query" value="" size="35" maxlength="2048" placeholder="Find a gene, protein or chemical" required>
+                          <span class="form-error margin-top-small">
+                            You need to enter a search query.
+                          </span>
                         </div>
                         <div class="columns small-2 margin-bottom-none">
                           <input id="search_submit" class="button icon icon-functional margin-bottom-none" tabindex="3" type="submit" name="submit1" value="1" style="line-height:.9">
