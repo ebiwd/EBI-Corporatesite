@@ -21,7 +21,7 @@ Content from the Drupal site can still be used on static pages through dynamic J
 
 You will need access to the Github repo to make edits (ask your friendly web-dev colleague).
 
-1. Making test edits: All commits will be deployed to the EBI wwwdev server.
+1. Making development edits: All commits will be built and deployed to the EBI wwwdev server.
 2. Edits to live site: "tagged" releases will be sent to the production server (this is currently limited to web dev staff).
 
 # Code structure, developing the fonts
