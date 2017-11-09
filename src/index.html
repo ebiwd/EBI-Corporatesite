@@ -400,11 +400,13 @@
     if (document.readyState === "complete") {
       // Custom analytics hooks for front page
       // Search box
-      jQuery("#ebi_search").on('mousedown', 'input#search_submit', function(e) {
-        trackHomepageSearch(e);
-      });
+      // jQuery("#ebi_search").on('mousedown', 'input#search_submit', function(e) {
+      //   trackHomepageSearch(e);
+      //   // console.log('mouse')
+      // });
       jQuery("#ebi_search").on('submit', function(e) {
         trackHomepageSearch(e);
+        // console.log('return')
       });
 
       function trackHomepageSearch(e) {
