@@ -391,8 +391,8 @@
     {{#each this}}
       <span class="label">{{smartDates json.starts json.ends}}</span>
       <span class="label">| {{json.bundle_name}}</span>
-      <h5><a href="//www.ebi.ac.uk/{{this.json.destination_path}}">{{json.title}}</a></h5>
-      <p><a class="no-underline" href="//www.ebi.ac.uk/{{this.json.destination_path}}">{{{truncate json.short_description 150}}}</a></p>
+      <h5><a href="//www.ebi.ac.uk/{{this.json.path}}">{{json.title}}</a></h5>
+      <p><a class="no-underline" href="//www.ebi.ac.uk/{{this.json.path}}">{{{truncate json.short_description 150}}}</a></p>
     {{/each}}
   </script>
 
@@ -550,7 +550,7 @@
       var totalEventRetries = 0;
       function getEventData() {
         // /api/v1/events/home
-        $.getJSON("http://content.ebi.ac.uk/api/v1/events/home", function(data) {
+        $.getJSON("https://wwwdev.ebi.ac.uk/api/v1/events/home", function(data) {
           var itemsPassed = 0; // so wec can keep just five items
           var eventsToShow = simpleFilter(data.results,function(node){
             if (itemsPassed > 4) { // we can do any other filtering we might need here...
