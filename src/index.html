@@ -550,7 +550,7 @@
       var totalEventRetries = 0;
       function getEventData() {
         // /api/v1/events/home
-        $.getJSON("https://wwwdev.ebi.ac.uk/api/v1/events/home", function(data) {
+        $.getJSON("https://www.ebi.ac.uk/api/v1/events/home", function(data) {
           var itemsPassed = 0; // so wec can keep just five items
           var eventsToShow = simpleFilter(data.results,function(node){
             if (itemsPassed > 4) { // we can do any other filtering we might need here...
