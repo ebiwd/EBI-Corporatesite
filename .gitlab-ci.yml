@@ -27,7 +27,7 @@ stages:
 
 build:
   stage: build
-  image: simonvanderveldt/node-bower-gulp:6
+  image: ebiwd/node-bower-gulp:6
   before_script:
     - cd ${CI_PROJECT_DIR}
     - npm install --quiet
