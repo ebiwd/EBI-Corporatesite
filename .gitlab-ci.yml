@@ -28,6 +28,8 @@ stages:
 build:
   stage: build
   image: ebiwd/node-bower-gulp:6
+  tags:
+    - docker
   before_script:
     - cd ${CI_PROJECT_DIR}
     - npm install --quiet
@@ -42,6 +44,8 @@ build:
 
 test:
   stage: test
+  tags:
+    - docker
   script:
     # test .htaccess has been generated
     - if [ ! -f ${CI_PROJECT_DIR}/dist/.htaccess ]; then echo "Missing .htaccess"; exit 1; fi 
@@ -50,6 +54,8 @@ test:
 
 #setup ssh keys
 .deploy_setup: &deploy_setup
+  tags:
+    - docker
   before_script:
     - add-ssh-key ${SSH_OWNER} "${SSH_OWNER_KEY}" ${SSH_APACHE} "${SSH_APACHE_KEY}"
     - add-search-domain ebi.ac.uk
