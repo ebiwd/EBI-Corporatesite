@@ -70,7 +70,9 @@ NOTE: Only developers would have the need do this.
   - Run the default gulp script: `gulp`
 3. If you're using Docker:
   - `docker run -it --rm -v $PWD:/workspace -w /workspace simonvanderveldt/node-bower-gulp:6 bash -c 'npm install --quiet && gulp'`
-4. Serve files from your dev environment, Jekyll works well: `jekyll serve --port 88`
+4. Serve files from your dev environment:
+  - Option A: Jekyll `jekyll serve --port 88`
+  - Option B: BrowserSync `browser-sync start --server --files "src/*.*" --index src/index.html`
 
 ### What the optimisations get you
 
