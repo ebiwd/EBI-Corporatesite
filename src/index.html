@@ -373,10 +373,14 @@
   <script id="feed-template-news-lead-item" type="text/x-handlebars-template">
     {{#each this}}
       {{#if @first}}
-        <img src="{{node.field_image.src}}"/>
-        <div class="caption">
-          <a href="{{node.path}}" class="inner">{{node.title}}</a>
-          <p>{{node.created}}</p>
+        <div class="position-relative">
+          <a href="{{node.path}}"><img src="{{node.field_image.src}}"/></a>
+          <div class="highlight-caption highlight-caption-big columns medium-10">
+            <a href="{{node.path}}" class="white-color">
+              <div class="small">{{node.created}}</div>
+              <h5 class="white-color margin-bottom-none">{{node.title}}</h5>
+            </a>
+          </div>
         </div>
       {{else}}
         <!-- Only show first -->
