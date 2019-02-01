@@ -21,7 +21,7 @@ gulp.task('inline-images', function(cb){
     .pipe(gulp.dest('dist/'))
     .on('error', function(err) {
       gutil.log(gutil.colors.red(err.message));
-      process.exit(1)
+      process.exit(1);
     });
 });
 
@@ -44,7 +44,7 @@ gulp.task('critical', ['inline-images'], function (cb) {
     }))
     .on('error', function(err) {
       gutil.log(gutil.colors.red(err.message));
-      process.exit(1)
+      process.exit(1);
     })
     .pipe(gulp.dest('dist'));
 });
@@ -70,7 +70,7 @@ gulp.task('minify-inline', ['critical'], function(cb) {
     .pipe(minifyInline(optionsminify))
     .on('error', function(err) {
       gutil.log(gutil.colors.red(err.message));
-      process.exit(1)
+      process.exit(1);
     })
     .pipe(gulp.dest('dist/'));
 });
@@ -82,7 +82,7 @@ var pipeFunction = () => {
     console.log(file.path);
     return cb(null, file);
   });
-}
+};
 gulp.task('apache-config', ['critical'], function(cb) {
   var fileName = 'dist/.htaccess';
   var endOfLine = '\r\n';
@@ -97,14 +97,14 @@ gulp.task('apache-config', ['critical'], function(cb) {
       gutil.log(gutil.colors.green('Mapping: ',localFilePath));
       require('fs').appendFile(fileName, endOfLine); // new line
       require('fs').appendFile(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');
-      cb(null, file)
+      cb(null, file);
       })
       .on('finish', function (status) {
         gutil.log(gutil.colors.green('Finished writing .htaccess'));
       })
       .on('error', function(err) {
         gutil.log(gutil.colors.red(err.message));
-        process.exit(1)
+        process.exit(1);
       })
     );
 });
