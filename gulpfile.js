@@ -16,7 +16,7 @@ gulp.task('purge', function(cb){
 
 // Translate any src images to base64
 gulp.task('inline-images', function(cb){
-  return gulp.src(['src/index.html','src/**/*.html'])
+  return gulp.src(['src/*.html','src/**/*.html'])
     .pipe(inlineImages({/* options */}))
     .pipe(gulp.dest('dist/'))
     .on('error', function(err) {
@@ -29,7 +29,7 @@ gulp.task('inline-images', function(cb){
 // https://github.com/addyosmani/critical
 // https://github.com/addyosmani/critical-path-css-demo
 gulp.task('critical', ['inline-images'], function (cb) {
-  return gulp.src(['dist/index.html','dist/**/*.html'])
+  return gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(replace('\'//www.ebi', '\'https://www.ebi')) // make all protical relative //ebi.ac.uk to https://
     .pipe(replace('"//www.ebi', '"https://www.ebi')) // for double quote
     .pipe(critical({base: 'dist/', inline: true,
@@ -65,7 +65,7 @@ var optionsminify = {
 };
 
 gulp.task('minify-inline', ['critical'], function(cb) {
-  return gulp.src(['dist/index.html','dist/**/*.html'])
+  return gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(replace(/('|")http(s)?\:\/\/www.ebi/g, '$1//www.ebi')) // make all http/s ebi urls //
     .pipe(minifyInline(optionsminify))
     .on('error', function(err) {
@@ -91,7 +91,7 @@ gulp.task('apache-config', ['critical'], function(cb) {
   require('fs').appendFile(fileName, 'AddOutputFilterByType DEFLATE text/html');
   require('fs').appendFile(fileName, endOfLine); // new line
   require('fs').appendFile(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=');
-  return gulp.src(['dist/index.html','dist/**/*.html'])
+  return gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(through.obj(function (file, enc, cb) {
       var localFilePath = file.path.split('/dist/')[1];
       gutil.log(gutil.colors.green('Mapping: ',localFilePath));
