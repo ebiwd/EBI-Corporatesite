@@ -1,11 +1,11 @@
-var gulp = require('gulp');
-var gutil = require('gulp-util');
-var replace = require('gulp-replace');
-var inlineImages = require('gulp-inline-images');
-var critical = require('critical').stream;
-var minifyInline = require('gulp-minify-inline');
-var through = require('through2');
-var del = require('del');
+const gulp = require('gulp');
+const gutil = require('gulp-util');
+const replace = require('gulp-replace');
+const inlineImages = require('gulp-inline-images');
+const critical = require('critical').stream;
+const minifyInline = require('gulp-minify-inline');
+const through = require('through2');
+const del = require('del');
 
 // Ensure dist folder is reset
 gulp.task('purge', function(cb){
@@ -28,8 +28,8 @@ gulp.task('inline-images', function(cb){
 // Generate & Inline Critical-path CSS
 // https://github.com/addyosmani/critical
 // https://github.com/addyosmani/critical-path-css-demo
-gulp.task('critical', ['inline-images'], function (cb) {
-  return gulp.src(['dist/*.html','dist/**/*.html'])
+gulp.task('critical', function (cb) {
+  return gulp.src(['dist/*.html','dist/**/*.html','!dist/security.txt/*.html'])
     .pipe(replace('\'//www.ebi', '\'https://www.ebi')) // make all protical relative //ebi.ac.uk to https://
     .pipe(replace('"//www.ebi', '"https://www.ebi')) // for double quote
     .pipe(critical({base: 'dist/', inline: true,
@@ -42,8 +42,12 @@ gulp.task('critical', ['inline-images'], function (cb) {
       }],
       minify: true, ignore: [/icon-/,/.svg/,'@font-face']
     }))
+    .on('success', function(err) {
+      gutil.log(err)
+    })
     .on('error', function(err) {
       gutil.log(gutil.colors.red(err.message));
+      gutil.log(err)
       process.exit(1);
     })
     .pipe(gulp.dest('dist'));
@@ -51,7 +55,7 @@ gulp.task('critical', ['inline-images'], function (cb) {
 
 // Minify any inline css/js
 // https://www.npmjs.com/package/gulp-minify-inline
-var optionsminify = {
+let optionsminify = {
   // js: {
   //   output: {
   //     comments: true
@@ -64,7 +68,7 @@ var optionsminify = {
   cssSelector: 'style[data-do-not-minify!="true"]'
 };
 
-gulp.task('minify-inline', ['critical'], function(cb) {
+gulp.task('minify-inline', function(cb) {
   return gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(replace(/('|")http(s)?\:\/\/www.ebi/g, '$1//www.ebi')) // make all http/s ebi urls //
     .pipe(minifyInline(optionsminify))
@@ -77,26 +81,26 @@ gulp.task('minify-inline', ['critical'], function(cb) {
 
 // Write a partial apache config
 // https://github.com/ebiwd/EBI-Corporatesite/issues/1
-var pipeFunction = () => {
+let pipeFunction = () => {
   return through.obj((file, enc, cb) => {
     console.log(file.path);
     return cb(null, file);
   });
 };
-gulp.task('apache-config', ['critical'], function(cb) {
-  var fileName = 'dist/.htaccess';
-  var endOfLine = '\r\n';
+gulp.task('apache-config', function(cb) {
+  let fileName = 'dist/.htaccess';
+  let endOfLine = '\r\n';
   require('fs').writeFileSync(fileName, '# Static page mappings built with gulp');
-  require('fs').appendFile(fileName, endOfLine); // new line
-  require('fs').appendFile(fileName, 'AddOutputFilterByType DEFLATE text/html');
-  require('fs').appendFile(fileName, endOfLine); // new line
-  require('fs').appendFile(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=');
+  require('fs').appendFileSync(fileName, endOfLine); // new line
+  require('fs').appendFileSync(fileName, 'AddOutputFilterByType DEFLATE text/html');
+  require('fs').appendFileSync(fileName, endOfLine); // new line
+  require('fs').appendFileSync(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=');
   return gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(through.obj(function (file, enc, cb) {
-      var localFilePath = file.path.split('/dist/')[1];
+      let localFilePath = file.path.split('/dist/')[1];
       gutil.log(gutil.colors.green('Mapping: ',localFilePath));
-      require('fs').appendFile(fileName, endOfLine); // new line
-      require('fs').appendFile(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');
+      require('fs').appendFileSync(fileName, endOfLine); // new line
+      require('fs').appendFileSync(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');
       cb(null, file);
       })
       .on('finish', function (status) {
@@ -110,4 +114,11 @@ gulp.task('apache-config', ['critical'], function(cb) {
 });
 
 // Build it all
-gulp.task('default', ['purge','inline-images','critical','minify-inline','apache-config']);
+gulp.task('default', gulp.series(
+  'purge','inline-images','critical','minify-inline','apache-config'
+));
+
+// Alias for default
+gulp.task('dev', gulp.series(
+  'default'
+));
