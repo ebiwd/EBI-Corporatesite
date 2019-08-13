@@ -72,7 +72,7 @@ NOTE: Only developers would have the need do this.
   - `docker run -it --rm -v $PWD:/workspace -w /workspace simonvanderveldt/node-bower-gulp:6 bash -c 'npm install --quiet && gulp'`
 4. Serve files from your dev environment:
   - Option A: Jekyll `jekyll serve --port 88`
-  - Option B: BrowserSync `browser-sync start --server --files "src/*.*" --index src/index.html`
+  - Option B: BrowserSync `browser-sync start --server --serveStatic "src" --files "src" --index src/index.html`
 
 ### What the optimisations get you
 
