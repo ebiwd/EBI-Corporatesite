@@ -121,7 +121,7 @@ gulp.task('browser-sync', function() {
       baseDir: "./src"
     }
   });
-  gulp.watch("app/*.html").on('change', browserSync.reload);
+  gulp.watch("**/*.html").on('change', browserSync.reload);
 });
 
 
