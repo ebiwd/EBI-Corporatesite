@@ -41,3 +41,6 @@ dist
 
 # Jekyll
 _site
+
+# Junk
+.DS_Store

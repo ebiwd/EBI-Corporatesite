@@ -26,6 +26,16 @@ gulp.task('inline-images', function(cb){
     });
 });
 
+// Handle any jpg, svg, png assets
+gulp.task('file-assets', function(cb){
+  return gulp.src(['src/*.{png,gif,jpg,svg}','src/**/*.{png,gif,jpg,svg}'])
+    .pipe(gulp.dest('dist/'))
+    .on('error', function(err) {
+      gutil.log(gutil.colors.red(err.message));
+      process.exit(1);
+    });
+});
+
 // Generate & Inline Critical-path CSS
 // https://github.com/addyosmani/critical
 // https://github.com/addyosmani/critical-path-css-demo
@@ -121,13 +131,14 @@ gulp.task('browser-sync', function() {
       baseDir: "./src"
     }
   });
-  gulp.watch("**/*.html").on('change', browserSync.reload);
+  gulp.watch('**/*.{png,gif,jpg,svg,html}').on('change', browserSync.reload);
+  // gulp.watch('**/*.{png,gif,jpg,svg}' , ['file-assets']);
 });
 
 
 // Build it all
 gulp.task('default', gulp.series(
-  'purge','inline-images','critical','minify-inline','apache-config'
+  'purge','file-assets','inline-images','critical','minify-inline','apache-config'
 ));
 
 // Alias for default
