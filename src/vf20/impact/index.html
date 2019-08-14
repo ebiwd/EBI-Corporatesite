@@ -161,8 +161,13 @@
             <p class="vf-intro__text">Maybe some more text? <a class="vf-link" href="JavaScript:Void(0);">Or a link to the anniversary</a>.</p>
             <p class="vf-intro__text">
 
+              <a href="#" data-open="videoModal">
+                <img class="orbit-image" src="video-teaser.jpg" alt="Thought leader video still">
+              </a>
+              <a href="#" data-open="videoModal"><figcaption class="vf-text vf-text-body--4">A video of an EMBL-EBI thought leader, click to watch.</figcaption></a>
+
               <!-- This demo uses flex grid but you can use float grid too -->
-              <div class="orbit" role="region" aria-label="EMBL-EBI Thought leaders" data-orbit data-use-m-u-i="false">
+              <div class="orbit" role="region" aria-label="EMBL-EBI Thought leaders" XXdata-orbit data-use-m-u-i="false">
                 <ul class="orbit-container">
                   <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
                   <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
@@ -186,16 +191,24 @@
                   </li>
                 </ul>
                 <nav class="orbit-bullets">
-                 <button class="is-active" data-slide="0">
+                 <!-- <button class="is-active" data-slide="0">
                    <img src="video-teaser.jpg" alt="Thought leader video still">
                    <span class="vf-text vf-text-body--4">Jackson Glopenstein</span><span class="show-for-sr">Current Slide</span>
-                 </button>
+                 </button> -->
                  <button class="" data-slide="1">
                    <img src="//foundation.zurb.com/sites/docs/assets/img/orbit/02.jpg" alt="Thought leader video still">
-                   <span class="vf-text vf-text-body--4">Jackson Glopenstein</span><span class="show-for-sr">Current Slide</span>
+                   <span class="vf-text vf-text-body--4">More thought leader videos</span><span class="show-for-sr">Current Slide</span>
                  </button>
                  <button class="" data-slide="2">
                    <img src="//foundation.zurb.com/sites/docs/assets/img/orbit/03.jpg" alt="Thought leader video still">
+                   <span class="vf-text vf-text-body--4">Jackson Glopenstein</span><span class="show-for-sr">Current Slide</span>
+                 </button>
+                 <button class="" data-slide="3">
+                   <img src="//foundation.zurb.com/sites/docs/assets/img/orbit/04.jpg" alt="Thought leader video still">
+                   <span class="vf-text vf-text-body--4">Jackson Glopenstein</span><span class="show-for-sr">Current Slide</span>
+                 </button>
+                 <button class="" data-slide="3">
+                   <img src="//foundation.zurb.com/sites/docs/assets/img/orbit/04.jpg" alt="Thought leader video still">
                    <span class="vf-text vf-text-body--4">Jackson Glopenstein</span><span class="show-for-sr">Current Slide</span>
                  </button>
                  <button class="" data-slide="3">
@@ -206,13 +219,13 @@
               </div>
 
               <style>
-              /* some tweaks to the foundation orbit style */
-              .orbit-bullets {
-                /* position: relative; */
-                /* margin-top: 0.8rem; */
-                /* margin-bottom: 0.8rem; */
-                text-align: unset;
-              }
+                /* some tweaks to the foundation orbit style */
+                .orbit-bullets {
+                  /* position: relative; */
+                  /* margin-top: 0.8rem; */
+                  /* margin-bottom: 0.8rem; */
+                  text-align: unset;
+                }
                 /* [data-whatinput='mouse'] .orbit-bullets {
                   outline: 0; } */
                 .orbit-bullets button {
@@ -221,22 +234,20 @@
                   /* margin: 0.1rem; */
                   border-radius: 0;
                   min-width: 6rem;
-                  opacity: .5;
+                  /* opacity: .5; */
                   /* background-color: #777;  */
                 }
-                  .orbit-bullets button:hover {
-                    background-color: none;
-                    opacity: 1;
-                    cursor: pointer;
-                   }
-                  .orbit-bullets button.is-active {
-                    background-color: none;
-                    opacity: 1;
-                  }
-                </style>
-
+                .orbit-bullets button:hover {
+                  background-color: none;
+                  opacity: 1;
+                  cursor: pointer;
+                 }
+                .orbit-bullets button.is-active {
+                  background-color: none;
+                  opacity: 1;
+                }
+              </style>
             </p>
-
 
             <div class="reveal" id="videoModal" style="width: 80%;" data-reveal>
               <!-- https://embedresponsively.com/ -->
@@ -259,12 +270,12 @@
       </section>
 
 
-
       <section class="embl-grid embl-grid--has-centered-content">
       <div>
         <!-- empty -->
       </div>
         <section>
+          <hr class="vf-divider" />
           <h2 class="vf-text vf-text-heading--1 black-color xvf-text--invert">EMBL-EBI at a glance</h2>
         </section>
       <div><!-- empty --></div>
@@ -343,35 +354,31 @@
 
       <section class="embl-grid vf-u-margin__bottom--0">
       <div>
-        <!-- empty -->
-      </div>
-      <div>
         <h4 class="vf-text vf-text-heading--2 vf-u-margin__top--">
           Global impact
         </h4>
         <p class="vf-text vf-text-body--">A <a class="vf-link" href="//www.ebi.ac.uk/web/livemap/">real-time visualisation of requests</a> to EMBL-EBI data resources.</p>
-
+      </div>
+      <div>
+        <div class="demo-style-intro vf-u-margin__bottom--xl">
+          <iframe id="ebiTrafficMap"
+                  name="ebiTrafficMap"
+                  title="ebiTrafficMap"
+                  width="500"
+                  height="500"
+                  frameborder="0"
+                  scrolling="no"
+                  marginheight="0"
+                  marginwidth="0"
+                  style="width: 100%"
+                  src="//www.ebi.ac.uk/web/livemap/live-data-map.html?hideLegend=true" allowfullscreen>
+          </iframe>
+        </div>
       </div>
       </section>
 
-      <div class="demo-style-intro vf-u-margin__bottom--xl">
-        <iframe id="ebiTrafficMap"
-                name="ebiTrafficMap"
-                title="ebiTrafficMap"
-                width="500"
-                height="500"
-                frameborder="0"
-                scrolling="no"
-                marginheight="0"
-                marginwidth="0"
-                style="width: 100%"
-                src="//www.ebi.ac.uk/web/livemap/live-data-map.html?hideLegend=true" allowfullscreen>
-        </iframe>
-      </div>
-
 
       <!-- Economic value -->
-
       <section class="embl-grid vf-u-margin__bottom--0">
       <div>
         <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">
@@ -382,7 +389,6 @@
         <p class="vf-intro__text">
           In 2015 we worked with a management consultancy, Charles Beagrie Ltd., to facilitate a large-scale, economic analysis of the institute’s impact   on research practice and the global economy.
         </p>
-
 
         <div class="row columns medium-up-5 small-up-2">
         <div class="column">
@@ -412,14 +418,10 @@
           <a class="vf-button vf-button--primary vf-text-button--2" href="/sites/ebi.ac.uk/files/groups/external_relations/Documents/Beagrie Report Executive Summary 10Feb2016_WEB.pdf"><i class="icon icon-generic" data-icon=";"></i> Download the Executive Summary</a> <a class="vf-button vf-button--secondary readmore vf-text-button--2" href="http://www.beagrie.com/static/resource/EBI-impact-report.pdf">Or get the full report</a>
         </p>
 
-
       </div>
       </section>
 
-
-
-
-      <!-- VF 1.x   -->
+      <!-- END VF 2.0 -->
 
       </main>
       <!--/.l-main -->
