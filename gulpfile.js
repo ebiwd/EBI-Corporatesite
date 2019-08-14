@@ -6,6 +6,7 @@ const critical = require('critical').stream;
 const minifyInline = require('gulp-minify-inline');
 const through = require('through2');
 const del = require('del');
+const browserSync = require('browser-sync').create();
 
 // Ensure dist folder is reset
 gulp.task('purge', function(cb){
@@ -55,7 +56,7 @@ gulp.task('critical', function (cb) {
 
 // Minify any inline css/js
 // https://www.npmjs.com/package/gulp-minify-inline
-let optionsminify = {
+const optionsminify = {
   // js: {
   //   output: {
   //     comments: true
@@ -81,15 +82,15 @@ gulp.task('minify-inline', function(cb) {
 
 // Write a partial apache config
 // https://github.com/ebiwd/EBI-Corporatesite/issues/1
-let pipeFunction = () => {
+const pipeFunction = () => {
   return through.obj((file, enc, cb) => {
     console.log(file.path);
     return cb(null, file);
   });
 };
 gulp.task('apache-config', function(cb) {
-  let fileName = 'dist/.htaccess';
-  let endOfLine = '\r\n';
+  const fileName = 'dist/.htaccess';
+  const endOfLine = '\r\n';
   require('fs').writeFileSync(fileName, '# Static page mappings built with gulp');
   require('fs').appendFileSync(fileName, endOfLine); // new line
   require('fs').appendFileSync(fileName, 'AddOutputFilterByType DEFLATE text/html');
@@ -97,7 +98,7 @@ gulp.task('apache-config', function(cb) {
   require('fs').appendFileSync(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=');
   return gulp.src(['dist/*.html','dist/**/*.html'])
     .pipe(through.obj(function (file, enc, cb) {
-      let localFilePath = file.path.split('/dist/')[1];
+      const localFilePath = file.path.split('/dist/')[1];
       gutil.log(gutil.colors.green('Mapping: ',localFilePath));
       require('fs').appendFileSync(fileName, endOfLine); // new line
       require('fs').appendFileSync(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');
@@ -113,12 +114,28 @@ gulp.task('apache-config', function(cb) {
     );
 });
 
+// Development server
+gulp.task('browser-sync', function() {
+  browserSync.init({
+    server: {
+      baseDir: "./src"
+    }
+  });
+  gulp.watch("app/*.html").on('change', browserSync.reload);
+});
+
+
 // Build it all
 gulp.task('default', gulp.series(
   'purge','inline-images','critical','minify-inline','apache-config'
 ));
 
 // Alias for default
-gulp.task('dev', gulp.series(
+gulp.task('build', gulp.series(
   'default'
+));
+
+// Alias for default
+gulp.task('dev', gulp.series(
+  'browser-sync'
 ));

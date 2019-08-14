@@ -46,19 +46,27 @@ We use [Gitlab's CI service* to build the assets](https://gitlab.ebi.ac.uk/ebiwd
 * This Gitlab instance is only accessible from the EBI network.
 
 ### Versioning
-We are using a semantic versioning style of releases.
+
+We use semantic versioning style of releases.
 
 | Major release | Minor release | Note |
 | ------------- | ------------- | ---- |
 | (Branch)      | (Tag)         | |
-| master        | .0            | Initial major release  |
+| master        | .0            | Initial release  |
 | master        | .1            | Tagged minor release |
 
 ### Test changes
 
 More radical changes should be done on a feature branch.
 
+## Developing content
+
+Serve non-optimised `./src/` files from your dev environment:
+
+- `gulp dev` (alias for `gulp browser-sync`)
+
 ## Optimising the pages
+
 If you wish to test the optimisation process on your local machine, here's what you need to do:
 
 NOTE: Only developers would have the need do this.
@@ -70,9 +78,7 @@ NOTE: Only developers would have the need do this.
   - Run the default gulp script: `gulp`
 3. If you're using Docker:
   - `docker run -it --rm -v $PWD:/workspace -w /workspace simonvanderveldt/node-bower-gulp:6 bash -c 'npm install --quiet && gulp'`
-4. Serve files from your dev environment:
-  - Option A: Jekyll `jekyll serve --port 88`
-  - Option B: BrowserSync `browser-sync start --server --serveStatic "src" --files "src" --index src/index.html`
+
 
 ### What the optimisations get you
 
