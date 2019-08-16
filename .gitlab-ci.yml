@@ -33,6 +33,7 @@ build:
   before_script:
     - cd ${CI_PROJECT_DIR}
     - npm install --quiet
+    - npm install -g gulp-cli
   script:
     - gulp
   cache:
