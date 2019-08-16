@@ -27,7 +27,7 @@ stages:
 
 build:
   stage: build
-  image: node:latest
+  image: node:10
   tags:
     - docker
   before_script:
