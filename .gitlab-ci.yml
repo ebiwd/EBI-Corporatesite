@@ -18,7 +18,7 @@ variables:
   SSH_OWNER_KEY: secret-key
   SSH_APACHE: username
   SSH_APACHE_KEY: secret-key
-  
+
 stages:
   - build
   - test
@@ -27,12 +27,15 @@ stages:
 
 build:
   stage: build
-  image: ebiwd/node-bower-gulp:6
+  image: node:10
   tags:
     - docker
   before_script:
     - cd ${CI_PROJECT_DIR}
     - npm install --quiet
+    - npm install -g gulp-cli
+    # install dependencies for headless chrome for npm critical module
+    - apt-get update && apt-get install -y libnss3 libxss1 libasound2 libpangocairo-1.0-0 libx11-xcb-dev libxcomposite1 libxcursor1 libxdamage1 libxi6 libxtst6 libcups2 libxrandr-dev libgconf-2-4 libatk1.0-0 libgtk-3-0
   script:
     - gulp
   cache:
@@ -48,7 +51,7 @@ test:
     - docker
   script:
     # test .htaccess has been generated
-    - if [ ! -f ${CI_PROJECT_DIR}/dist/.htaccess ]; then echo "Missing .htaccess"; exit 1; fi 
+    - if [ ! -f ${CI_PROJECT_DIR}/dist/.htaccess ]; then echo "Missing .htaccess"; exit 1; fi
     # test index.html has been generated
     - if [ ! -f ${CI_PROJECT_DIR}/dist/index.html ]; then echo "Missing index.html"; exit 1; fi
 
@@ -68,7 +71,7 @@ deploy_dev: &deploy
     VMS: ${DEV_SERVER}
   stage: deploy
   script:
-    - for VM in ${VMS}; do 
+    - for VM in ${VMS}; do
         rsync -acv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${VM}:${DEST_PATH}/;
         ssh -tt ${SSH_APACHE}@${VM} '/etc/init.d/httpd configtest';
         ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop' || true;
@@ -81,14 +84,14 @@ deploy_dev: &deploy
     name: ${DRUPAL_ENV}
     url: ${URL}
 
-deploy_stage: 
+deploy_stage:
   <<: *deploy
   variables:
     DRUPAL_ENV: stage
     URL: ${STAGE_URL}
     VMS: ${STAGE_SERVER}
 
-deploy_prod: 
+deploy_prod:
   <<: *deploy
   only:
     - tags
@@ -96,17 +99,17 @@ deploy_prod:
     DRUPAL_ENV: prod
     URL: ${PROD_URL}
     VMS: ${PROD_SERVER}
-    
+
 validate_dev:
   stage: validate
   script:
     - curl -L ${DEV_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
-  only: 
+  only:
     - master
 
 validate_prod:
   stage: validate
   script:
     - curl -L ${PROD_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
-  only: 
+  only:
     - tags
