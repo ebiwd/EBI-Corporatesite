@@ -106,7 +106,7 @@ gulp.task('apache-config', function(cb) {
   require('fs').appendFileSync(fileName, 'AddOutputFilterByType DEFLATE text/html');
   require('fs').appendFileSync(fileName, endOfLine); // new line
   require('fs').appendFileSync(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=');
-  return gulp.src(['dist/*.html','dist/**/*.html'])
+  return gulp.src(['dist/*.{html,jpg,png,gif,pdf}','dist/**/*.{html,jpg,png,gif,pdf}'])
     .pipe(through.obj(function (file, enc, cb) {
       const localFilePath = file.path.split('/dist/')[1];
       gutil.log(gutil.colors.green('Mapping: ',localFilePath));
