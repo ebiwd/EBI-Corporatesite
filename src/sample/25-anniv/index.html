@@ -30,6 +30,7 @@
 
   <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.min.css" type="text/css" media="all" />
   <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.2/fonts.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/v2.0.0-beta.1/css/styles.css" />
 </head>
 
 <body class="level2"><!-- add any of your classes or IDs -->
@@ -64,7 +65,10 @@
         <div class="masthead-background" style="position: relative; z-index: 1;  height: 380px; opacity: .7;">
           <div class="row masthead-background-inner"></div>
         </div>
-        <div class="with-overlay row" style="position: relative; z-index: 2; top: -380px; height: 380px; ">
+        <div class="with-overlay row background-1" style="position: relative; z-index: 2; top: -380px; height: 380px; ">
+          <div class="caption medium-12"></div>
+        </div>
+        <div class="with-overlay row background-2" style="position: relative; z-index: 3; top: -760px; height: 380px; ">
           <div class="caption medium-12"></div>
         </div>
         <div class="masthead-inner padding-top-none">
@@ -81,7 +85,10 @@
                 <div class="columns show-for-medium medium-9" style="">
                   <div class="margin-top-xlarge padding-top-xlarge"><!--spacer--></div>
                   <div class="float-right show-for-medium visulisation-legend">
-                      <a href="//www.ebi.ac.uk/about/our-impact" class="readmore" style="border-bottom: none;">More about EMBL-EBI’s impact in our annual report</a>
+                    <h1 class="vf-text vf-text-heading--1 vf-text--invert vf-u-margin__bottom--sm">EMBL-EBI: Since 1994</h1>
+                    <div class="vf-text vf-text-body--5 vf-u-padding__left--sm">
+                      <a class="vf-link readmore" href="//www.ebi.ac.uk/about/our-impact" style="border-bottom: none;">In September EMBL-EBI marks 25 years; learn about our impact</a>
+                    </div>
                   </div>
                   <style type="text/css">
                   .description-wrapper {
@@ -93,13 +100,11 @@
                     overflow: hidden;
                   }
                   .masthead-inner{
-                    padding-top:0; position: relative; z-index: 3; top: -800px; margin-bottom: -400px; text-shadow: 1px 1px 3px #000;
+                    padding-top:0; position: relative; z-index: 4; top: -1180px; margin-bottom: -400px; text-shadow: 1px 1px 3px #000;
                   }
                   .masthead-inner .callout,
                   .masthead-inner .button {
                     text-shadow: none;
-                  }
-                  .masthead-background {
                   }
                   iframe.masthead-background-inner {
                     margin-top: -130px;
@@ -145,9 +150,38 @@
                       color: #fff;
                       opacity: 1;
                       min-height: 380px;
-                      background: url(annual-report-2018.png) no-repeat;
                       background-size: 100%;
                       background-position: 100% 60%;
+                      background-repeat: no-repeat;
+                    }
+                    .masthead .with-overlay.background-1 .caption {
+                      background-image: url(annual-report-2018-frame-1.jpg);
+                    }
+                    .masthead .with-overlay.background-2 .caption {
+                      background-image: url(annual-report-2018-frame-2.jpg);
+                      mix-blend-mode: multiply;
+                      animation-duration: 5s;
+                      animation-timing-function: linear;
+                      animation-name: fader;
+                      animation-iteration-count: infinite;
+                      opacity: 0;
+                      position: relative;
+                      transform: translate(0);
+                    }
+
+                    @keyframes fader {
+                      0% {
+                        opacity: 0;
+                        transform: translate(0em);
+                      }
+                      50% {
+                        opacity: 80;
+                        transform: translate(.1em);
+                      }
+                      100% {
+                        opacity: 0;
+                        transform: translate(.5em);
+                      }
                     }
                   }
                   @media screen and (max-width: 64em) {
