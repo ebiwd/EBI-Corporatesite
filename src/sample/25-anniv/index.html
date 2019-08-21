@@ -169,19 +169,22 @@
                       transform: translate(0);
                     }
 
-                    @keyframes fader {
-                      0% {
-                        opacity: 0;
-                        transform: translate(0em);
-                      }
-                      50% {
-                        opacity: 80;
-                        transform: translate(.1em);
-                      }
-                      100% {
-                        opacity: 0;
-                        transform: translate(.5em);
-                      }
+                  }
+                  @keyframes fader {
+                    0% {
+                      opacity: 0;
+                      transform: translate(0em);
+                      background-size: 100%;
+                    }
+                    50% {
+                      opacity: .1;
+                      transform: translate(.1em);
+                      background-size: 130%;
+                    }
+                    100% {
+                      opacity: 0;
+                      transform: translate(5em);
+                      background-size: 150%;
                     }
                   }
                   @media screen and (max-width: 64em) {
