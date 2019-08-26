@@ -28,7 +28,7 @@ gulp.task('inline-images', function(cb){
 
 // Handle any jpg, svg, png assets
 gulp.task('file-assets', function(cb){
-  return gulp.src(['src/*.{png,gif,jpg,svg}','src/**/*.{png,gif,jpg,svg}'])
+  return gulp.src(['src/*.{png,gif,jpg,svg,pdf}','src/**/*.{png,gif,jpg,svg,pdf}'])
     .pipe(gulp.dest('dist/'))
     .on('error', function(err) {
       gutil.log(gutil.colors.red(err.message));
