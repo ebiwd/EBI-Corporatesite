@@ -85,9 +85,9 @@
                 <div class="columns show-for-medium medium-9" style="">
                   <div class="margin-top-xlarge padding-top-xlarge"><!--spacer--></div>
                   <div class="float-right show-for-medium visulisation-legend">
-                    <h1 class="vf-text vf-text-heading--1 vf-text--invert vf-u-margin__bottom--sm">EMBL-EBI: Since 1994</h1>
+                    <h1 class="vf-text vf-text-heading--1 vf-text--invert vf-u-margin__bottom--sm"><a href="//www.ebi.ac.uk/about/our-impact" style="border-bottom: none;">25 Years of EMBL-EBI</a></h1>
                     <div class="vf-text vf-text-body--5 vf-u-padding__left--sm">
-                      <a class="vf-link readmore" href="//www.ebi.ac.uk/about/our-impact" style="border-bottom: none;">In September EMBL-EBI marks 25 years; learn about our impact</a>
+                      <a class="vf-link readmore" href="//www.ebi.ac.uk/about/our-impact" style="border-bottom: none;">In Focus: Exploring innovation in the life sciences</a>
                     </div>
                   </div>
                   <style type="text/css">
@@ -156,13 +156,19 @@
                     }
                     .masthead .with-overlay.background-1 .caption {
                       background-image: url(annual-report-2018-frame-1.jpg);
+                      animation-duration: 100s;
+                      animation-timing-function: linear;
+                      animation-name: fader1;
+                      animation-iteration-count: infinite;
+                      position: relative;
+                      transform: translate(-1em);
                     }
                     .masthead .with-overlay.background-2 .caption {
                       background-image: url(annual-report-2018-frame-2.jpg);
                       mix-blend-mode: multiply;
                       animation-duration: 5s;
                       animation-timing-function: linear;
-                      animation-name: fader;
+                      animation-name: fader2;
                       animation-iteration-count: infinite;
                       opacity: 0;
                       position: relative;
@@ -170,14 +176,31 @@
                     }
 
                   }
-                  @keyframes fader {
+                  @keyframes fader1 {
+                    0% {
+                      transform: translate(0em);
+                    }
+                    25% {
+                      transform: translate(-1em);
+                    }
+                    50% {
+                      transform: translate(0em);
+                    }
+                    75% {
+                      transform: translate(1em);
+                    }
+                    100% {
+                      transform: translate(0em);
+                    }
+                  }
+                  @keyframes fader2 {
                     0% {
                       opacity: 0;
                       transform: translate(0em);
                       background-size: 100%;
                     }
                     50% {
-                      opacity: .1;
+                      opacity: .15;
                       transform: translate(.1em);
                       background-size: 130%;
                     }
