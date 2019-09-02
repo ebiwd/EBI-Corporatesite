@@ -35,7 +35,7 @@
   <!-- CSS: implied media=all -->
   <!-- CSS concatenated and minified via ant build script-->
   <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css" type="text/css" media="all" />
-  <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.2/fonts.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css" media="all" />
 
   <!-- Use this CSS file for any custom styling -->
   <!--
@@ -179,10 +179,10 @@
               <a href="#" data-open="videoModal">
                 <img class="orbit-image" src="video-teaser.jpg" alt="Thought leader video still">
               </a>
-              <a href="#" data-open="videoModal"><figcaption class="vf-text vf-text-body--4">A video of an EMBL-EBI thought leader, click to watch.</figcaption></a>
+              <a href="#" data-open="videoModal"><figcaption class="vf-text vf-text-body--4">Scientific publishing; <span class="vf-link">watch the video</a>.</figcaption></a>
 
               <!-- This demo uses flex grid but you can use float grid too -->
-              <div class="orbit" role="region" aria-label="EMBL-EBI Thought leaders" XXdata-orbit data-use-m-u-i="false">
+              <div class="orbit" role="region" aria-label="EMBL-EBI Thought leaders">
                 <ul class="orbit-container">
                   <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
                   <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
@@ -205,7 +205,7 @@
                     <a href="#" data-open="videoModal"><figcaption class="vf-text vf-text-body--4">A video of an EMBL-EBI thought leader, click to watch.</figcaption></a>
                   </li>
                 </ul>
-                <nav class="orbit-bullets">
+                <nav class="orbit-bullets hide">
                  <!-- <button class="is-active" data-slide="0">
                    <img src="video-teaser.jpg" alt="Thought leader video still">
                    <span class="vf-text vf-text-body--4">Jackson Glopenstein</span><span class="show-for-sr">Current Slide</span>
@@ -286,59 +286,162 @@
 
 
 
-      <section class="embl-grid embl-grid--has-centered-content vf-u-padding__top--xl">
-      <div>
-        <!-- empty -->
-      </div>
-        <section>
-          <h2 class="vf-text vf-text-heading--1 black-color xvf-text--invert">EMBL-EBI at a glance</h2>
-        </section>
-      <div><!-- empty --></div>
-      </section>
 
-      <!-- New facts and figures -->
+
+      <!-- Facts and figures -->
       <section class="embl-grid embl-grid--has-centered-content">
       <div>
-        <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">Big data, <span class="nowrap">big demand</span></h4>
+        <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">EMBL-EBI <span class="nowrap">at a glance</span></h4>
         <!-- <span class="vf-text">EMBL-EBI at a glance</span> -->
       </div>
-      <div class="vf-content">
-        <section class="vf-grid vf-grid__col-3">
 
-          <div>
-            <h5 class="vf-text vf-text-heading--2">20 million</h5>
-            <span class="vf-text">unique IP addresses accessed EMBL-EBI websites in 2018</span>
+
+
+
+
+      <div class="">
+        <section class="vf-grid vf-grid__col-2">
+          <!-- <div class="vf-card vf-card--by-the-numbers">
+            <div class="vf-card__image vf-u-background-color--blueX">
+              <i class="icon icon-common icon-analyse"></i>
+
+              <h3 class="vf-card__title">
+                20 <br/>million
+              </h3>
+              <p class="vf-card__text">
+                unique IP addresses accessed EMBL-EBI websites in 2018
+              </p>
+            </div>
+            <div class="vf-card__content">
+            </div>
+          </div> -->
+
+          <!-- <div class="vf-card vf-card--by-the-numbers">
+            <div class="vf-card__image vf-u-background-color--blueX">
+              <i class="icon icon-conceptual icon-structures-3d"></i>
+
+              <h3 class="vf-card__title">
+                23 <br/>billion
+              </h3>
+              <p class="vf-card__text">
+                web requests in 2018
+              </p>
+            </div>
+            <div class="vf-card__content">
+            </div>
+          </div> -->
+
+          <div class="vf-card vf-card--by-the-numbers">
+            <div class="vf-card__image vf-u-background-color--blueX">
+              <i class="icon icon-common icon-database"></i>
+
+              <h3 class="vf-card__title">
+                273 <br/>Petabytes
+
+              </h3>
+              <p class="vf-card__text">
+                of raw storage data
+
+              </p>
+            </div>
+            <div class="vf-card__content">
+            </div>
           </div>
 
-          <div>
-            <h5 class="vf-text vf-text-heading--2">23 billion</h5>
-            <span class="vf-text">web requests in 2018</span>
+          <div class="vf-card vf-card--by-the-numbers">
+            <div class="vf-card__image vf-u-background-color--blueX">
+              <i class="icon icon-common icon-mouse-pointer"></i>
+
+              <h3 class="vf-card__title">
+                65 <br/>million
+
+              </h3>
+              <p class="vf-card__text">
+                web requests made to our websites on an average day
+              </p>
+            </div>
+            <div class="vf-card__content">
+            </div>
           </div>
 
-          <div>
-            <h5 class="vf-text vf-text-heading--2">273 Petabytes</h5>
-            <span class="vf-text">of raw storage data</span>
+          <div class="vf-card vf-card--by-the-numbers">
+            <div class="vf-card__image vf-u-background-color--blueX">
+              <i class="icon icon-common icon-documentation"></i>
+
+              <h3 class="vf-card__title">
+                190 <br/>grants
+              </h3>
+              <p class="vf-card__text">
+                jointly-funded with 603 institutes from 62 countries, in 2018 alone
+              </p>
+            </div>
+            <div class="vf-card__content">
+            </div>
           </div>
 
-          <div>
-            <h5 class="vf-text vf-text-heading--2">65 million</h5>
-            <span class="vf-text">web requests made to our websites on an average day</span>
-          </div>
+          <div class="vf-card vf-card--by-the-numbers">
+            <div class="vf-card__image vf-u-background-color--blueX">
+              <i class="icon icon-common icon-group"></i>
 
-          <div>
-            <h5 class="vf-text vf-text-heading--2">190 grants</h5>
-            <span class="vf-text">jointly-funded with 603 institutes from 62 countries, in 2018 alone</span>
+              <h3 class="vf-card__title">
+                22 500 <br/>people
+              </h3>
+              <p class="vf-card__text">
+                participated to our 355 training events
+              </p>
+            </div>
+            <div class="vf-card__content">
+            </div>
           </div>
-
-          <div>
-            <h5 class="vf-text vf-text-heading--2">22 500 people</h5>
-            <span class="vf-text">participated to our 355 training events</span>
-          </div>
-
         </section>
       </div>
       <div><!-- empty --></div>
       </section>
+
+      <style>
+      body .vf-card.vf-card--by-the-numbers {
+        grid-template-rows: 158px repeat(3, 30px);
+      }
+
+      .vf-card--by-the-numbers .vf-card__image {
+        background-color: rgb(0, 122, 83);
+        overflow: hidden;
+        z-index: -2;
+        position: relative;
+
+      }
+      .vf-card--by-the-numbers .vf-card__image .vf-card__text,
+      .vf-card--by-the-numbers .vf-card__image .vf-card__title {
+        padding-left: 25px;
+        /* color: rgb(48, 127, 226); */
+        color: white;
+      }
+      .vf-card--by-the-numbers .vf-card__image .vf-card__title {
+        padding-top: 25px;
+        font-size: 2.7em;
+        line-height: 1em;
+        margin-bottom: 0.1em;
+      }
+      .vf-card--by-the-numbers .vf-card__image .vf-card__text {
+        max-width: 250px;
+      }
+      .vf-card--by-the-numbers .vf-card__image .icon {
+        color: rgb(0, 159, 77);
+        font-size: 12em;
+        position: absolute;
+        z-index: -1;
+        right: -20px;
+        bottom: -60px;
+        /* transform: rotate(-4deg); */
+
+      }
+      .vf-card__image {
+        /* this works better when a square-ish image cover needs to be cropped */
+        object-position: bottom;
+
+      }
+      </style>
+
 
       <!-- Achievements -->
       <section class="embl-grid embl-grid--has-centered-content vf-u-padding__top--xl">
