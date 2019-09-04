@@ -154,7 +154,7 @@
 
 
       <!-- Videos -->
-      <section class="vf-intro | embl-grid embl-grid--has-centered-content">
+      <section class="vf-intro | embl-grid embl-grid--has-centered-content vf-u-margin__bottom--xl">
           <div>
             <!-- <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--sm">EMBL-EBI <span class="nowrap">at 25 years</span></h4> -->
           </div>
@@ -253,11 +253,24 @@
 
             <div class="reveal" id="videoModal" style="width: 80%;" data-reveal>
               <!-- https://embedresponsively.com/ -->
-              <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/gXDLvQgF8Hw' frameborder='0' allowfullscreen></iframe></div>
+              <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://www.youtube.com/embed/0H0v3RMY6eg' frameborder='0' allowfullscreen></iframe></div>
               <button class="close-button" data-close aria-label="Close modal" type="button">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
+
+            <style>
+            /* modal tweaks */
+            .reveal  {
+              padding-top: 38px;
+            }
+            .reveal .close-button:before {
+              content: "close";
+              font-size: 17px;
+              bottom: 5px;
+              position: relative;
+            }
+            </style>
 
             <!--
             Videos (to be drip fed, one released every week starting last week of August; may end up being released in a different order than below).
