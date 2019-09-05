@@ -119,22 +119,6 @@
   <div id="content">
     <!-- Suggested layout containers -->
     <section id="main-content-area" class="" role="main">
-      <!-- Your menu structure should make a breadcrumb redundant, but if a breadcrump is needed uncomment the below -->
-      <!-- <nav aria-label="You are here:" role="navigation">
-        <ul class="breadcrumbs">
-          <li><a href="../../">EBI Framework</a></li>
-          <li><a href="../">Sample pages</a></li>
-          <li>
-            <span class="show-for-sr">Current: </span> Blank boilerplate
-          </li>
-        </ul>
-      </nav> -->
-
-
-
-
-      <!-- Content updates https://docs.google.com/document/d/1jzdtrkrA6TLC6oG2VipOKA6NqYo-pbu9Wf3ptsJDzMI/edit -->
-
 
       <!--.l-main -->
       <main id="main-content-area" role="main" class="row l-main">
@@ -170,22 +154,18 @@
 
 
       <style>
-      .vf-card__image {
+      body .vf-card {
+        grid-template-rows: 138px repeat(6, 36px);
+      }
+      body .vf-card__image {
         /* this works better when a square-ish image cover needs to be cropped */
-        object-position: right;
+        object-position: bottom;
+      }
+      body .vf-card__image.vf-card__image-top {
+        /* this works better when a square-ish image cover needs to be cropped */
+        object-position: top;
       }
       </style>
-
-      <section class="embl-grid embl-grid--has-centered-content vf-u-padding__top--xl">
-      <div>
-        <!-- empty -->
-      </div>
-        <section>
-          <!-- <h2 class="vf-text vf-text-heading--1 black-color xvf-text--invert">EMBL-EBI at a glance</h2> -->
-        </section>
-      <div><!-- empty --></div>
-      </section>
-
 
       <!-- About EBI -->
       <section class="embl-grid embl-grid--has-centered-content">
@@ -325,7 +305,7 @@
           </a>
 
           <a href="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2012.pdf" class="vf-card -card--navigation">
-            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2012.jpg" alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2012.jpg" alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
             <div class="vf-card__content">
               <!-- <h3 class="vf-card__title">
                 Report 2017
@@ -337,7 +317,7 @@
           </a>
 
           <a href="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2011.pdf" class="vf-card -card--navigation">
-            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2011.jpg" alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2011.jpg" alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
             <div class="vf-card__content">
               <!-- <h3 class="vf-card__title">
                 Report 2017
@@ -349,7 +329,7 @@
           </a>
 
           <a href="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2010.pdf" class="vf-card -card--navigation">
-            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2010.jpg" alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2010.jpg" alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
             <div class="vf-card__content">
               <!-- <h3 class="vf-card__title">
                 Report 2017
@@ -361,7 +341,7 @@
           </a>
 
           <a href="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2009.pdf" class="vf-card -card--navigation">
-            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2009.jpg" alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Scientific_Report-2009.jpg" alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
             <div class="vf-card__content">
               <!-- <h3 class="vf-card__title">
                 Report 2017
@@ -396,7 +376,7 @@
         <section class="vf-grid vf-grid__col-3">
 
           <a href="/about/digital-bookshelf/publications/EMBL-EBI_Impact_report-2016-summary.pdf" class="vf-card -card--navigation">
-            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Impact_report-2016-summary.jpg" alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Impact_report-2016-summary.jpg" alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
             <div class="vf-card__content">
               <!-- <h3 class="vf-card__title">
                 Report 2017
@@ -408,7 +388,7 @@
           </a>
 
           <a href="/about/digital-bookshelf/publications/EMBL-EBI_Impact_report-2016.pdf" class="vf-card -card--navigation">
-            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Impact_report-2016.jpg" alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <img src="/about/digital-bookshelf/publications/EMBL-EBI_Impact_report-2016.jpg" alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
             <div class="vf-card__content">
               <!-- <h3 class="vf-card__title">
                 Report 2017
