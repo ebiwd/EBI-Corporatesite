@@ -153,6 +153,7 @@
       </section>
 
 
+
       <style>
       body .vf-card {
         grid-template-rows: 138px repeat(6, 36px);
@@ -164,6 +165,20 @@
       body .vf-card__image.vf-card__image-top {
         /* this works better when a square-ish image cover needs to be cropped */
         object-position: top;
+      }
+      </style>
+
+      <!-- IE11 fixes -->
+      <style>
+      @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        body .vf-card {
+          max-width: 22%;
+          min-width: 22%;
+        }
+
+        body .vf-card__image {
+          height: auto;
+        }
       }
       </style>
 
