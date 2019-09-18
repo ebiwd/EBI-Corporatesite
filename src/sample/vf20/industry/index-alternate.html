@@ -57,6 +57,11 @@
   <!-- also inform ES so we can host your colour palette file -->
   <link rel="stylesheet" href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/theme-ebi-industry.css" />
   <!-- end CSS-->
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <!--
+  <script>window.jQuery || document.write('<script src="../js/libs/jquery-1.10.2.min.js"><\/script>')</script>
+  -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 
 <body class="level2 embl-compatibility-ebivf  ebi-vf1-integration"><!-- add any of your classes or IDs -->
@@ -115,8 +120,17 @@
     </header>
   </div>
   <div id="content">
+      <style>
+       /* Conceptual pattern in testing */
+       .ebi-masthead-intro-image {
+         background: top right url('/sample/vf20/industry/images/connected-dots.jpg') no-repeat ;
+         background-size: 500px;
+         /* background-attachment: fixed; */
+       }
+      </style>
+
     <!-- Suggested layout containers -->
-    <section id="main-content-area" class="" role="main">
+    <main id="main-content-area" role="main" class="ebi-masthead-intro-image  l-main">
       <!-- Your menu structure should make a breadcrumb redundant, but if a breadcrump is needed uncomment the below -->
       <!-- <nav aria-label="You are here:" role="navigation">
         <ul class="breadcrumbs">
@@ -128,9 +142,7 @@
         </ul>
       </nav> -->
 
-      <!--.l-main -->
-      <main id="main-content-area" role="main" class="row l-main">
-
+      <div class="row">
         <br/>
 
         <!-- Beta banner -->
@@ -145,7 +157,7 @@
         <p class="vf-lede vf-u-margin__bottom--l">The European Bioinformatics Institute (EMBL-EBI) is a global leader in the interrogation, analysis and dissemination of large biological datasets.</p>
         <p class="vf-intro__text">EMBL-EBI empowers companies of all sizes to realise the potential of big data. We combine our unique data expertise with a company’s R&D knowledge to develop and commercialise innovative technologies and solutions.</p>
         <p class="vf-intro__text">EMBL-EBI is pushing the boundaries of the life sciences. We have a robust track record of innovative collaborations with the private sector, and we welcome opportunities to explore new strategic partnerships and ventures.</p>
-        <h3 class="vf-text vf-text-heading--2 vf-u-margin__top--xxl">On this page</h3>
+        <!-- <h3 class="vf-text vf-text-heading--2 vf-u-margin__top--xxl">On this page</h3>
         <p class="vf-intro__text">
           <ul class="vf-list vf-list--unordered">
             <li class="vf-list__item | vf-text--body vf-text-body--2"><a href="#glance" class="vf-link">EMBL-EBI at a glance</a></li>
@@ -155,9 +167,7 @@
             <li class="vf-list__item | vf-text--body vf-text-body--2"><a href="#study" class="vf-link">Featured case study</a></li>
             <li class="vf-list__item | vf-text--body vf-text-body--2"><a href="#more-about" class="vf-link">More about EMBL-EBI</a></li>
           </ul>
-
-
-        </p>
+        </p>-->
 
         </div>
         </section>
@@ -388,12 +398,103 @@
         <section class="vf-summary-container | embl-grid">
 
             <div class="vf-section-header">
-              <h4 class="vf-text vf-text-heading--3">Industry Programme</h4>
+              <!--<h4 class="vf-text vf-text-heading--3">Industry Programme</h4> -->
               <a name="industry-programme"></a>
             </div>
 
             <section>
 
+            <style>
+            .vf-gallery.vf-grid {
+              grid-column-gap: 0;
+              grid-template-rows: repeat(1,1fr);
+            }
+            .vf-gallery--2-squares {
+              grid-column-start: span 2;
+              grid-row-start: span 2;
+            }
+            .vf-gallery a {
+              border: none;
+            }
+            </style>
+
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/1.17.2/simplelightbox.min.css"> 
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/simplelightbox/1.17.2/simple-lightbox.min.js"></script> 
+            <script>
+              // https://simplelightbox.com
+              $(function(){
+                let options = {
+                  // animationSpeed: 50,
+                  animationSlide: false
+                }
+                var $gallery = $('.vf-gallery a').simpleLightbox(options);
+              /*
+                $gallery.on('show.simplelightbox', function(){
+                  console.log('Requested for showing');
+                })
+                .on('shown.simplelightbox', function(){
+                  console.log('Shown');
+                })
+                .on('close.simplelightbox', function(){
+                  console.log('Requested for closing');
+                })
+                .on('closed.simplelightbox', function(){
+                  console.log('Closed');
+                })
+                .on('change.simplelightbox', function(){
+                  console.log('Requested for change');
+                })
+                .on('next.simplelightbox', function(){
+                  console.log('Requested for next');
+                })
+                .on('prev.simplelightbox', function(){
+                  console.log('Requested for prev');
+                })
+                .on('nextImageLoaded.simplelightbox', function(){
+                  console.log('Next image loaded');
+                })
+                .on('prevImageLoaded.simplelightbox', function(){
+                  console.log('Prev image loaded');
+                })
+                .on('changed.simplelightbox', function(){
+                  console.log('Image changed');
+                })
+                .on('nextDone.simplelightbox', function(){
+                  console.log('Image changed to next');
+                })
+                .on('prevDone.simplelightbox', function(){
+                  console.log('Image changed to prev');
+                })
+                .on('error.simplelightbox', function(e){
+                  console.log('No image found, go to the next/prev');
+                  console.log(e);
+                });
+                */
+              });
+            </script>
+
+              <div class="vf-gallery | vf-grid vf-grid__col-6">
+                <a class="vf-gallery--2-squares" href="/sample/vf20/industry/images/gallery/Industry_workshop_11_04_2019-22.jpg"><img src="/sample/vf20/industry/images/gallery/Industry_workshop_11_04_2019-22.jpg" alt="Workshop image" title="Industry_workshop_11_04_2019-22" /></a>
+                <a href="/sample/vf20/industry/images/gallery/Industry_workshop_11_04_2019-4.jpg"><img src="/sample/vf20/industry/images/gallery/Industry_workshop_11_04_2019-4.jpg" alt="Workshop image" title="Industry_workshop_11_04_2019-4" /></a>
+                <a href="/sample/vf20/industry/images/gallery/AgriTech-Hackathon-9423.jpg"><img src="/sample/vf20/industry/images/gallery/AgriTech-Hackathon-9423.jpg" alt="Workshop image" title="Title here" /></a>
+                <a class="vf-gallery--2-squares" href="/sample/vf20/industry/images/gallery/AgriTech-Hackathon-9436.jpg"><img src="/sample/vf20/industry/images/gallery/AgriTech-Hackathon-9436.jpg" alt="Workshop image" title="Title here" /></a>
+                <a href="/sample/vf20/industry/images/gallery/Industry_workshop_11_04_2019-23.jpg"><img src="/sample/vf20/industry/images/gallery/Industry_workshop_11_04_2019-23.jpg" alt="Workshop image" title="Industry_workshop_11_04_2019-23" /></a>
+                <a href="/sample/vf20/industry/images/gallery/Industry_workshop_11_04_2019-60.jpg"><img src="/sample/vf20/industry/images/gallery/Industry_workshop_11_04_2019-60.jpg" alt="Workshop image" title="Industry_workshop_11_04_2019-60" /></a>
+              </div>
+
+            </section>
+
+        </section>
+
+        <!-- Industry programme -->
+        <section class="vf-summary-container | embl-grid">
+
+            <div class="vf-section-header">
+              <h4 class="vf-text vf-text-heading--3">Industry Programme</h4>
+              <a name="industry-programme"></a>
+            </div>
+
+            <section>
               <div class="vf-content">
                 <p>The EMBL-EBI Industry Programme has been an important and vibrant part of EMBL-EBI since 1996, providing regular contact and interaction with key stakeholders and opinion leaders at major global commercial companies and informing them of the institute’s future directions.</p>
               </div>
@@ -424,6 +525,9 @@
 
 
               </div>
+
+
+
             </section>
 
         </section>
@@ -540,23 +644,23 @@
 
           <section class="vf-summary-container | embl-grid">
 
-              <div class="vf-section-header">
-                <h4 class="vf-text vf-text-heading--3">More about EMBL-EBI</h4>
-                <a name="more-about"></a>
-              </div>
+            <div class="vf-section-header">
+              <h4 class="vf-text vf-text-heading--3">More about EMBL-EBI</h4>
+              <a name="more-about"></a>
+            </div>
 
-              <div class="vf-section-content | vf-grid vf-grid__col-3">
+            <div class="vf-section-content | vf-grid vf-grid__col-3">
 
-                <article class="vf-summary">
-                  <h3 class="vf-summary__title">
-                    <a href="#" class="vf-summary__link">EMBL-EBI's Impact</a>
-                  </h3>
-                  <p class="vf-summary__text">We collaborate with scientists and engineers all over the world, and provide the infrastructure needed to share data openly in the life sciences.</p>
-                </article>
-
-              </div>
+              <article class="vf-summary">
+                <h3 class="vf-summary__title">
+                  <a href="#" class="vf-summary__link">EMBL-EBI's Impact</a>
+                </h3>
+                <p class="vf-summary__text">We collaborate with scientists and engineers all over the world, and provide the infrastructure needed to share data openly in the life sciences.</p>
+              </article>
+            </div>
 
           </section>
+
 
 
 
@@ -609,11 +713,6 @@
   <script src="https://dev.assets.emblstatic.net/vf/v2.0.0-beta.1/scripts/scripts.js"></script>
 
   <!-- JavaScript -->
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <!--
-  <script>window.jQuery || document.write('<script src="../js/libs/jquery-1.10.2.min.js"><\/script>')</script>
-  -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
   <script defer="defer" src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/js/script.js"></script>
 
