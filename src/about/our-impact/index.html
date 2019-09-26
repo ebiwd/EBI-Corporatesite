@@ -160,31 +160,25 @@
           <h1 class="black-color vf-intro__heading">EMBL-EBI at 25 years</h1>
           <p class="vf-lede">To mark the 25th anniversary of EMBL-EBI, we looked back at the the <a href="https://www.ebi.ac.uk/about/news/feature-story/25-anniversary-embl-ebi">early days of the institute</a> and we asked some of our colleagues to share their thoughts about the future of bioinformatics and related fields.</p>
 
-          <a href="#" data-open="videoModal-1">
-            <img class="orbit-image" src="/about/our-impact/video-teaser--drug-discovery.jpg" !inline alt="Thought leader video still">
+          <a href="#" data-open="videoModal-2">
+            <img class="orbit-image" src="/about/our-impact/video-teaser--bioinformatics-training.jpg" !inline alt="Thought leader video still">
           </a>
-          <figcaption class="vf-text vf-text-body--4"><a href="#" data-open="videoModal-1">In Focus: Drug discovery; <span class="vf-link">watch the video</a>. Come back each week in September and early October for a new video.</figcaption>
+          <figcaption class="vf-text vf-text-body--4"><a href="#" data-open="videoModal-1">In Focus: Bioinformatics training; <span class="vf-link">watch the video</a>. Come back each week in September and October for a new video.</figcaption>
 
           <!-- This demo uses flex grid but you can use float grid too -->
           <div class="orbit" role="region" aria-label="EMBL-EBI Thought leaders">
-            <ul class="orbit-container">
-              <button class="orbit-previous" aria-label="previous"><span class="show-for-sr">Previous Slide</span>&#9664;</button>
-              <button class="orbit-next" aria-label="next"><span class="show-for-sr">Next Slide</span>&#9654;</button>
-              <li class="is-active orbit-slide">
-                <a href="#" data-open="videoModal-0">
-                  <img class="orbit-image" src="/about/our-impact/video-teaser.jpg" !inline alt="Thought leader video still">
-                </a>
-                <figcaption class="vf-text vf-text-body--4"><a href="#" data-open="videoModal-0">A video of an EMBL-EBI thought leader, click to watch.</a></figcaption>
-              </li>
-            </ul>
             <nav class="orbit-bullets">
-              <button class="is-active" data-slide="0" data-open="videoModal-0">
-                <img src="/about/our-impact/video-teaser.jpg" alt="In Focus: Scientific publishing">
-                <span class="vf-text vf-text-body--4">In Focus: <span class="nowrap">Scientific publishing</span></span><span class="show-for-sr">Current Slide</span>
+              <button  data-open="videoModal-2">
+                <img src="/about/our-impact/video-teaser--bioinformatics-training.jpg" alt="In Focus: Scientific publishing">
+                <span class="vf-text vf-text-body--4"> <span class="nowrap">Bioinformatics training</span></span><span class="show-for-sr">Current Slide</span>
               </button>
-              <button class="" data-slide="1" data-open="videoModal-1">
+              <button data-open="videoModal-0">
+                <img src="/about/our-impact/video-teaser.jpg" alt="In Focus: Scientific publishing">
+                <span class="vf-text vf-text-body--4"> <span class="nowrap">Scientific publishing</span></span><span class="show-for-sr">Current Slide</span>
+              </button>
+              <button  data-open="videoModal-1">
                 <img src="/about/our-impact/video-teaser--drug-discovery.jpg" alt="In Focus: Scientific publishing">
-                <span class="vf-text vf-text-body--4">In Focus: <span class="nowrap">Drug discovery</span></span><span class="show-for-sr">Current Slide</span>
+                <span class="vf-text vf-text-body--4"> <span class="nowrap">Drug discovery</span></span><span class="show-for-sr">Current Slide</span>
               </button>
             </nav>
           </div>
@@ -204,7 +198,7 @@
               /* height: 1.2rem; */
               /* margin: 0.1rem; */
               border-radius: 0;
-              min-width: 8rem;
+              min-width: 10rem;
               /* opacity: .5; */
               /* background-color: #777;  */
             }
@@ -231,6 +225,13 @@
 
           <div class="reveal" id="videoModal-1" style="width: 80%;" data-reveal>
             <div class='embed-container'><iframe src='https://www.youtube.com/embed/7P7YoBEKP5w' frameborder='0' allowfullscreen></iframe></div>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="reveal" id="videoModal-2" style="width: 80%;" data-reveal>
+            <div class='embed-container'><iframe src='https://www.youtube.com/embed/uVP0uSMx2o8' frameborder='0' allowfullscreen></iframe></div>
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
