@@ -160,32 +160,36 @@
           <h1 class="black-color vf-intro__heading">EMBL-EBI at 25 years</h1>
           <p class="vf-lede">To mark the 25th anniversary of EMBL-EBI, we looked back at the the <a href="https://www.ebi.ac.uk/about/news/feature-story/25-anniversary-embl-ebi">early days of the institute</a> and we asked some of our colleagues to share their thoughts about the future of bioinformatics and related fields.</p>
 
-          <a href="#" data-open="videoModal-4">
-            <img class="orbit-image" src="/about/our-impact/video-teaser--big-data.jpg" !inline alt="Thought leader video still">
+          <a href="#" data-open="videoModal-5">
+            <img class="orbit-image" src="/about/our-impact/video-teaser--public-private-partnerships.jpg" !inline alt="Thought leader video still">
           </a>
-          <figcaption class="vf-text vf-text-body--4"><a href="#" data-open="videoModal-4">In Focus: Big data infrastructure; <span class="vf-link">watch the video</a>. Come back each week in September and October for a new video.</figcaption>
+          <figcaption class="vf-text vf-text-body--4"><a href="#" data-open="videoModal-5">In Focus: Public-private partnerships; <span class="vf-link">watch the video</a>. Come back each week in September and October for a new video.</figcaption>
 
           <!-- This demo uses flex grid but you can use float grid too -->
           <div class="orbit" role="region" aria-label="EMBL-EBI Thought leaders">
             <nav class="orbit-bullets">
+              <button  data-open="videoModal-5">
+                <img src="/about/our-impact/video-teaser--public-private-partnerships.jpg" !inline alt="In Focus: Public-private partnerships">
+                <span class="vf-text vf-text-body--4"> <span class="nowrap">Public-private partnerships</span></span><span class="show-for-sr">Current Slide</span>
+              </button>
               <button  data-open="videoModal-4">
-                <img src="/about/our-impact/video-teaser--big-data.jpg" alt="In Focus: Big data infrastructure">
+                <img src="/about/our-impact/video-teaser--big-data.jpg" !inline alt="In Focus: Big data infrastructure">
                 <span class="vf-text vf-text-body--4"> <span class="nowrap">Big data infrastructure</span></span><span class="show-for-sr">Current Slide</span>
               </button>
               <button  data-open="videoModal-3">
-                <img src="/about/our-impact/video-teaser--data-analysis.jpg" alt="In Focus: Metagenomics analysis">
+                <img src="/about/our-impact/video-teaser--data-analysis.jpg" !inline alt="In Focus: Metagenomics analysis">
                 <span class="vf-text vf-text-body--4"> <span class="nowrap">Metagenomics analysis</span></span><span class="show-for-sr">Current Slide</span>
               </button>
               <button  data-open="videoModal-2">
-                <img src="/about/our-impact/video-teaser--bioinformatics-training.jpg" alt="In Focus: Bioinformatics training">
+                <img src="/about/our-impact/video-teaser--bioinformatics-training.jpg" !inline alt="In Focus: Bioinformatics training">
                 <span class="vf-text vf-text-body--4"> <span class="nowrap">Bioinformatics training</span></span><span class="show-for-sr">Current Slide</span>
               </button>
               <button data-open="videoModal-0">
-                <img src="/about/our-impact/video-teaser.jpg" alt="In Focus: Scientific publishing">
+                <img src="/about/our-impact/video-teaser.jpg" !inline alt="In Focus: Scientific publishing">
                 <span class="vf-text vf-text-body--4"> <span class="nowrap">Scientific publishing</span></span><span class="show-for-sr">Current Slide</span>
               </button>
               <button  data-open="videoModal-1">
-                <img src="/about/our-impact/video-teaser--drug-discovery.jpg" alt="In Focus: Drug discovery">
+                <img src="/about/our-impact/video-teaser--drug-discovery.jpg" !inline alt="In Focus: Drug discovery">
                 <span class="vf-text vf-text-body--4"> <span class="nowrap">Drug discovery</span></span><span class="show-for-sr">Current Slide</span>
               </button>
             </nav>
@@ -206,10 +210,10 @@
               /* height: 1.2rem; */
               /* margin: 0.1rem; */
               border-radius: 0;
-              min-width: 10rem;
+              min-width: 12rem;
               /* opacity: .5; */
               /* background-color: #777;  */
-              margin-bottom: 7em;
+              margin-bottom: 8em;
             }
             .orbit-bullets button:hover {
               background-color: none;
@@ -255,6 +259,13 @@
 
           <div class="reveal" id="videoModal-4" style="width: 80%;" data-reveal>
             <div class='embed-container'><iframe src='https://www.youtube.com/embed/sTAhG9b_S4Y' frameborder='0' allowfullscreen></iframe></div>
+            <button class="close-button" data-close aria-label="Close modal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="reveal" id="videoModal-5" style="width: 80%;" data-reveal>
+            <div class='embed-container'><iframe src='https://www.youtube.com/embed/fWEcGouKmYQ' frameborder='0' allowfullscreen></iframe></div>
             <button class="close-button" data-close aria-label="Close modal" type="button">
               <span aria-hidden="true">&times;</span>
             </button>
