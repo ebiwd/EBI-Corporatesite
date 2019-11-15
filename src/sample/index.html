@@ -339,32 +339,47 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="medium-8 columns callout analytics-content-left">
-        test
+      <div class="row padding-bottom-xlarge">
+        <div class="medium-8 columns callout vf-u-background-color--bright-green--dark | analytics-content-left"
+          style="padding: 0; background: rgb(73,140,134);"
+        >
+
+          <a href="https://www.youtube.com/watch?v=fWEcGouKmYQ&feature=emb_title"><img class="orbit-image" src="/about/our-impact/video-teaser--public-private-partnerships.jpg" alt="Thought leader video still"></a>
+          <div class="vf-u-text-color--ui--white">
+            <div class="columns">
+              <p class="vf-text--body vf-text-body--1">
+                If we want to find new ways of creating medicine, producing food and safeguarding biodiversity, academia and the private sector need to work together. <a href="https://www.ebi.ac.uk/about/jobs/career-profiles/jessica-vamathevan" class="vf-link vf-u-text-color--ui--white">Jessica Vamathevan</a>, Head of EMBL-EBI's Strategic Partnership Office, explains the challenges and potential of public-private partnerships for science.
+
+<br/><br/><a class="vf-link vf-u-text-color--ui--white" href="https://www.youtube.com/playlist?list=PLs84PsexbuAgRUuWCzrQe5E7l50deBc2J&x">Watch videos from the In Focus series</a>.
+              </p>
+
+
+            </div>
+          </div>
         </div>
         <div class="medium-4 columns analytics-content-right">
           <h3><a href="//www.ebi.ac.uk/about/news" class="no-underline">Latest news</a></h3>
-          <span class="label">Research highlights, service updates and more</span>
+          <!--<span class="label">Research highlights, service updates and more</span>-->
+          <!--
           <div class="row collapse">
             <div class="with-overlay">
-              <!-- <img src="//www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/News/EMPIAR_news_21_03_2016_EBI.jpg?itok=Y5aDjbJy" alt="Photo of Uranus."> -->
               <div id="news-lead-item"></div>
             </div>
           </div>
+          -->
 
           <div id="news-updates"></div>
 
           <div class="margin-top-large margin-bottom-xlarge ">
-            <a class="readmore button margin-bottom-none" href="//www.ebi.ac.uk/about/news/">Read all EMBL-EBI news</a><br/>
+            <a class="vf-button vf-button--secondary vf-button--sm" href="//www.ebi.ac.uk/about/news/">Read all EMBL-EBI news</a><br/>
             <a class="readmore small" href="//news.embl.de">News from across EMBL </a><br/>
           </div>
 
-          <h3 class="padding-top-large"><a href="//www.ebi.ac.uk/about/events" class="no-underline">Our events</a></h3>
+          <h3 class="padding-top-medium"><a href="//www.ebi.ac.uk/about/events" class="no-underline">Our events</a></h3>
           <div id="upcoming-events">
             <!-- loaded by handlebars -->
           </div>
-          <a class="readmore button margin-top-large margin-bottom-xlarge" href="//www.ebi.ac.uk/about/events">See all EMBL-EBI events</a>
+          <a class="vf-button vf-button--secondary vf-button--sm" href="//www.ebi.ac.uk/about/events">See all EMBL-EBI events</a>
 
         </div>
       </div>
@@ -381,13 +396,16 @@
             <div class="medium-6 columns">
               <h4>Jobs and careers</h4>
 
-              EMBL-EBI has loads of things and we have visa sponsorship.
+              <p>EMBL-EBI has loads of things and we have sponsorship and more words go here.</p>
 
-              Technical careers
+              <p>
+                <a class="vf-link" href="JavaScript:Void(0);">Technical careers</a>
+                <br/>
+                <a class="vf-link" href="JavaScript:Void(0);">Scientific and research positions</a>
+                <br/>
+                <a class="vf-link" href="JavaScript:Void(0);">Other &amp; all jobs</a>
+              </p>
 
-              Scientific and research positions
-
-              Other & all jobs
             </div>
           </section>
 
@@ -411,8 +429,8 @@
           </section>
 
         </div>
-        <h3 class="show-for-largeXXX"><a href="//www.ebi.ac.uk/about" class="readmore no-underline">About EMBL-EBI's culture and impact</a></h3>
-        <h3 class="show-for-largeXXX"><a href="//www.ebi.ac.uk/about/travel" class="readmore no-underline">Travel directions: How to get to EMBL-EBI</a></h3>
+        <!-- <h3 class="show-for-largeXXX"><a href="//www.ebi.ac.uk/about" class="readmore no-underline">About EMBL-EBI's culture and impact</a></h3> -->
+        <h4 class="show-for-largeXXX"><a href="//www.ebi.ac.uk/about/travel" class="readmore no-underline">Travel directions: How to get to EMBL-EBI</a></h4>
       </div>
 
     </div> <!-- /#content -->
@@ -453,17 +471,17 @@
   <script id="feed-template-news-updates" type="text/x-handlebars-template">
     {{#each this}}
       <div class="padding-top-medium">
-        <span class="label">{{node.created}}</span>
+        <span class="vf-summary__date">{{node.created}}</span>
         <h6><a href="{{node.path}}">{{node.title}}</a></h6>
       </div>
     {{/each}}
   </script>
   <script id="template-upcoming-events" type="text/x-handlebars-template">
     {{#each this}}
-      <span class="label">{{smartDates json.starts json.ends}}</span>
-      <span class="label">| {{json.bundle_name}}</span>
-      <h5><a href="//www.ebi.ac.uk/{{this.json.path}}">{{json.title}}</a></h5>
-      <p><a class="no-underline" href="//www.ebi.ac.uk/{{this.json.path}}">{{{truncate json.short_description 150}}}</a></p>
+      <span class="vf-summary__date">{{smartDates json.starts json.ends}}</span>
+      <span class="vf-summary__date">| {{json.bundle_name}}</span>
+      <h6><a href="//www.ebi.ac.uk/{{this.json.path}}">{{json.title}}</a></h6>
+      <!--<p><a class="no-underline" href="//www.ebi.ac.uk/{{this.json.path}}">{{{truncate json.short_description 150}}}</a></p>-->
     {{/each}}
   </script>
 
@@ -624,7 +642,7 @@
         $.getJSON("https://www.ebi.ac.uk/api/v1/events/home", function(data) {
           var itemsPassed = 0; // so wec can keep just five items
           var eventsToShow = simpleFilter(data.results,function(node){
-            if (itemsPassed > 4) { // we can do any other filtering we might need here...
+            if (itemsPassed > 3) { // we can do any other filtering we might need here...
               return false;
             }
             itemsPassed++;
