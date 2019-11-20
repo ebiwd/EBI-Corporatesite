@@ -339,43 +339,49 @@
         </div>
       </div>
 
+      <style>
+      .vf-link--white, .vf-link--white:hover, .vf-link--white:visited {color: #fff} 
+      </style>
+
       <div class="row padding-bottom-xlarge">
-        <div class="medium-8 columns callout vf-u-background-color--bright-green--dark | analytics-content-left"
-          style="padding: 0; background: rgb(73,140,134);"
-        >
-
-          <a href="https://www.youtube.com/watch?v=fWEcGouKmYQ&feature=emb_title"><img class="orbit-image" src="/about/our-impact/video-teaser--public-private-partnerships.jpg" alt="Thought leader video still"></a>
-          <div class="vf-u-text-color--ui--white">
-            <div class="columns">
-              <p class="vf-text--body vf-text-body--1">
-                If we want to find new ways of creating medicine, producing food and safeguarding biodiversity, academia and the private sector need to work together. <a href="https://www.ebi.ac.uk/about/jobs/career-profiles/jessica-vamathevan" class="vf-link vf-u-text-color--ui--white">Jessica Vamathevan</a>, Head of EMBL-EBI's Strategic Partnership Office, explains the challenges and potential of public-private partnerships for science.
-
-<br/><br/><a class="vf-link vf-u-text-color--ui--white" href="https://www.youtube.com/playlist?list=PLs84PsexbuAgRUuWCzrQe5E7l50deBc2J&x">Watch videos from the In Focus series</a>.
-              </p>
-
-
+        <div class="medium-8 columns | analytics-content-left">
+          <h3><a href="//www.ebi.ac.uk/about/news" class="no-underline">Featured topics</a></h3>
+          <div class="vf-u-background-color--bright-green--dark padding-bottom-large" 
+            style="background: rgb(73,140,134);"
+          >
+            <a href="https://www.youtube.com/watch?v=fWEcGouKmYQ&feature=emb_title"><img class="orbit-image" src="/about/our-impact/video-teaser--public-private-partnerships.jpg" alt="Thought leader video still"></a>
+            <div class="vf-u-text-color--ui--white">
+              <div class="vf-u-margin__top--lg vf-u-margin__right--xl vf-u-margin__left--xl ">
+                <p class="vf-text--body vf-text-body--1">
+                  If we want to find new ways of creating medicine, producing food and safeguarding biodiversity, academia and the private sector need to work together.
+                </p>
+                <p class="vf-figure__caption | vf-u-text-color--ui--white">
+                  <a href="https://www.ebi.ac.uk/about/jobs/career-profiles/jessica-vamathevan" class="vf-link vf-link--white">Jessica Vamathevan</a>, Head of EMBL-EBI's Strategic Partnership Office, explains the challenges and potential of public-private partnerships for science.
+                </p>
+                <p class="vf-text--body vf-text-body--2">
+                  <a class="vf-link vf-link--white" href="https://www.youtube.com/playlist?list=PLs84PsexbuAgRUuWCzrQe5E7l50deBc2J&x">Watch more videos from the In Focus series</a>.
+                </p>
+              </div>
             </div>
           </div>
         </div>
         <div class="medium-4 columns analytics-content-right">
           <h3><a href="//www.ebi.ac.uk/about/news" class="no-underline">Latest news</a></h3>
           <!--<span class="label">Research highlights, service updates and more</span>-->
-          <!--
           <div class="row collapse">
             <div class="with-overlay">
               <div id="news-lead-item"></div>
             </div>
           </div>
-          -->
 
           <div id="news-updates"></div>
 
-          <div class="margin-top-large margin-bottom-xlarge ">
+          <div class="margin-top-large margin-bottom-small">
             <a class="vf-button vf-button--secondary vf-button--sm" href="//www.ebi.ac.uk/about/news/">Read all EMBL-EBI news</a><br/>
-            <a class="readmore small" href="//news.embl.de">News from across EMBL </a><br/>
+            <!--<a class="readmore small" href="//news.embl.de">News from across EMBL </a>-->
           </div>
 
-          <h3 class="padding-top-medium"><a href="//www.ebi.ac.uk/about/events" class="no-underline">Our events</a></h3>
+          <h3 class="padding-top-small"><a href="//www.ebi.ac.uk/about/events" class="no-underline">Our events</a></h3>
           <div id="upcoming-events">
             <!-- loaded by handlebars -->
           </div>
@@ -391,7 +397,7 @@
               <a href="//www.ebi.ac.uk/about/jobs">
                 <img src="//www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/Events/all-at-ebi_stepping_down_EBI.jpg" alt="Staff outside Hindton Hall.">
               </a>
-              <a href="//www.ebi.ac.uk/about/jobs" class="highlight-caption readmore">Jobs &amp; Careers</a>
+              <!--<a href="//www.ebi.ac.uk/about/jobs" class="highlight-caption readmore">Jobs &amp; Careers</a>-->
             </div>
             <div class="medium-6 columns">
               <h4>Jobs and careers</h4>
@@ -414,7 +420,7 @@
               <a href="//www.ebi.ac.uk/about/jobs">
                 <img src="//www.ebi.ac.uk/sites/ebi.ac.uk/files/styles/large/public/groups/external_relations/images/News/Science_Is_Global_2016_EBI_500x375.jpg?itok=mp_IWQhk" alt="Science is Global map at EMBL-EBI.">
               </a>
-              <a href="//www.ebi.ac.uk/about/jobs/career-profiles" class="highlight-caption readmore">Life at EMBL-EBI</a>
+              <!--<a href="//www.ebi.ac.uk/about/jobs/career-profiles" class="highlight-caption readmore">Life at EMBL-EBI</a>-->
             </div>
             <div class="medium-6 columns">
               <h4>Life at EMBL-EBI</h4>
@@ -623,7 +629,7 @@
           // and only keep five items
           var itemsPassed = 0;
           var secondaryItems = simpleFilter(data.nodes,function(node){
-            if ((node.node.type === 'News' && !matchFound) || (itemsPassed > 4)) {
+            if ((node.node.type === 'News' && !matchFound) || (itemsPassed >= 2)) {
               matchFound = true;
               return false;
             }
@@ -642,7 +648,7 @@
         $.getJSON("https://www.ebi.ac.uk/api/v1/events/home", function(data) {
           var itemsPassed = 0; // so wec can keep just five items
           var eventsToShow = simpleFilter(data.results,function(node){
-            if (itemsPassed > 3) { // we can do any other filtering we might need here...
+            if (itemsPassed >= 3) { // we can do any other filtering we might need here...
               return false;
             }
             itemsPassed++;
