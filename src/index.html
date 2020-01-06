@@ -136,9 +136,6 @@
                   }
                   /*.visulisation, .visulisation iframe { border:0; width: 800px; height: 315px; overflow: hidden; }*/
                   @media screen and (min-width: 40rem) {
-                    .masthead-background {
-                      /*background-color: #222;*/
-                    }
                     .masthead-background-inner {
                       background-size: 1300px;
                       background-position: 100% 100%;
@@ -158,7 +155,11 @@
                       background-image: url(/front-page-archive/201909/annual-report-2018-frame-1.jpg);
                       animation-duration: 100s;
                       animation-timing-function: linear;
+                      
+                      /* disable animation until we have new text
                       animation-name: fader1;
+                      */
+
                       animation-iteration-count: infinite;
                       position: relative;
                       transform: translate(-1em);
@@ -168,7 +169,11 @@
                       mix-blend-mode: multiply;
                       animation-duration: 5s;
                       animation-timing-function: linear;
+
+                      /* disable animation until we have new text
                       animation-name: fader2;
+                      */
+                      
                       animation-iteration-count: infinite;
                       opacity: 0;
                       position: relative;
