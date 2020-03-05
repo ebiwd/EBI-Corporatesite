@@ -30,7 +30,7 @@
 
   <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.min.css" type="text/css" media="all" />
   <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css" media="all" />
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/develop/css/styles.css" />
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.2/css/styles.css" />
 </head>
 
 <body class="level2"><!-- add any of your classes or IDs -->
@@ -84,7 +84,7 @@
                 </div>
                 <div class="columns show-for-medium medium-9" style="">
                   <div class="margin-top-xlarge padding-top-xlarge"><!--spacer--></div>
-                  <div class="float-right show-for-medium visulisation-legend">
+                  <div class="float-right show-for-medium visulisation-legend hidden">
                     <h1 class="vf-text vf-text-heading--1 vf-text--invert vf-u-margin__bottom--sm"><a href="//www.ebi.ac.uk/about/our-impact" style="border-bottom: none;">25 Years of EMBL-EBI</a></h1>
                     <div class="vf-text vf-text-body--5 vf-u-padding__left--sm">
                       <a class="vf-link readmore" href="//www.ebi.ac.uk/about/our-impact" style="border-bottom: none;"><i class="icon icon-common icon-video"></i> In Focus: Exploring innovation in the life sciences</a>
@@ -136,9 +136,6 @@
                   }
                   /*.visulisation, .visulisation iframe { border:0; width: 800px; height: 315px; overflow: hidden; }*/
                   @media screen and (min-width: 40rem) {
-                    .masthead-background {
-                      /*background-color: #222;*/
-                    }
                     .masthead-background-inner {
                       background-size: 1300px;
                       background-position: 100% 100%;
@@ -158,7 +155,11 @@
                       background-image: url(/front-page-archive/201909/annual-report-2018-frame-1.jpg);
                       animation-duration: 100s;
                       animation-timing-function: linear;
+                      
+                      /* disable animation until we have new text
                       animation-name: fader1;
+                      */
+
                       animation-iteration-count: infinite;
                       position: relative;
                       transform: translate(-1em);
@@ -168,7 +169,11 @@
                       mix-blend-mode: multiply;
                       animation-duration: 5s;
                       animation-timing-function: linear;
+
+                      /* disable animation until we have new text
                       animation-name: fader2;
+                      */
+                      
                       animation-iteration-count: infinite;
                       opacity: 0;
                       position: relative;

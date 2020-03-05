@@ -158,7 +158,7 @@
         </div>
         <div>
           <h1 class="black-color vf-intro__heading">EMBL-EBI at 25 years</h1>
-          <p class="vf-lede">To mark the 25th anniversary of EMBL-EBI, we looked back at the the <a href="https://www.ebi.ac.uk/about/news/feature-story/25-anniversary-embl-ebi">early days of the institute</a> and we asked some of our colleagues to share their thoughts about the future of bioinformatics and related fields.</p>
+          <p class="vf-lede">To mark the 25th anniversary of EMBL-EBI, we looked back at the <a href="https://www.ebi.ac.uk/about/news/feature-story/25-anniversary-embl-ebi">early days of the institute</a> and we asked some of our colleagues to share their thoughts about the future of bioinformatics and related fields.</p>
 
           <a href="#" data-open="videoModal-5">
             <img class="orbit-image" src="/about/our-impact/video-teaser--public-private-partnerships.jpg" !inline alt="Thought leader video still">
@@ -213,7 +213,9 @@
               min-width: 12rem;
               /* opacity: .5; */
               /* background-color: #777;  */
-              margin-bottom: 8em;
+              margin-bottom: 2em;
+              height: 100%;
+              background: none;
             }
             .orbit-bullets button:hover {
               background-color: none;
@@ -414,15 +416,14 @@
 
       <style>
       body .vf-card.vf-card--by-the-numbers {
+        --card-background-color: var(--vf-card-theme-color--background,none);
         grid-template-rows: 158px repeat(3, 30px);
       }
-
       .vf-card--by-the-numbers .vf-card__image {
         background-color: rgb(0, 122, 83);
         overflow: hidden;
         z-index: -2;
         position: relative;
-
       }
       .vf-card--by-the-numbers .vf-card__image .vf-card__text,
       .vf-card--by-the-numbers .vf-card__image .vf-card__title {
@@ -546,7 +547,7 @@
           <div class="column">
             <h3 style="font-size: 2.5rem;" class="vf-u-background-color--green badge"><span class="icon icon-generic" data-icon="}"></span></h3>
             <h4 class="vf-u-text-color--green">45% of users</h4>
-            <p class="small">said they could not have neither have created/collected the last data they used themselves, nor obtained it elsewhere</p>
+            <p class="small">said they could neither have created/collected the last data they used themselves, nor obtained it elsewhere</p>
           </div>
           <div class="column">
             <h3 style="font-size: 2.5rem;" class="vf-u-background-color--green badge"><span class="icon icon-generic" data-icon=")"></span></h3>
@@ -614,7 +615,7 @@
   </footer>
 
   <!-- VF 2.0 CSS, JS -->
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/develop/css/styles.css" />
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.2/css/styles.css" />
   <script src="https://dev.assets.emblstatic.net/embl-design-system/develop/scripts/scripts.js"></script>
 
   <!-- JavaScript -->
