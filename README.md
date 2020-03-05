@@ -63,7 +63,7 @@ More radical changes should be done on a feature branch.
 
 Serve non-optimised `./src/` files from your dev environment:
 
-- `gulp dev` (alias for `gulp browser-sync`)
+- `gulp dev`
 
 ## Optimising the pages
 
@@ -78,7 +78,6 @@ NOTE: Only developers would have the need do this.
   - Run the default gulp script: `gulp`
 3. If you're using Docker:
   - `docker run -it --rm -v $PWD:/workspace -w /workspace simonvanderveldt/node-bower-gulp:6 bash -c 'npm install --quiet && gulp'`
-
 
 ### What the optimisations get you
 

@@ -146,7 +146,7 @@ gulp.task('build', gulp.series(
   'default'
 ));
 
-// Alias for default
+// Local development
 gulp.task('dev', gulp.series(
   'browser-sync'
 ));
