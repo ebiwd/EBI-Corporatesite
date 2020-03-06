@@ -28,7 +28,7 @@ gulp.task('inline-images', function(cb){
 
 // Handle any jpg, svg, png assets
 gulp.task('file-assets', function(cb){
-  return gulp.src(['src/*.{png,gif,jpg,svg,pdf}','src/**/*.{png,gif,jpg,svg,pdf}'])
+  return gulp.src(['src/*.{png,gif,jpg,svg,pdf,mp4}','src/**/*.{png,gif,jpg,svg,pdf,mp4}'])
     .pipe(gulp.dest('dist/'))
     .on('error', function(err) {
       gutil.log(gutil.colors.red(err.message));
@@ -106,7 +106,7 @@ gulp.task('apache-config', function(cb) {
   require('fs').appendFileSync(fileName, 'AddOutputFilterByType DEFLATE text/html');
   require('fs').appendFileSync(fileName, endOfLine); // new line
   require('fs').appendFileSync(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=');
-  return gulp.src(['dist/*.{html,jpg,png,gif,pdf}','dist/**/*.{html,svg,jpg,png,gif,pdf}'])
+  return gulp.src(['dist/*.{html,jpg,png,gif,pdf,mp4}','dist/**/*.{html,svg,jpg,png,gif,pdf,mp4}'])
     .pipe(through.obj(function (file, enc, cb) {
       const localFilePath = file.path.split('/dist/')[1];
       gutil.log(gutil.colors.green('Mapping: ',localFilePath));
