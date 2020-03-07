@@ -427,10 +427,17 @@
         .vf-link--white:visited {
           color: #fff
         }
+
+        @media screen and (min-width: 40em) {
+          /* make the featured content sticky on big screens */
+          .sticky-feature {
+            position: -webkit-sticky; position: sticky; top:0
+          }
+        }
       </style>
 
       <div class="row padding-bottom-xlarge" style="position: relative;">
-        <div class="medium-8 columns | analytics-content-left" style="position: -webkit-sticky; position: sticky; top:0">
+        <div class="medium-8 columns | analytics-content-left | sticky-feature">
           <h3><a href="//www.ebi.ac.uk/about/news" class="no-underline">Featured topic</a></h3>
           <div class="vf-u-background-color--bright-green--dark padding-bottom-large" style="background: rgb(73,140,134);">
             <a href="https://www.ebi.ac.uk/ena/pathogens/covid-19">
