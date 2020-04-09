@@ -118,21 +118,23 @@
   </div>
   <div id="content">
     <!-- Suggested layout containers -->
-    <section id="main-content-area" class="" role="main">
+    <div class="row">
+      <div class="secondary-menu vf-u-padding__top--sm">
+        <div class="menu-block-wrapper menu-block-4 menu-name-main-menu parent-mlid-0 menu-level-3">
+        <ul class="menu menu-tree-menu"><li class="first leaf has-children menu-mlid-3057"><a href="/about/leadership" title="Leadership and guidance structure">Leadership</a></li>
+        <li class="leaf menu-mlid-3075"><a href="/about/funding" title="Funding of EMBL-EBI">Funding</a></li>
+        <li class="leaf menu-mlid-3079"><a href="/about/background" title="History of EMBL-EBI">Background</a></li>
+        <li class="leaf has-children menu-mlid-3076"><a href="/about/collaborations" title="EMBL-EBI partnerships">Collaborations</a></li>
+        <li class="leaf has-children active-trail active menu-mlid-14438"><a href="/about/our-impact" title="Impact: reports, facts and figures" class="active-trail active">Our impact</a></li>
+        <li class="leaf has-children "><a href="/about/digital-bookshelf" title="Digital bookshelf" class="">Digital Bookshelf</a></li>
+        <li class="last leaf has-children menu-mlid-14440"><a href="/about/equality-in-science">Equality and Diversity</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <section id="main-content-area" class="vf-body" role="main">
       <!--.l-main -->
-      <main id="main-content-area" role="main" class="row l-main">
-
-        <div class="secondary-menu vf-u-padding__top--sm">
-          <div class="menu-block-wrapper menu-block-4 menu-name-main-menu parent-mlid-0 menu-level-3">
-          <ul class="menu menu-tree-menu"><li class="first leaf has-children menu-mlid-3057"><a href="/about/leadership" title="Leadership and guidance structure">Leadership</a></li>
-          <li class="leaf menu-mlid-3075"><a href="/about/funding" title="Funding of EMBL-EBI">Funding</a></li>
-          <li class="leaf menu-mlid-3079"><a href="/about/background" title="History of EMBL-EBI">Background</a></li>
-          <li class="leaf has-children menu-mlid-3076"><a href="/about/collaborations" title="EMBL-EBI partnerships">Collaborations</a></li>
-          <li class="leaf has-children active-trail active menu-mlid-14438"><a href="/about/our-impact" title="Impact: reports, facts and figures" class="active-trail active">Our impact</a></li>
-          <li class="leaf has-children "><a href="/about/digital-bookshelf" title="Digital bookshelf" class="">Digital Bookshelf</a></li>
-          <li class="last leaf has-children menu-mlid-14440"><a href="/about/equality-in-science">Equality and Diversity</a></li>
-          </ul></div>
-        </div>
+      <div class="vf-grid">
+      <main id="main-content-area" role="main" class="">
 
       <!-- Beta banner -->
       <!-- <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=9102&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader> -->
@@ -186,89 +188,86 @@
       
 
       <!-- What we do to tackle COVID-19 -->
-      <section class="embl-grid embl-grid--has-centered-content">
+      <section class="embl-grid | vf-u-fullbleed vf-u-background-color--grey--lightest vf-u-padding__top--xxl vf-u-padding__bottom--xxl">
         <div>
-          <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">What we do to tackle COVID-19 <span class="nowrap"></span></h4>
+          <h4 class="vf-text vf-text-heading--3 vf-u-margin__top-- vf-u-text-color--ui--black">What we do to tackle COVID-19 <span class="nowrap"></span></h4>
+          <p>While the physical EMBL-EBI site is closed, staff continue to work from home to tackle COVID-19.</p>
         </div>
         <div class="">
-          <section class="vf-grid vf-grid__col-2">
-            <div class="vf-card vf-card--by-the-numbers">
-              <div class="vf-card__image vf-u-background-color--blueX">
-                <i class="icon icon-common icon-database"></i>
-  
-                <h3 class="vf-card__title">
-                  COVID-19 Data Portal
-  
-                </h3>
-                <p class="vf-card__text">
-                  [Box #1: The European COVID-19 Data Portal, similar to the bottom of EMBL-EBI homepage] 
-  Image: logo on fancy background
-  
-  Blurb: We have launched a collaborative space for sharing and analysing COVID-19 related data.
-  
-                </p>
-              </div>
+          <section class="vf-grid vf-grid__col-2 | vf-box vf-box--normal" style="">
+              <h3 class="vf-box__heading | vf-text-heading--2" style="color: #fff">COVID-19 Data Portal</h3>
+              <p class="vf-box__text | vf-text-body--2" style="max-width: 400px;">We have launched a collaborative space for sharing and analysing COVID-19 related data.</p>
+              <p>
+                <a href="#" class="vf-button vf-button--outline vf-button--primary vf-button--sm">explore</a>
+              </p>
+                      
+
+            <!-- [Box #1: The European COVID-19 Data Portal, similar to the bottom of EMBL-EBI homepage] 
+            Image: logo on fancy background -->
+            
+          </section>
+
+          <style>
+            .vf-card.vf-card--no-image{
+              grid-template-rows: auto;
+            }
+          </style>
+
+
+          <section class="vf-grid vf-grid__col-3">
+            <article  class="vf-card vf-card--easy vf-card-theme--primary vf-card--no-image">
+              <!-- <img src="../../assets/vf-card/assets/vf-card-example.png" alt="" class="vf-card__image"> -->
               <div class="vf-card__content">
-              </div>
-            </div>
-  
-            <div class="vf-card vf-card--by-the-numbers">
-              <div class="vf-card__image vf-u-background-color--blueX">
-                <i class="icon icon-common icon-mouse-pointer"></i>
-  
                 <h3 class="vf-card__title">
                   Coronavirus: The science explained
-  
                 </h3>
                 <p class="vf-card__text">
-                  [Box #2: Coronavirus: The science explained]
-  Image: section of the UKRI banner
-  
-  Blurb: In collaboration with the UK Government and several universities, we have launched a science-led website to explain the facts behind the novel coronavirus pandemic. 
-  
+                  <!-- [Box #2: Coronavirus: The science explained] -->
+                  <!-- Image: section of the UKRI banner -->
+                  In collaboration with the UK Government and several universities, we have launched a science-led website to explain the facts behind the novel coronavirus pandemic. 
+                </p>
+                <p class="vf-card__text">
+                  <a href="#" class="vf-button vf-button--outline vf-button--primary vf-button--sm">explore</a>
                 </p>
               </div>
+            </article>
+
+            <article  class="vf-card vf-card--easy vf-card-theme--primary vf-card--no-image">
+              <!-- <img src="../../assets/vf-card/assets/vf-card-example.png" alt="" class="vf-card__image"> -->
               <div class="vf-card__content">
-              </div>
-            </div>
-  
-            <div class="vf-card vf-card--by-the-numbers">
-              <div class="vf-card__image vf-u-background-color--blueX">
-                <i class="icon icon-common icon-documentation"></i>
-  
                 <h3 class="vf-card__title">
-                  190 <br/>grants
+                  COVID-19 publications and preprints
                 </h3>
                 <p class="vf-card__text">
-                  [Box #3: Custom research feed]
-  Title: COVID-19 publications and preprints
-  - Research: we’ve already had a preprint from Pedro Beltrao (here)
-  
+                  
+                  <!-- [Box #3: Custom research feed] -->
+  We’ve already had a preprint from Pedro Beltrao (here)
+                </p>
+                <p class="vf-card__text">
+                  <a href="#" class="vf-button vf-button--outline vf-button--primary vf-button--sm">explore</a>
                 </p>
               </div>
+            </article>
+
+            <article  class="vf-card vf-card--easy vf-card-theme--primary vf-card--no-image">
+              <!-- <img src="../../assets/vf-card/assets/vf-card-example.png" alt="" class="vf-card__image"> -->
               <div class="vf-card__content">
-              </div>
-            </div>
-  
-            <div class="vf-card vf-card--by-the-numbers">
-              <div class="vf-card__image vf-u-background-color--blueX">
-                <i class="icon icon-common icon-group"></i>
-  
                 <h3 class="vf-card__title">
-                  22 500 <br/>people
+                  Highlighted datasets
                 </h3>
                 <p class="vf-card__text">
-                  [Box #4: Highlighted datasets]
-  Links to individual pages/resources within the COVID-19 Data Portal
-  
+                  <!-- [Box #2: Coronavirus: The science explained] -->
+                  <!-- Image: section of the UKRI banner -->
+                  Links to individual pages/resources within the COVID-19 Data Portal
+                </p>
+                <p class="vf-card__text">
+                  <a href="#" class="vf-button vf-button--outline vf-button--primary vf-button--sm">explore</a>
                 </p>
               </div>
-              <div class="vf-card__content">
-              </div>
-            </div>
+            </article>
           </section>
+
         </div>
-        <div><!-- empty --></div>
       </section>
 
       <style>
@@ -415,15 +414,6 @@
       <!--/.l-main -->
 
       <!--.l-footer -->
-      <footer>
-      <div id="global-footer" class="global-footer">
-      <nav id="global-nav-expanded" class="global-nav-expanded row">
-      <!-- Footer will be automatically inserted by footer.js -->
-      </nav>
-      <section id="ebi-footer-meta" class="ebi-footer-meta row">
-      <!-- Footer meta will be automatically inserted by footer.js -->
-      </section>
-      </div>
 
     </section>
   </div>
@@ -441,7 +431,8 @@
   </footer>
 
   <!-- VF 2.0 CSS, JS -->
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.7/css/styles.css" />
+  <!-- <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.7/css/styles.css" /> -->
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/develop/css/styles.css" />
   <script src="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.7/scripts/scripts.js"></script>
 
   <!-- JavaScript -->
