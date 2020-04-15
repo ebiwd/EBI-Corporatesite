@@ -196,7 +196,7 @@
           <!-- <span class="vf-text">EMBL-EBI at a glance</span> -->
         </div>
         <div class="vf-content">
-          <section class="vf-grid vf-grid__col-2">
+          <section class="vf-grid vf-grid__col-2 | ebi-coronavirus-missions">
 
             <article class="vf-card  vf-card--very-easy">
               <a href="/services" class="vf-card__image">
@@ -297,10 +297,24 @@
           </section>
 
           <style>
-            .vf-card .vf-card__image {
+            .ebi-coronavirus-missions .vf-card {
+              align-self: baseline;
+            }
+            .ebi-coronavirus-missions .vf-card .vf-card__image {
               max-height: 216px;
               object-position: right;
-
+            }
+            
+            .ebi-coronavirus-missions .vf-card__content {
+              position: relative;
+              top: -3.45rem;
+              margin-bottom: -5rem;
+            }
+            .ebi-coronavirus-missions .vf-card__content .vf-card__title {
+              background: #000;
+              color: #fff;
+              display: inline-block;
+              padding: 0.25rem 0.5rem;
             }
             .vf-card.vf-card--no-image{
               grid-template-rows: auto;
