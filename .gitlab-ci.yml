@@ -10,8 +10,7 @@ variables:
   STAGE_SERVER: ves-hx-11 ves-hx-13
   STAGE_URL: http://stage.ebi7.ebi.ac.uk
 
-  # PROD_SERVER: ves-oy-10 ves-oy-11 ves-oy-12 ves-oy-13 ves-pg-10 ves-pg-11 ves-pg-12 ves-pg-13
-  PROD_SERVER: ves-oy-10 ves-oy-11 ves-oy-12 ves-oy-13
+  PROD_SERVER: ves-oy-10 ves-oy-11 ves-oy-12 ves-oy-13 ves-pg-10 ves-pg-11 ves-pg-12 ves-pg-13
   PROD_URL: http://www.ebi.ac.uk
 
 # do not define here, put in project variables
