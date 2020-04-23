@@ -4,20 +4,21 @@ image: ebiwd/alpine-ssh:3.6
 variables:
   DEST_PATH: /var/www/drupal/staticpages
 
-  DEV_SERVER: ves-hx-10 ves-hx-12
+  DEV_SERVER: ves-hx-12
   DEV_URL: http://wwwdev.ebi.ac.uk
 
-  STAGE_SERVER: ves-hx-11 ves-hx-13
+  STAGE_SERVER: ves-hx-13
   STAGE_URL: http://stage.ebi7.ebi.ac.uk
 
-  PROD_SERVER: ves-oy-10 ves-oy-11 ves-oy-12 ves-oy-13 ves-pg-10 ves-pg-11 ves-pg-12 ves-pg-13
+  PROD_SERVER: ves-oy-12 ves-oy-13 ves-pg-12 ves-pg-13
   PROD_URL: http://www.ebi.ac.uk
 
 # do not define here, put in project variables
-  SSH_OWNER: username
-  SSH_OWNER_KEY: secret-key
-  SSH_APACHE: username
-  SSH_APACHE_KEY: secret-key
+  SSH_OWNER_ID: wd_drupl
+  SSH_APACHE_ID: w3_wd01
+  # set secrets in Settings -> Pipelines -> Secret Variables
+  SSH_WD_DRUPL: secret-key
+  SSH_W3_WD01: secret-key
 
 stages:
   - build
@@ -27,15 +28,9 @@ stages:
 
 build:
   stage: build
-  image: node:10
+  image: ebiwd/node-bower-gulp:10
   tags:
     - docker
-  before_script:
-    - cd ${CI_PROJECT_DIR}
-    - npm install --quiet
-    - npm install -g gulp-cli
-    # install dependencies for headless chrome for npm critical module
-    - apt-get update && apt-get install -y libnss3 libxss1 libasound2 libpangocairo-1.0-0 libx11-xcb-dev libxcomposite1 libxcursor1 libxdamage1 libxi6 libxtst6 libcups2 libxrandr-dev libgconf-2-4 libatk1.0-0 libgtk-3-0
   script:
     - gulp
   cache:
@@ -60,7 +55,7 @@ test:
   tags:
     - docker
   before_script:
-    - add-ssh-key ${SSH_OWNER} "${SSH_OWNER_KEY}" ${SSH_APACHE} "${SSH_APACHE_KEY}"
+    - add-ssh-key ${SSH_OWNER_ID} "${SSH_WD_DRUPL}" ${SSH_APACHE_ID} "${SSH_W3_WD01}"
     - add-search-domain ebi.ac.uk
 
 deploy_dev: &deploy
