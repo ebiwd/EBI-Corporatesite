@@ -19,7 +19,6 @@
   "homepage": "https://github.com/ebiwd/EBI-Corporatesite#readme",
   "devDependencies": {
     "browser-sync": "^2.26.7",
-    "critical": "^1.3.4",
     "del": "^5.0.0",
     "gulp": "^4.0.2",
     "gulp-inline-images": "^1.2.6",

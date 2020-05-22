@@ -2,7 +2,6 @@ const gulp = require('gulp');
 const gutil = require('gulp-util');
 const replace = require('gulp-replace');
 const inlineImages = require('gulp-inline-images');
-const critical = require('critical').stream;
 const minifyInline = require('gulp-minify-inline');
 const through = require('through2');
 const del = require('del');
@@ -34,34 +33,6 @@ gulp.task('file-assets', function(cb){
       gutil.log(gutil.colors.red(err.message));
       process.exit(1);
     });
-});
-
-// Generate & Inline Critical-path CSS
-// https://github.com/addyosmani/critical
-// https://github.com/addyosmani/critical-path-css-demo
-gulp.task('critical', function (cb) {
-  return gulp.src(['dist/*.html','dist/**/*.html','!dist/security.txt/*.html'])
-    .pipe(replace('\'//www.ebi', '\'https://www.ebi')) // make all protical relative //ebi.ac.uk to https://
-    .pipe(replace('"//www.ebi', '"https://www.ebi')) // for double quote
-    .pipe(critical({base: 'dist/', inline: true,
-      dimensions: [{
-          height: 600,
-          width: 400
-      }, {
-          height: 900,
-          width: 1500
-      }],
-      minify: true, ignore: [/icon-/,/.svg/,'@font-face']
-    }))
-    .on('success', function(err) {
-      gutil.log(err)
-    })
-    .on('error', function(err) {
-      gutil.log(gutil.colors.red(err.message));
-      gutil.log(err)
-      process.exit(1);
-    })
-    .pipe(gulp.dest('dist'));
 });
 
 // Minify any inline css/js
@@ -109,7 +80,7 @@ gulp.task('apache-config', function(cb) {
   return gulp.src(['dist/*.{html,jpg,png,gif,pdf,mp4}','dist/**/*.{html,svg,jpg,png,gif,pdf,mp4}'])
     .pipe(through.obj(function (file, enc, cb) {
       const localFilePath = file.path.split('/dist/')[1];
-      gutil.log(gutil.colors.green('Mapping: ',localFilePath));
+      gutil.log(gutil.colors.green('Mapping:',localFilePath));
       require('fs').appendFileSync(fileName, endOfLine); // new line
       require('fs').appendFileSync(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');
       cb(null, file);
@@ -138,7 +109,7 @@ gulp.task('browser-sync', function() {
 
 // Build it all
 gulp.task('default', gulp.series(
-  'purge','file-assets','inline-images','critical','minify-inline','apache-config'
+  'purge','file-assets','inline-images','minify-inline','apache-config'
 ));
 
 // Alias for default
