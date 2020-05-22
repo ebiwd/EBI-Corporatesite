@@ -32,6 +32,7 @@ build:
   tags:
     - docker
   script:
+    - npm install
     - gulp
   cache:
     paths:
