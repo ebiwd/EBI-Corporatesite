@@ -48,7 +48,7 @@
     type="text/css" media="all" />
   <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css"
     media="all" />
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.2/css/styles.css" />
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.8/css/styles.css" />
 </head>
 
 <body class="ebi-vf1-integration">
@@ -70,41 +70,55 @@
       background-color: #54585A;
     }
   </style>
-  <div class="homepage-masthead" style="background: #eee;">
-      <div class="row padding-bottom-medium">
+  <div class="homepage-masthead padding-bottom-xlarge" style="background: #ddd; border-bottom: 1px solid #eee;">
+      <div class=" padding-bottom-medium">
         <div class="" id="">
           <div class="masthead-content">
-            <div class="">
-              <div class="columns medium-3">
+            <div class="row">
+              <div class="columns large-5">
                 <div class="margin-top-xlarge">
                   <!--spacer-->
                 </div>
                 <img
                   src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/EMBL_EBI_Logo_black.svg"
-                  !inline style="width:280px;position:relative;z-index: 5;">
-                <span>The home for big data in biology</span>
-              </div>
-              <div class="columns show-for-large large-1">
-                <!-- spacer --> 
-                &nbsp;
-              </div>
-              <div class="columns large-7 medium-9 padding-top-large">
-                <div class="callout warning"><h3>EMBL-EBI response to COVID-19</h3>To help protect staff and visitors from the coronavirus outbreak, EMBL-EBI closed its premises on 18 March at 17:00. Our data resources and tools will continue to function as normal. <a href="https://www.ebi.ac.uk/about/our-impact/covid-19" class="readmore">Read more</a></div>
-              </div>
-              <div class="columns show-for-large large-1">
-                <!-- spacer -->
-              </div>
-            </div>
-            <div class=" padding-top-xlarge padding-bottom-small">
-              <div class="columns small-12 large-7 medium-6">
-                <span class="label show-for-small-only">EBI Search</span>
-                <p class="show-for-medium">Our unique Search service helps you explore dozens of biological data
-                  resources. <span class="show-for-large inline-block"><a class="readmore"
-                      href="/ebisearch/overview.ebi">More about EBI Search</a></span>
+                  !inline style="width:280px; margin-left: 10px;">
+
+                <h1 class="vf-hero__heading" style="padding-bottom: 0">The potential of 'big data' in biology</h1>
+                <p class="vf-hero__text" style="padding-top: 4px">
+                  
+                  We help scientists exploit complex information to make discoveries that benefit humankind.
+
+                  <a href="//www.ebi.ac.uk/services/">Find a tool or data resource</a> or <a href="//www.ebi.ac.uk/submission/">Deposit data</a>.
                 </p>
-                <form id="ebi_search" action="/ebisearch/search.ebi" data-abide novalidate>
-                  <fieldset>
+              </div>
+              <!-- <div class="columns large-7 medium-9 padding-top-large">
+                <div class="callout warning"><h3>EMBL-EBI response to COVID-19</h3>To help protect staff and visitors from the coronavirus outbreak, EMBL-EBI closed its premises on 18 March at 17:00. Our data resources and tools will continue to function as normal. <a href="https://www.ebi.ac.uk/about/our-impact/covid-19" class="readmore">Read more</a></div>
+              </div> -->
+              <div class="columns large-7">
+                <span class="label show-for-small-only">EBI Search</span>
+
+                <div class="margin-top-xlarge show-for-large">
+                  &nbsp; <!-- spacer -->
+                </div>
+                <div class="margin-top-large show-for-large">
+                  &nbsp; <!-- spacer -->
+                </div>
+
+
+                <form id="ebi_search" action="/ebisearch/search.ebi" data-abide novalidate class="vf-box vf-box--easy vf-box-theme--primary" style="color: #222">
+                  <div class="margin-top-medium show-for-medium">
+                    <span class="vf-box__text">Explore dozens of biological data resources with our <a href="https://www.ebi.ac.uk/ebisearch/overview.ebi/about">Search service</a>.<br/><span>
+                  </div>
+                    <fieldset>
                     <div class="margin-bottom-none small-collapse">
+                      <div class="columns small-8  margin-bottom-none search-text-wrapper">
+                        <input id="query" class="margin-bottom-none" title="EBI Search" tabindex="2" type="text"
+                          name="query" value="" size="35" maxlength="2048"
+                          placeholder="Find a gene, protein or chemical" required>
+                        <span class="form-error margin-top-small">
+                          You need to enter a search query.
+                        </span>
+                      </div>
                       <div class="columns small-2 margin-bottom-small search-options-wrapper">
                         <select name="db" id="db" tabindex="1" class="margin-bottom-none" style="opacity: .8;">
                           <option value="allebi">All</option>
@@ -128,58 +142,22 @@
                           </optgroup>
                         </select>
                       </div>
-                      <div class="columns small-8  margin-bottom-none search-text-wrapper">
-                        <input id="query" class="margin-bottom-none" title="EBI Search" tabindex="2" type="text"
-                          name="query" value="" size="35" maxlength="2048"
-                          placeholder="Find a gene, protein or chemical" required>
-                        <span class="form-error margin-top-small">
-                          You need to enter a search query.
-                        </span>
-                      </div>
                       <div class="columns small-2 margin-bottom-none">
-                        <input id="search_submit" class="button icon icon-functional margin-bottom-none" tabindex="3"
-                          type="submit" name="submit1" value="1" style="line-height:.9">
+                        <input id="search_submit" class="button margin-bottom-none" tabindex="3"
+                          type="submit" name="submit1" value="Search" style="line-height:.9">
                       </div>
                       <!-- <input id="allebi" type="hidden" name="db" value="allebi" checked="checked" /> -->
                       <input type="hidden" name="requestFrom" value="ebi_index">
                     </div>
                   </fieldset>
-                  <fieldset>
-                    <div id="example" class="medium-push-2 medium-10 columns small">
-                      Example searches: <a
-                        href="/ebisearch/search.ebi?db=allebi&amp;requestFrom=ebi_index&amp;query=blast">blast</a> <a
-                        href="/ebisearch/search.ebi?db=allebi&amp;query=keratin&amp;requestFrom=ebi_index">keratin</a>
-                      <a href="/ebisearch/search.ebi?db=allebi&amp;query=bfl1&amp;requestFrom=ebi_index">bfl1</a>
+                  <fieldset class="row">
+                    <div id="example" class=" columns small">
+                        Example searches: <a href="/ebisearch/search.ebi?db=allebi&amp;requestFrom=ebi_index&amp;query=blast">blast</a> <a href="/ebisearch/search.ebi?db=allebi&amp;query=keratin&amp;requestFrom=ebi_index">keratin</a> <a href="/ebisearch/search.ebi?db=allebi&amp;query=bfl1&amp;requestFrom=ebi_index">bfl1</a>
+                      | <a href="https://www.ebi.ac.uk/ebisearch/overview.ebi/about">Build query</a>
                     </div>
                   </fieldset>
                 </form>
-              </div>
-              <div class="columns large-2 medium-3 show-for-medium">
-                <div>
-                  <p>Find a tool for your data analysis.</p>
-                  <a href="//www.ebi.ac.uk/services/" class="button readmore"
-                    style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="("></i> Find
-                    a tool</a>
-                </div>
-              </div>
-              <div class="columns large-2 medium-3 small-6 show-for-medium">
-                <div>
-                  <p>Share your scientific data with the world.</p>
-                  <a href="//www.ebi.ac.uk/submission/" class="button readmore"
-                    style="border-bottom: none;line-height: .9;"><i class="icon icon-functional" data-icon="D"></i>
-                    Deposit data</a>
-                </div>
-              </div>
-              <div class="columns small-12 show-for-small-only padding-top-large">
-                <span class="label show-for-small-only">Access and share data</span>
-                <div>
-                  <a href="//www.ebi.ac.uk/services/" class="button no-underline readmore"
-                    style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="("></i> Find
-                    a tool</a>
-                  <a href="//www.ebi.ac.uk/submission/" class="button no-underline readmore"
-                    style="border-bottom: none;line-height: .9;"><i class="icon icon-generic" data-icon="q"></i>
-                    Deposit data</a>
-                </div>
+
               </div>
             </div>
           </div>
@@ -205,7 +183,7 @@
         }
       </style>
 
-      <div class="row padding-top-large" style="position: relative;">
+      <div class="row padding-top-xlarge" style="position: relative;">
         <div class="medium-8 columns | analytics-content-left | sticky-feature">
           <h3 class="vf-section-header__heading"><a href="//www.ebi.ac.uk/about/news" class="no-underline">Featured topic</a></h3>
           <div class="vf-u-background-color--bright-green--dark padding-bottom-large margin-top-small" style="background: rgb(59,73,80);">
