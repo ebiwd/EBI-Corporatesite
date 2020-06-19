@@ -131,10 +131,8 @@
       <!--.l-main -->
       <main id="main-content-area" role="main" class="row l-main">
 
-        <br/>
-
         <!-- Beta banner -->
-        <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=9102&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+        <!-- <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=9102&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader> -->
 
         <section class="vf-intro | embl-grid embl-grid--has-centered-content">
         <div>
@@ -152,12 +150,11 @@
         <section class="embl-grid embl-grid--has-centered-content">
         <div>
           <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">EMBL-EBI <span class="nowrap">at a glance</span></h4>
-          <!-- <span class="vf-text">EMBL-EBI at a glance</span> -->
         </div>
         <div class="">
           <section class="vf-grid vf-grid__col-2">
-            <div class="vf-card vf-card--by-the-numbers">
-              <div class="vf-card__image vf-u-background-color--blueX">
+            <div class="vf-box vf-card--by-the-numbers">
+              <div class="vf-card__image vf-u-background-color--blue">
                 <i class="icon icon-common icon-analyse"></i>
 
                 <h3 class="vf-card__title">
@@ -167,12 +164,10 @@
                   data scientists
                 </p>
               </div>
-              <div class="vf-card__content">
-              </div>
             </div>
 
-            <div class="vf-card vf-card--by-the-numbers">
-              <div class="vf-card__image vf-u-background-color--blueX">
+            <div class="vf-box vf-card--by-the-numbers">
+              <div class="vf-card__image vf-u-background-color--blue">
                 <i class="icon icon-conceptual icon-structures-3d"></i>
 
                 <h3 class="vf-card__title">
@@ -182,12 +177,10 @@
                   Petabytes of open data accessed 68 million times every day
                 </p>
               </div>
-              <div class="vf-card__content">
-              </div>
             </div>
 
-            <div class="vf-card vf-card--by-the-numbers">
-              <div class="vf-card__image vf-u-background-color--blueX">
+            <div class="vf-box vf-card--by-the-numbers">
+              <div class="vf-card__image vf-u-background-color--blue">
                 <i class="icon icon-conceptual icon-literature"></i>
 
                 <h3 class="vf-card__title">
@@ -197,12 +190,10 @@
                   scientific publications <span class="nowrap">every year</span>
                 </p>
               </div>
-              <div class="vf-card__content">
-              </div>
             </div>
 
-            <div class="vf-card vf-card--by-the-numbers">
-              <div class="vf-card__image vf-u-background-color--blueX">
+            <div class="vf-box vf-card--by-the-numbers">
+              <div class="vf-card__image vf-u-background-color--blue">
                 <i class="icon icon-conceptual icon-cross-domain"></i>
 
                 <h3 class="vf-card__title">
@@ -212,8 +203,6 @@
                   of industry collaboration
                 </p>
               </div>
-              <div class="vf-card__content">
-              </div>
             </div>
 
           </section>
@@ -222,22 +211,18 @@
         </section>
 
         <style>
-        body .vf-card.vf-card--by-the-numbers {
-          grid-template-rows: 158px repeat(3, 30px);
-        }
-
-        .vf-card--by-the-numbers .vf-card__image {
+        .vf-box.vf-card--by-the-numbers  {
           background-color: rgb(48, 127, 226);
           overflow: hidden;
-          z-index: -2;
           position: relative;
-
+          padding: 0;
         }
         .vf-card--by-the-numbers .vf-card__image .vf-card__text,
         .vf-card--by-the-numbers .vf-card__image .vf-card__title {
           padding-left: 25px;
-          /* color: rgb(48, 127, 226); */
           color: white;
+          position: relative;
+          z-index: 3;
         }
         .vf-card--by-the-numbers .vf-card__image .vf-card__title {
           padding-top: 25px;
@@ -246,12 +231,13 @@
         }
         .vf-card--by-the-numbers .vf-card__image .vf-card__text {
           max-width: 250px;
+          padding-bottom: 1rem;
         }
         .vf-card--by-the-numbers .vf-card__image .icon {
           color: rgb(139, 184, 232);
-          font-size: 12em;
+          font-size: 11em;
           position: absolute;
-          z-index: -1;
+          z-index: 1;
           right: -20px;
           bottom: -60px;
           /* transform: rotate(-4deg); */
@@ -621,8 +607,8 @@
   </footer>
 
   <!-- VF 2.0 CSS, JS -->
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/vf/v2.0.0-beta.1/css/styles.css" />
-  <script src="https://dev.assets.emblstatic.net/vf/v2.0.0-beta.1/scripts/scripts.js"></script>
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.9/css/styles.css" />
+  <script src="https://dev.assets.emblstatic.net/embl-design-system/develop/scripts/scripts.js"></script>
 
   <!-- JavaScript -->
   <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
