@@ -173,7 +173,13 @@
             </li>
             <li class="vf-list__item">
               <a class="vf-list__link" href="#collaborations">
-                Collaborations and publications
+                Collaborations, publications
+                <svg class="vf-icon vf-icon__arrown--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"></path></svg>
+              </a>
+            </li>
+            <li class="vf-list__item">
+              <a class="vf-list__link" href="#additional">
+                Additional resources
                 <svg class="vf-icon vf-icon__arrown--down | vf-list__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M.249,7.207,11.233,19.678h0a1.066,1.066,0,0,0,1.539,0L23.751,7.207a.987.987,0,0,0-.107-1.414l-1.85-1.557a1.028,1.028,0,0,0-1.438.111L12.191,13.8a.25.25,0,0,1-.379,0L3.644,4.346A1.021,1.021,0,0,0,2.948,4a1,1,0,0,0-.741.238L.356,5.793A.988.988,0,0,0,0,6.478.978.978,0,0,0,.249,7.207Z"></path></svg>
               </a>
             </li>
@@ -315,9 +321,9 @@
       </style>
   
       <!-- Collaborations and publications -->
-      <section class="embl-grid embl-grid--has-centered-contentXXX vf-u-padding__top--xl" id="collaborations">
+      <section class="embl-grid vf-u-padding__top--xl" id="collaborations">
       <div>
-        <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">
+        <h4 class="vf-text vf-text-heading--3">
           Collaborations and publications
         </h4>
         <!-- <span class="vf-text">EMBL-EBI at a glance</span> -->
@@ -325,7 +331,7 @@
       <div class="vf-content">
         <section class="vf-grid vf-grid__col-3">
           <div>
-            <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">
+            <h4 class="vf-text vf-text-heading--3">
               <a href="https://coronavirusexplained.ukri.org/en/" class="vf-link">Coronavirus: The science explained</a>
             </h4>
             <p class="vf-text-body vf-text-body--3">
@@ -354,13 +360,11 @@
               Highlighted datasets 
             </h4>
             <p class="vf-text-body vf-text-body--3">
-              Additional EMBL-EBI data resources for COVID-19 research:
+              EMBL-EBI data resources for COVID-19 research:
             </p>
             <ul>
-              <li><a href="https://www.ebi.ac.uk/pdbe/covid-19">PDBe COVID-19 Portal</a></li>
-              <li><a href="https://covid-19.uniprot.org/">UniProt COVID-19 Portal</li>
               <li><a href="https://www.ebi.ac.uk/intact/query/annot:%22dataset:coronavirus%22">IntAct coronavirus dataset</a></li>
-              <li><a href="https://www.ebi.ac.uk/complexportal/complex/CPX-5683">Complex portal Dataset</a></li>
+              <li><a href="https://www.ebi.ac.uk/complexportal/complex/CPX-5683">Complex Portal dataset</a></li>
             </ul>
             <br/>
           </div>
@@ -369,6 +373,32 @@
       </div>
       </section>
 
+      <!-- Additional resources -->
+      <section class="embl-grid vf-u-padding__top--xl" id="additional">
+        <div>
+          <h4 class="vf-text vf-text-heading--3">
+            Additional resources
+          </h4>
+          <!-- <span class="vf-text">EMBL-EBI at a glance</span> -->
+        </div>
+        <div class="vf-content">
+          <section class="vf-grid vf-grid__col-3">
+            <a href="https://www.ebi.ac.uk/pdbe/covid-19" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
+              <h3 class="vf-box__heading">PDBe COVID-19 Portal</h3>
+              <p class="vf-box__text">Observed ligand binding sites and protein-protein interaction residues.</p>
+            </a>
+            <a href="https://covid-19.uniprot.org" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
+              <h3 class="vf-box__heading">UniProt COVID-19 Portal</h3>
+              <p class="vf-box__text">The latest available pre-release UniProtKB data for the SARS-CoV-2 coronavirus.</p>
+            </a>
+            <a href="https://covid-19.ensembl.org" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
+              <h3 class="vf-box__heading">Ensembl SARS-CoV-2 genome browser</h3>
+              <p class="vf-box__text">The complete genome of severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) isolate.</p>
+            </a>
+          </section>
+        </div>
+      </section>
+      
       <!-- Status updates -->
       <section class="embl-grid vf-u-padding__top--xl">
         <div>
@@ -492,8 +522,8 @@
 
   <!-- VF 2.0 CSS, JS -->
   <!-- <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.7/css/styles.css" /> -->
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/develop/css/styles.css" />
-  <script src="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.7/scripts/scripts.js"></script>
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.9/css/styles.css" />
+  <script src="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.9/scripts/scripts.js"></script>
 
   <!-- JavaScript -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
