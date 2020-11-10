@@ -63,7 +63,7 @@ More radical changes should be done on a feature branch.
 
 Serve non-optimised `./src/` files from your dev environment:
 
-- `gulp dev`
+- `yarn dev`
 
 ## Optimising the pages
 
@@ -73,9 +73,8 @@ NOTE: Only developers would have the need do this.
 
 1. Clone the repo
 2. If you're using npm:
-  - Install the npm instance: `npm install`
-  - Install gulp: `npm install -g gulp`
-  - Run the default gulp script: `gulp`
+  - Install the npm instance: `yarn install`
+  - Run the default gulp script: `yarn build`
 3. If you're using Docker:
   - `docker run -it --rm -v $PWD:/workspace -w /workspace simonvanderveldt/node-bower-gulp:6 bash -c 'npm install --quiet && gulp'`
 
