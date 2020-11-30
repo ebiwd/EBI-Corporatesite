@@ -2,26 +2,16 @@ image: ebiwd/alpine-ssh:3.6
 
 #project specific variables can be defined here, or overridden project settings
 variables:
-  DEST_PATH: /var/www/drupal/staticpages
-
-  #DEV_SERVER: ves-hx-12 wp-np2-19
-  DEV_SERVER: ves-hx-12
-  DEV_URL: http://wwwdev.ebi.ac.uk
-
-  #STAGE_SERVER: ves-hx-13 wp-np2-24
-  STAGE_SERVER: ves-hx-13
-  STAGE_URL: http://stage.ebi7.ebi.ac.uk
-
-  #PROD_SERVER: ves-oy-12 ves-oy-13 ves-pg-12 ves-pg-13 wp-p2m-1a wp-p2m-1b wp-p1m-4d wp-p1m-4e
-  PROD_SERVER: ves-oy-12 ves-oy-13 ves-pg-12 ves-pg-13
-  PROD_URL: http://www.ebi.ac.uk
-
 # do not define here, put in project variables
   SSH_OWNER_ID: wd_drupl
   SSH_APACHE_ID: w3_wd01
   # set secrets in Settings -> Pipelines -> Secret Variables
   SSH_WD_DRUPL: secret-key
   SSH_W3_WD01: secret-key
+before_script:
+  - add-ssh-key ${SSH_OWNER_ID} "${SSH_WD_DRUPL}" $SSH_APACHE_ID "${SSH_W3_WD01}"
+  - add-search-domain ebi.ac.uk
+  - cd ${CI_PROJECT_DIR};
 
 stages:
   - build
@@ -54,61 +44,50 @@ test:
     # test index.html has been generated
     - if [ ! -f ${CI_PROJECT_DIR}/dist/index.html ]; then echo "Missing index.html"; exit 1; fi
 
-#setup ssh keys
-.deploy_setup: &deploy_setup
+deploy-dev:
+  stage: deploy
   tags:
     - docker
-  before_script:
-    - add-ssh-key ${SSH_OWNER_ID} "${SSH_WD_DRUPL}" ${SSH_APACHE_ID} "${SSH_W3_WD01}"
-    - add-search-domain ebi.ac.uk
-
-deploy_dev: &deploy
-  <<: *deploy_setup
-  variables:
-    DRUPAL_ENV: dev
-    URL: ${DEV_URL}
-    VMS: ${DEV_SERVER}
-  stage: deploy
+  dependencies:
+    - build
   script:
-    - for VM in ${VMS}; do
-        rsync -acv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${VM}:${DEST_PATH}/;
-        ssh -tt ${SSH_APACHE}@${VM} '/etc/init.d/httpd configtest';
-        ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd stop; sudo /etc/init.d/memcached stop; sudo /etc/init.d/rh-php56-php-fpm stop' || true;
-        ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd start && sudo /etc/init.d/memcached start && sudo /etc/init.d/rh-php56-php-fpm start';
-        ssh -tt ${SSH_APACHE}@${VM} 'sudo /etc/init.d/httpd status && sudo /etc/init.d/memcached status && sudo /etc/init.d/rh-php56-php-fpm status';
-      done
+    - bin/deploy dev
   only:
     - master
-  environment:
-    name: ${DRUPAL_ENV}
-    url: ${URL}
 
-deploy_stage:
-  <<: *deploy
-  variables:
-    DRUPAL_ENV: stage
-    URL: ${STAGE_URL}
-    VMS: ${STAGE_SERVER}
+deploy-stage:
+  stage: deploy
+  tags:
+    - docker
+  dependencies:
+    - build
+  script:
+    - bin/deploy stage
+  only:
+    - master
 
-deploy_prod:
-  <<: *deploy
+deploy-prod:
+  stage: deploy
+  tags:
+    - docker
+  dependencies:
+    - build
+  script:
+    - bin/deploy prod
   only:
     - tags
-  variables:
-    DRUPAL_ENV: prod
-    URL: ${PROD_URL}
-    VMS: ${PROD_SERVER}
+
 
 validate_dev:
   stage: validate
   script:
-    - curl -L ${DEV_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
+    - curl -L ${DEV_SITE_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
   only:
     - master
 
 validate_prod:
   stage: validate
   script:
-    - curl -L ${PROD_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
+    - curl -L ${PROD_SITE_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
   only:
     - tags
