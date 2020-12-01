@@ -62,6 +62,22 @@ deploy-dev:
     ENVIRONMENT: dev
   <<: *deploy
 
+deploy-stage:
+  stage: deploy
+  only:
+    - master
+  variables:
+    ENVIRONMENT: stage
+  <<: *deploy
+
+deploy-prod:
+  stage: deploy
+  only:
+    - tags
+  variables:
+    ENVIRONMENT: prod
+  <<: *deploy
+
 validate_dev:
   stage: validate
   script:
