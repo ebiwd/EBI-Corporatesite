@@ -8,10 +8,6 @@ variables:
   # set secrets in Settings -> Pipelines -> Secret Variables
   SSH_WD_DRUPL: secret-key
   SSH_W3_WD01: secret-key
-before_script:
-  - add-ssh-key ${SSH_OWNER_ID} "${SSH_WD_DRUPL}" $SSH_APACHE_ID "${SSH_W3_WD01}"
-  - add-search-domain ebi.ac.uk
-  - cd ${CI_PROJECT_DIR};
 
 stages:
   - build
@@ -44,39 +40,28 @@ test:
     # test index.html has been generated
     - if [ ! -f ${CI_PROJECT_DIR}/dist/index.html ]; then echo "Missing index.html"; exit 1; fi
 
+# setup ssh keys
+.deploy_template: &deploy
 deploy-dev:
   stage: deploy
   tags:
     - docker
+  before_script:
+    - add-ssh-key ${SSH_OWNER_ID} "${SSH_WD_DRUPL}" ${SSH_APACHE_ID} "${SSH_W3_WD01}"
+    - add-search-domain ebi.ac.uk
+    - cd ${CI_PROJECT_DIR};
   dependencies:
     - build
   script:
-    - bin/deploy dev
+    - bin/deploy ${ENVIRONMENT}
+
+deploy-dev:
+  stage: deploy
   only:
     - master
-
-deploy-stage:
-  stage: deploy
-  tags:
-    - docker
-  dependencies:
-    - build
-  script:
-    - bin/deploy stage
-  only:
-    - master
-
-deploy-prod:
-  stage: deploy
-  tags:
-    - docker
-  dependencies:
-    - build
-  script:
-    - bin/deploy prod
-  only:
-    - tags
-
+  variables:
+    ENVIRONMENT: dev
+  <<: *deploy
 
 validate_dev:
   stage: validate
