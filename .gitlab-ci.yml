@@ -42,7 +42,6 @@ test:
 
 # setup ssh keys
 .deploy_template: &deploy
-deploy-dev:
   stage: deploy
   tags:
     - docker
