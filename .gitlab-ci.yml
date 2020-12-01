@@ -81,6 +81,8 @@ deploy-prod:
 validate_dev:
   stage: validate
   script:
+    - ls -l
+    - set -a; source ${CI_PROJECT_DIR}/.env; set +a;
     - curl -L ${DEV_SITE_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
   only:
     - master
