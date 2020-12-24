@@ -119,7 +119,7 @@
   <div id="content">
     <!-- Suggested layout containers -->
     <div class="row">
-      <div class="secondary-menu vf-u-padding__top--sm">
+      <div class="secondary-menu vf-u-padding__top--200">
         <div class="menu-block-wrapper menu-block-4 menu-name-main-menu parent-mlid-0 menu-level-3">
         <ul class="menu menu-tree-menu"><li class="first leaf has-children menu-mlid-3057"><a href="/about/leadership" title="Leadership and guidance structure">Leadership</a></li>
         <li class="leaf menu-mlid-3075"><a href="/about/funding" title="Funding of EMBL-EBI">Funding</a></li>
@@ -140,12 +140,12 @@
       <!-- <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=9102&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader> -->
 
       <!-- Videos -->
-      <section class="embl-grid embl-grid--has-centered-content vf-u-margin__top--xxl vf-u-margin__bottom--xl">
+      <section class="embl-grid embl-grid--has-centered-content vf-u-margin__top--1200 vf-u-margin__bottom--800">
         <div>
           <!-- <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--sm">EMBL-EBI <span class="nowrap">at 25 years</span></h4> -->
         </div>
         <div>
-          <h1 class="black-color vf-intro__heading vf-u-margin__bottom--md">EMBL-EBI response to COVID-19</h1>
+          <h1 class="black-color vf-intro__heading vf-u-margin__bottom--400">EMBL-EBI response to COVID-19</h1>
           <!-- <h1 class="black-color vf-intro__heading">EMBL-EBI response to COVID-19</h1> -->
           <!-- <p class="vf-lede vf-text">What we're doing to tackle <span class="nowrap">COVID-19</span>.</p> -->
           <p class="vf-text vf-lede">
@@ -159,7 +159,7 @@
         </div>
       </section>
 
-      <section class="embl-grid vf-u-padding__top--xl vf-u-display-noneXXX">
+      <section class="embl-grid">
         <div><!-- empty --></div>
         <!-- <h3 class="vf-links__heading">On this page</h3> -->
         <div class="vf-links vf-links__list--easy">
@@ -207,12 +207,12 @@
       </section>
 
       <!-- What we do to tackle COVID-19 -->
-      <section class="embl-grid | vf-u-fullbleed vf-u-background-color--grey--lightest vf-u-padding__top--xxl vf-u-padding__bottom--xxl" id="tackling">
+      <section class="embl-grid embl-grid--has-sidebarXXX | vf-u-fullbleed vf-u-background-color--grey--lightest vf-u-padding__top--800 vf-u-padding__bottom--800" id="tackling">
         <div>
           <h4 class="vf-text vf-text-heading--3 vf-u-margin__top-- vf-u-text-color--ui--black">What we're doing to tackle <span class="nowrap">COVID-19</span></h4>
         </div>
         <div class="">
-          <section class="vf-grid vf-grid__col-2 | vf-box vf-box--normal vf-box-theme--qauternary vf-u-padding__top--xxl vf-u-padding__bottom--xxl"
+          <section class="vf-grid vf-grid__col-2 | vf-u-margin__bottom--600 | vf-box vf-box--normal vf-box-theme--qauternary"
             style="
             background-color: #fff;
               background-image: url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/covid19_portal_banner_transparent3.png?func=crop&w=1100&h=360&gravity=northwest');
@@ -258,6 +258,7 @@
             }
             .ebi-coronavirus-missions .vf-card {
               align-self: baseline;
+              grid-template-rows: 216px 1fr;
             }
             .ebi-coronavirus-missions .vf-card .vf-card__image {
               max-height: 216px;
@@ -265,15 +266,8 @@
             }
             
             .ebi-coronavirus-missions .vf-card__content {
-              position: relative;
-              top: -3.45rem;
-              margin-bottom: -5rem;
             }
             .ebi-coronavirus-missions .vf-card__content .vf-card__title {
-              background: #000;
-              color: #fff;
-              display: inline-block;
-              padding: 0.25rem 0.5rem;
             }
             .vf-card.vf-card--no-image{
               grid-template-rows: auto;
@@ -327,7 +321,7 @@
       </style>
   
       <!-- Collaborations and publications -->
-      <section class="embl-grid vf-u-padding__top--xl" id="collaborations">
+      <section class="embl-grid" id="collaborations">
       <div>
         <h4 class="vf-text vf-text-heading--3">
           Collaborations and publications
@@ -381,45 +375,43 @@
       </section>
 
       <!-- Additional resources -->
-      <section class="embl-grid vf-u-padding__top--xl" id="additional">
+      <section class="embl-grid | vf-u-fullbleed vf-u-background-color--grey--lightest vf-u-padding__top--800 vf-u-padding__bottom--800" id="additional">
         <div>
           <h4 class="vf-text vf-text-heading--3">
             Additional resources
           </h4>
           <!-- <span class="vf-text">EMBL-EBI at a glance</span> -->
         </div>
-        <div class="vf-content">
           <section class="vf-grid vf-grid__col-3">
-            <a href="https://www.ebi.ac.uk/pdbe/covid-19" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
-              <h3 class="vf-box__heading">PDBe COVID-19 Portal</h3>
+            <div class="vf-box vf-box-theme--primary vf-box--easy vf-box--is-link">
+              <h3 class="vf-box__heading"><a href="https://www.ebi.ac.uk/pdbe/covid-19" class="vf-box__link">PDBe COVID-19 Portal</a></h3>
               <p class="vf-box__text">Observed ligand binding sites and protein-protein interaction residues.</p>
-            </a>
-            <a href="https://covid-19.uniprot.org" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
-              <h3 class="vf-box__heading">UniProt COVID-19 Portal</h3>
+            </div>
+            <div class="vf-box vf-box-theme--primary vf-box--easy vf-box--is-link">
+              <h3 class="vf-box__heading"><a href="https://covid-19.uniprot.org" class="vf-box__link">UniProt COVID-19 Portal</a></h3>
               <p class="vf-box__text">The latest available pre-release UniProtKB data for the SARS-CoV-2 coronavirus.</p>
-            </a>
-            <a href="https://covid-19.ensembl.org" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
-              <h3 class="vf-box__heading">Ensembl SARS-CoV-2 genome browser</h3>
+            </div>
+            <div class="vf-box vf-box-theme--primary vf-box--easy vf-box--is-link">
+              <h3 class="vf-box__heading"><a href="https://covid-19.ensembl.org" class="vf-box__link">Ensembl SARS-CoV-2 genome browser</a></h3>
               <p class="vf-box__text">The complete genome of severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2) isolate.</p>
-            </a>
-            <a href="http://covid19.opentargets.org/" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
-              <h3 class="vf-box__heading">Open Targets COVID-19 target prioritisation tool</h3>
+            </div>
+            <div class="vf-box vf-box-theme--primary vf-box--easy vf-box--is-link">
+              <h3 class="vf-box__heading"><a href="http://covid19.opentargets.org/" class="vf-box__link">Open Targets COVID-19 target prioritisation tool</a></h3>
               <p class="vf-box__text">Integration of key datasets to identify and prioritise potential human and viral protein drug targets for COVID-19 treatments.</p>
-            </a>
-            <a href="https://europepmc.org/Preprints#preprint-indexing" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
-              <h3 class="vf-box__heading">COVID-19 preprints in Europe PMC</h3>
+            </div>
+            <div class="vf-box vf-box-theme--primary vf-box--easy vf-box--is-link">
+              <h3 class="vf-box__heading"><a href="https://europepmc.org/Preprints#preprint-indexing" class="vf-box__link">COVID-19 preprints in Europe PMC</a></h3>
               <p class="vf-box__text">Latest scientific publications and grants available in a single repository.</p>
-            </a>
-            <a href="https://www.ebi.ac.uk/chembl/" class="vf-box vf-box--normal vf-box-theme--quinary | vf-box--is-link">
-              <h3 class="vf-box__heading">ChEMBL SARS-CoV-2 data</h3>
+            </div>
+            <div class="vf-box vf-box-theme--primary vf-box--easy vf-box--is-link">
+              <h3 class="vf-box__heading"><a href="https://www.ebi.ac.uk/chembl/" class="vf-box__link">ChEMBL SARS-CoV-2 data</a></h3>
               <p class="vf-box__text">A summary of SARS-CoV-2 related bioactive molecules.</p>
-            </a>
+            </div>
           </section>
-        </div>
       </section>
       
       <!-- Status updates -->
-      <section class="embl-grid vf-u-padding__top--xl">
+      <section class="embl-grid vf-u-padding__top--800">
         <div>
           <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--" id="status-updates">
             Status updates
@@ -430,14 +422,12 @@
         <div class="">
           <section class="vf-grid vf-grid__col-2 | ebi-coronavirus-missions">
 
-            <article class="vf-card  vf-card--very-easy">
+            <article class="vf-card vf-card--primary vf-card--bordered">
               <a href="/services" class="vf-card__image">
                 <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/services-green-4.jpg" alt="" class="vf-card__image">
               </a>
-              <div class="vf-card__content">
-                <h3 class="vf-card__title">
-                  Data resources
-                </h3>
+              <div class="vf-card__content | vf-stack vf-stack--400">
+                <h3 class="vf-card__title"><a class="vf-card__link" href="/services">Data resources</a></h3>
                 <p class="vf-card__text">
                   We are working extremely hard to ensure users continue to have access to our data and tools, but some services may experience reduced service or support during this time.
                 </p>
@@ -447,14 +437,12 @@
               </div>
             </article>
             
-            <article class="vf-card  vf-card--very-easy">
+            <article class="vf-card vf-card--primary vf-card--bordered">
               <a href="/training" class="vf-card__image">
                 <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/training-yellow-5.jpg" alt="" class="vf-card__image">
               </a>
-              <div class="vf-card__content">
-                <h3 class="vf-card__title">
-                  Training
-                </h3>
+              <div class="vf-card__content | vf-stack vf-stack--400">
+                <h3 class="vf-card__title"><a class="vf-card__link" href="/training">Training</a></h3>
                 <p class="vf-card__text">
                   EMBL-EBI Training has paused its programme of onsite courses and is running a lively programme of virtual courses and webinars. You can also train anytime using our free elearning courses at Train online.
                 </p>
@@ -464,14 +452,12 @@
               </div>
             </article>
 
-            <article class="vf-card  vf-card--very-easy">
+            <article class="vf-card vf-card--primary vf-card--bordered">
               <a href="/research" class="vf-card__image">
                 <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/research-green-4.jpg" alt="" class="vf-card__image">
               </a>
-              <div class="vf-card__content">
-                <h3 class="vf-card__title">
-                  Research
-                </h3>
+              <div class="vf-card__content | vf-stack vf-stack--400">
+                <h3 class="vf-card__title"><a class="vf-card__link" href="/research">Research</a></h3>
                 <p class="vf-card__text">
                   Research at EMBL-EBI is heavily computational. Our expectation is that our research groups will continue to function as normally, while working from home
                 </p>
@@ -481,14 +467,12 @@
               </div>
             </article>
 
-            <article class="vf-card vf-card--very-easy">
+            <article class="vf-card vf-card--primary vf-card--bordered">
               <a href="/industry" class="vf-card__image">
                 <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/industry-blue-4.jpg" alt="" class="vf-card__image">
               </a>
-              <div class="vf-card__content">
-                <h3 class="vf-card__title">
-                  Industry
-                </h3>
+              <div class="vf-card__content | vf-stack vf-stack--400">
+                <h3 class="vf-card__title"><a class="vf-card__link" href="/industry">Industry</a></h3>
                 <p class="vf-card__text">
                   EMBL-EBI has paused its face-to-face Industry Programme workshops and Quarterly Meetings which continue to be delivered virtually for the remainder of 2020. We encourage all members to participate in virtual Quarterly Meetings.
                 </p>
@@ -503,12 +487,11 @@
       </section>
 
       <!-- Recruitment -->
-      <section class="embl-grid embl-grid--has-centered-content vf-u-padding__top--xl" id="recruitment">
-        <div>
-          <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">
-            Recruitment
-          </h4>
-          <span class="vf-text">Recruiting continues during COVID-19</span>
+      <section class="embl-grid embl-grid--has-centered-content vf-u-padding__top--800" id="recruitment">
+        <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="/about/jobs/" id="section-sub-heading-link-text"> Recruitment <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path>
+            </svg></a>
+          <p class="vf-section-header__text">Recruiting continues during COVID-19</p>
         </div>
         <div class="vf-content">
           <p>As we play our part in tackling the current coronavirus (COVID-19) pandemic, EMBL-EBI’s highest priority is to ensure the continued health and wellbeing of our colleagues and candidates.</p>
@@ -520,12 +503,11 @@
       </section>
 
       <!-- EMBL Response -->
-      <section class="embl-grid embl-grid--has-centered-contentXXX vf-u-padding__top--xl" id="embl-response">
-        <div>
-          <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">
-            EMBL Response
-          </h4>
-          <span class="vf-text">Efforts across EMBL to fight COVID-19 </span>
+      <section class="embl-grid embl-grid--has-centered-contentXXX vf-u-padding__top--800" id="embl-response">
+        <div class="vf-section-header"><a class="vf-section-header__heading vf-section-header__heading--is-link" href="https://www.embl.org/topics/coronavirus/" id="section-sub-heading-link-text"> EMBL Response <svg aria-hidden="true" class="vf-section-header__icon | vf-icon vf-icon-arrow--inline-end" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12S18.627 0 12 0C5.376.008.008 5.376 0 12zm13.707-5.209l4.5 4.5a1 1 0 010 1.414l-4.5 4.5a1 1 0 01-1.414-1.414l2.366-2.367a.25.25 0 00-.177-.424H6a1 1 0 010-2h8.482a.25.25 0 00.177-.427l-2.366-2.368a1 1 0 011.414-1.414z" fill="" fill-rule="nonzero"></path>
+            </svg></a>
+          <p class="vf-section-header__text">Efforts across EMBL to fight COVID-19</p>
         </div>
         <div class="vf-content">
           <div class="vf-section-content">
@@ -558,8 +540,8 @@
 
   <!-- VF 2.0 CSS, JS -->
   <!-- <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.7/css/styles.css" /> -->
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.9/css/styles.css" />
-  <script src="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.9/scripts/scripts.js"></script>
+  <link rel="stylesheet" href="https://assets.emblstatic.net/vf/v2.4.3/css/styles.css" />
+  <script src="https://assets.emblstatic.net/vf/v2.4.3/scripts/scripts.js"></script>
 
   <!-- JavaScript -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
