@@ -82,7 +82,7 @@ validate_dev:
   stage: validate
   script:
     - set -a; source ${CI_PROJECT_DIR}/.env; set +a;
-    - curl -L ${DEV_SITE_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
+    - curl -L "${DEV_SITE_URL}?${CI_COMMIT_SHA}" | cmp ${CI_PROJECT_DIR}/dist/index.html -
   only:
     - master
 
@@ -90,6 +90,6 @@ validate_prod:
   stage: validate
   script:
     - set -a; source ${CI_PROJECT_DIR}/.env; set +a;
-    - curl -L ${PROD_SITE_URL} | cmp ${CI_PROJECT_DIR}/dist/index.html -
+    - curl -L "${PROD_SITE_URL}?${CI_COMMIT_SHA}" | cmp ${CI_PROJECT_DIR}/dist/index.html -
   only:
     - tags
