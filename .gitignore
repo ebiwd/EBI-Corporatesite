@@ -44,3 +44,5 @@ _site
 
 # Junk
 .DS_Store
+.vscode
+.idea
