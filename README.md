@@ -59,34 +59,60 @@ We use semantic versioning style of releases.
 
 More radical changes should be done on a feature branch.
 
-## Developing content
+### Configuring the site
 
-Serve non-optimised `./src/` files from your dev environment:
+- In `package.json` update `vfConfig`
+- In `elevnety.js` update `pathPrefix`
+- Update `./src/site/_data/siteConfig.js`
 
-- `yarn dev`
+Otherwise configure gulp and eleventy as you would for any other project.
 
-## Optimising the pages
+### Developing and adding content
 
-If you wish to test the optimisation process on your local machine, here's what you need to do:
+1. You'll need to [install npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+1. If you don't have `yarn`, install it
+   - https://yarnpkg.com/lang/en/docs/install/
+1. Install all the things
+   - `yarn install`
+1. Generate the site in `/build`
+   - `gulp dev` renders and serves
+   - `gulp build` build static assets
+1. Edit all the things:
+   - pages: `./src/site/`
+   - templates: `.src/site/_includes`
+   - site information: `./src/site/_data`
+   - local css: `./src/scss`
 
-NOTE: Only developers would have the need do this.
+### Adding Visual Framework components
 
-1. Clone the repo
-2. If you're using npm:
-  - Install the npm instance: `yarn install`
-  - Run the default gulp script: `yarn build`
-3. If you're using Docker:
-  - `docker run -it --rm -v $PWD:/workspace -w /workspace simonvanderveldt/node-bower-gulp:6 bash -c 'npm install --quiet && gulp'`
+To add a component you can use Yarn or install it manually.
 
-### What the optimisations get you
+In either case you'll need to re-run `gulp dev` to ensure the component is fully loaded.
 
-As measured with [WebPagetest](https://www.webpagetest.org):
+#### By package
 
-[![alt text](assets/readme/performance-timings.png "Performance timings")](https://www.webpagetest.org/video/compare.php?tests=170508_5G_bbac80592e8a6982bb442dfce733f626,170508_66_5c3bd9d66aeb872d713be241f738dba4,170508_4X_18331d7513ef3beae9ddbfec1c8eaf0a)
+- installation: `yarn add @visual-framework/vf-logo`
+- updating components: `yarn upgrade-interactive --latest`
+  - alias: `yarn run update-components`
 
-A comparison of the above two URLs. [View the more detailed report](https://www.webpagetest.org/video/compare.php?tests=170508_5G_bbac80592e8a6982bb442dfce733f626,170508_66_5c3bd9d66aeb872d713be241f738dba4,170508_4X_18331d7513ef3beae9ddbfec1c8eaf0a)
+#### Manual installation for customisation
 
-### To do?
+1. Download a pattern
+2. Copy it to `./src/components/vf-component-name`
 
-- Handlebars optimisations?
-- Concat all external css/js?
+#### Create your own local component
+
+You can add a custom VF-compatible component to `./src/components` and use it in
+your site.
+
+- `gulp vf-component`
+
+You'll find a `vf-sample` component already placed in `./src/components`
+
+### Footnotes
+
+- Why `yarn` and not `npm`?
+  For the particular structure of the Visual Framework components, Yarn is considerably
+  faster at installing and does so more efficiently (about half the total file size). You'll
+  also be able to use `yarn upgrade-interactive --latest`, which makes it easier to update
+  VF components.
