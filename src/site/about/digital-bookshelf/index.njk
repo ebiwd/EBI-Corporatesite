@@ -1,0 +1,502 @@
+---
+subtitle: No homepage, yet.
+date: 2018-08-22 12:24:50
+layout: layouts/full.njk
+templateEngineOverride: njk
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Digital bookshelf | European Bioinformatics Institute</title>
+  <meta name="description" content="EMBL-EBI" /><!-- Describe what this page is about -->
+  <meta name="keywords" content="bioinformatics, europe, institute" /><!-- A few keywords that relate to the content of THIS PAGE (not the whol project) -->
+  <meta name="author" content="EMBL-EBI" /><!-- Your [project-name] here -->
+  <meta name="HandheldFriendly" content="true" />
+  <meta name="MobileOptimized" content="width" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#70BDBD" /> <!-- Android Chrome mobile browser tab color -->
+
+  <!-- Add information on the life cycle of this page -->
+  <meta name="ebi:owner" content="External Relations" /> <!-- Who should be contacted about changes -->
+  <meta name="ebi:review-cycle" content="90" /> <!-- In days, how often should the content be reviewed -->
+  <meta name="ebi:last-review" content="2018-04-09" /> <!-- The last time the content was reviewed -->
+
+  <!-- If you link to any other sites frequently, consider optimising performance with a DNS prefetch -->
+  <link rel="dns-prefetch" href="//www.ebi.ac.uk" />
+
+  <!-- If you have custom icon, replace these as appropriate.
+       You can generate them at realfavicongenerator.net -->
+  <link rel="icon" type="image/x-icon" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/favicon.ico" />
+  <link rel="icon" type="image/png" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="192×192" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/android-chrome-192x192.png" /> <!-- Android (192px) -->
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-114x114.png" /> <!-- For iPhone 4 Retina display (114px) -->
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-72x72.png" /> <!-- For iPad (72px) -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-144x144.png" /> <!-- For iPad retinat (144px) -->
+  <link rel="apple-touch-icon-precomposed" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-57x57.png" /> <!-- For iPhone (57px) -->
+  <link rel="mask-icon" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/safari-pinned-tab.svg" color="#ffffff" /> <!-- Safari icon for pinned tab -->
+  <meta name="msapplication-TileColor" content="#2b5797" /> <!-- MS Icons -->
+  <meta name="msapplication-TileImage" content="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/mstile-144x144.png" />
+
+  <!-- CSS: implied media=all -->
+  <!-- CSS concatenated and minified via ant build script-->
+  <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css" type="text/css" media="all" />
+  <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css" media="all" />
+
+  <!-- Use this CSS file for any custom styling -->
+  <!--
+    <link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
+  -->
+
+  <meta name="ebi:masthead-color" content="#000000" />
+  <meta name="ebi:masthead-image" content="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.1/images/backgrounds/embl-ebi-background-4.jpg" !inline />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="@emblebi" />
+  <meta name="twitter:site:id" content="123582098" />
+  <meta name="twitter:creator" content="@emblebi" />
+  <meta name="twitter:creator:id" content="123582098" />
+  <meta name="twitter:title" content="EMBL-EBI Digital Bookshelf" />
+  <meta name="twitter:url" content="http://www.ebi.ac.uk/about/digital-bookshelf" />
+  <meta name="twitter:description" content="Download our latest publications and annual reports" />
+
+
+  <!-- you can replace this with theme-[projectname].css. See http://www.ebi.ac.uk/web/style/colour for details of how to do this -->
+  <!-- also inform ES so we can host your colour palette file -->
+  <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/theme-embl-petrol.css" type="text/css" media="all" />
+  <!-- end CSS-->
+</head>
+
+<body class="level2 embl-compatibility-ebivf  ebi-vf1-integration"><!-- add any of your classes or IDs -->
+  <div id="skip-to">
+    <ul>
+      <li><a href="#content">Skip to main content</a></li>
+      <li><a href="#local-nav">Skip to local navigation</a></li>
+      <li><a href="#global-nav">Skip to EBI global navigation menu</a></li>
+      <li><a href="#global-nav-expanded">Skip to expanded EBI global navigation menu (includes all sub-sections)</a></li>
+    </ul>
+  </div>
+
+  <header id="masthead-black-bar" class="clearfix masthead-black-bar">
+    <nav class="row">
+      <ul id="global-nav" class="menu">
+        <!-- set active class as appropriate -->
+        <li class="home-mobile"><a href="//www.ebi.ac.uk"></a></li>
+        <li class="home"><a href="//www.ebi.ac.uk">EMBL-EBI</a></li>
+        <li class="services"><a href="//www.ebi.ac.uk/services">Services</a></li>
+        <li class="research"><a href="//www.ebi.ac.uk/research">Research</a></li>
+        <li class="training"><a href="//www.ebi.ac.uk/training">Training</a></li>
+        <li class="about active"><a href="//www.ebi.ac.uk/about">About us</a></li>
+        <li class="search">
+          <a href="#" data-toggle="search-global-dropdown"><span class="show-for-small-only">Search</span></a>
+          <div id="search-global-dropdown" class="dropdown-pane" data-dropdown data-options="closeOnClick:true;">
+          <!-- The dropdown menu will be programatically added by script.js -->
+          </div>
+        </li>
+        <li class="float-right show-for-medium embl-selector">
+          <button class="button float-right" type="button" data-toggle="embl-dropdown">Hinxton</button>
+          <!-- The dropdown menu will be programatically added by script.js -->
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <div data-sticky-container>
+    <header id="masthead" class="masthead" data-sticky data-sticky-on="large" data-top-anchor="content:top" data-btm-anchor="content:bottom">
+      <div class="masthead-inner row">
+        <!-- local-title -->
+        <div class="columns medium-12" id="local-title">
+          <h1><a href="/about" title="Back to About us">About us</a></h1>
+        </div>
+        <!-- /local-title -->
+        <!-- local-nav -->
+        <nav>
+          <ul id="local-nav" class="dropdown menu float-left" data-description="navigational">
+            <li class=" first"><a href="/about">Overview</a></li>
+            <li class=""><a href="/about/jobs" title="Opportunities at EMBL-EBI">Jobs</a></li>
+            <li class=""><a href="/about/people" title="Staff directory">People &amp; groups</a></li>
+            <li class=""><a href="/about/news" title="">News</a></li>
+            <li class=""><a href="/about/events">Events</a></li>
+            <li class=" active-trail last active"><a href="/about/contact" title="Contact External Relations" class="active-trail active">Contact us</a></li>
+          </ul>
+        </nav>
+        <!-- /local-nav -->
+      </div>
+    </header>
+  </div>
+  <div id="content">
+    <!-- Suggested layout containers -->
+    <section id="main-content-area" class="" role="main">
+
+      <!--.l-main -->
+      <main id="main-content-area" role="main" class="row l-main">
+
+        <div class="secondary-menu vf-u-padding__top--sm">
+          <div class="menu-block-wrapper menu-block-4 menu-name-main-menu parent-mlid-0 menu-level-3">
+          <ul class="menu menu-tree-menu"><li class="first leaf has-children menu-mlid-3057"><a href="/about/leadership" title="Leadership and guidance structure">Leadership</a></li>
+          <li class="leaf menu-mlid-3075"><a href="/about/funding" title="Funding of EMBL-EBI">Funding</a></li>
+          <li class="leaf menu-mlid-3079"><a href="/about/background" title="History of EMBL-EBI">Background</a></li>
+          <li class="leaf has-children menu-mlid-3076"><a href="/about/collaborations" title="EMBL-EBI partnerships">Collaborations</a></li>
+          <li class="leaf has-children "><a href="/about/our-impact" title="Impact: reports, facts and figures" class="">Our impact</a></li>
+          <li class="leaf has-children active-trail active menu-mlid-14438"><a href="/about/digital-bookshelf" title="Digital bookshelf" class="active-trail active">Digital Bookshelf</a></li>
+          <li class="last leaf has-children menu-mlid-14440"><a href="/about/equality-in-science">Equality and Diversity</a></li>
+          </ul></div>
+        </div>
+
+      <!-- Beta banner -->
+      <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=9102&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+
+      <!-- Intro -->
+      <section class="vf-intro | embl-grid embl-grid--has-centered-content vf-u-padding__top--xxl">
+        <div>
+          <!-- empty -->
+        </div>
+        <div>
+          <h1 class="black-color vf-intro__heading">EMBL-EBI Digital Bookshelf</h1>
+
+          <p class="vf-lede">Want to learn more about EMBL-EBI? Download our latest publications and annual reports below.</p>
+
+          <p class="vf-intro__text">Want to stay updated? <a href="https://us9.list-manage.com/subscribe?u=d50725c1556266fd605025eaf&amp;id=3f8f2f09da" class="vf-link">Subscribe to EMBL-EBI publications</a>.</p>
+        </div>
+      </section>
+
+
+
+      <style>
+      body .vf-card {
+        grid-template-rows: 138px repeat(6, 36px);
+      }
+      body .vf-card__image {
+        /* this works better when a square-ish image cover needs to be cropped */
+        object-position: bottom;
+      }
+      body .vf-card__image.vf-card__image-top {
+        /* this works better when a square-ish image cover needs to be cropped */
+        object-position: top;
+      }
+      </style>
+
+      <!-- IE11 fixes -->
+      <style>
+      @media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: none) {
+        body .vf-card {
+          max-width: 22%;
+          min-width: 22%;
+        }
+
+        body .vf-card__image {
+          height: auto;
+        }
+      }
+      </style>
+
+      <!-- About EBI -->
+      <section class="embl-grid embl-grid--has-centered-content">
+      <div>
+        <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--">About EMBL-EBI</h4>
+      </div>
+      <div class="vf-content">
+
+        <section class="vf-grid vf-grid__col-3">
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Overview-2018.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Overview-2018.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <h3 class="vf-card__title">
+                EMBL-EBI Overview
+              </h3>
+              <p class="vf-card__text">
+                A brief overview of what EMBL-EBI does and why this matters.
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/Innovation_and_translation-2019.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/Innovation_and_translation-2019.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <h3 class="vf-card__title">
+                Innovation <span class="nowrap">and Translation</span>
+              </h3>
+              <p class="vf-card__text">
+                An outline of the practical applications and innovations enabled by EMBL-EBI data resources.
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/Industry_Programme-2018.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/Industry_Programme-2018.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <h3 class="vf-card__title">
+                Industry Programme
+              </h3>
+              <p class="vf-card__text">
+                Existing and potential collaborations with the private sector.
+              </p>
+            </div>
+          </a>
+
+        </section>
+      </div>
+      <div><!-- empty --></div>
+      </section>
+
+      <br/><br/><br/><br/>
+      <hr/>
+
+
+      <!-- Scientific reports -->
+      <section class="embl-grid embl-grid--has-centered-content">
+      <div>
+        <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--"><span class="nowrap">Annual reports</span></h4>
+      </div>
+      <div class="vf-content">
+
+        <p class="">Our Annual Report highlights the institute’s latest achievements, providing facts and figures about our data resources, research, training and staff.</p>
+
+        <section class="vf-grid vf-grid__col-3">
+
+          <a href="//www.embl.org/documents/wp-content/uploads/2020/11/EMBL-EBI_Annual-Report_2019.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/documents/wp-content/uploads/2020/11/EMBL-EBI_Annual-Report_2019.pdf?width=270&height=200&func=crop&gravity=north" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Our most recent Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2018.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2018.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2018 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2017.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2017.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2017 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2016.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2016.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2016 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2015.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2015.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2015 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2014.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2014.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2014 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2013.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2013.jpg" !inline alt="Download the report" class="vf-card__image" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2013 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2012.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2012.jpg" !inline alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2012 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2011.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2011.jpg" !inline alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2011 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2010.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2010.jpg" !inline alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2010 Annual report
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2009.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Scientific_Report-2009.jpg" !inline alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the EMBL-EBI 2009 Annual report
+              </p>
+            </div>
+          </a>
+
+
+        </section>
+
+        <p class="vf-summary__text vf-text-body--">
+          These reports compliment the <a href="https://www.embl.de/aboutus/communication_outreach/publications/annual_report/">EMBL Annual Reports</a>, which provide an overview of achievements at all EMBL sites.
+        </p>
+      </div>
+      <div><!-- empty --></div>
+      </section>
+
+      <hr/>
+
+      <!-- Beagrie Report -->
+      <section class="embl-grid embl-grid--has-centered-content">
+      <div>
+        <h4 class="vf-text vf-text-heading--3 vf-u-margin__top--"> <span class="nowrap">Impact Report</span></h4>
+      </div>
+      <div class="vf-content">
+
+        <p>In 2015 we worked with a management consultancy, Charles Beagrie Ltd., to facilitate a large-scale, economic analysis of the institute’s impact on research practice and the global economy.</p>
+
+        <section class="vf-grid vf-grid__col-3">
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Impact_report-2016-summary.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Impact_report-2016-summary.jpg" !inline alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the executive summary
+              </p>
+            </div>
+          </a>
+
+          <a href="https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Impact_report-2016.pdf" class="vf-card -card--navigation">
+            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/EMBL-EBI_Impact_report-2016.jpg" !inline alt="Download the report" class="vf-card__image vf-card__image-top" style="border: 1px solid rgba(0,0,0,.2)">
+            <div class="vf-card__content">
+              <!-- <h3 class="vf-card__title">
+                Report 2017
+              </h3> -->
+              <p class="vf-card__text">
+                Download the full report
+              </p>
+            </div>
+          </a>
+
+        </section>
+      </div>
+      <div><!-- empty --></div>
+      </section>
+
+
+      <!-- END VF 2.0 -->
+
+      </main>
+      <!--/.l-main -->
+
+      <!--.l-footer -->
+      <footer>
+      <div id="global-footer" class="global-footer">
+      <nav id="global-nav-expanded" class="global-nav-expanded row">
+      <!-- Footer will be automatically inserted by footer.js -->
+      </nav>
+      <section id="ebi-footer-meta" class="ebi-footer-meta row">
+      <!-- Footer meta will be automatically inserted by footer.js -->
+      </section>
+      </div>
+
+    </section>
+    <!-- Optional local footer (insert citation / project-specific copyright / etc here -->
+    <!--
+    <footer id="local-footer" class="local-footer" role="local-footer">
+      <div class="row">
+        <span class="reference">How to reference this page: ...</span>
+      </div>
+    </footer>
+    -->
+    <!-- End optional local footer -->
+  </div>
+  <!-- End suggested layout containers / #content -->
+
+  <footer>
+    <div id="global-footer" class="global-footer">
+      <nav id="global-nav-expanded" class="global-nav-expanded row">
+        <!-- Footer will be automatically inserted by footer.js -->
+      </nav>
+      <section id="ebi-footer-meta" class="ebi-footer-meta row">
+        <!-- Footer meta will be automatically inserted by footer.js -->
+      </section>
+    </div>
+  </footer>
+
+  <!-- VF 2.0 CSS, JS -->
+  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.2/css/styles.css" />
+  <script src="https://dev.assets.emblstatic.net/embl-design-system/develop/scripts/scripts.js"></script>
+
+  <!-- JavaScript -->
+  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+  <!--
+  <script>window.jQuery || document.write('<script src="../js/libs/jquery-1.10.2.min.js"><\/script>')</script>
+  -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script defer="defer" src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/js/script.js"></script>
+
+  <!-- The Foundation theme JavaScript -->
+  <script src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/libraries/foundation-6/js/foundation.js"></script>
+  <script src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/js/foundationExtendEBI.js"></script>
+  <script type="text/JavaScript">$(document).foundation();</script>
+  <script type="text/JavaScript">$(document).foundationExtendEBI();</script>
+
+  <!-- Google Analytics details... -->
+  <script type="text/javascript">!function(e,a,n,t,i,o,c){e.GoogleAnalyticsObject=i,e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},e[i].l=1*new Date,o=a.createElement(n),c=a.getElementsByTagName(n)[0],o.async=1,o.src="//www.google-analytics.com/analytics.js",c.parentNode.insertBefore(o,c)}(window,document,"script",0,"ga"),ga("create","UA-629242-1",{cookieDomain:"auto"}),ga("require","linkid","linkid.js"),ga("set","anonymizeIp",!0),ga("send","pageview");</script>
+</body>
+</html>
