@@ -33,8 +33,8 @@ Source files are in /src, they map like so:
 ```
           Source                      Optimised                    Deployed
           ------                      ---------                    --------
-Front:    src/index.html           >  dist/index.html           >  www.ebi.ac.uk/
-Training: src/training/index.html  >  dist/training/index.html  >  www.ebi.ac.uk/training
+Front:    src/index.html           >  build/index.html           >  www.ebi.ac.uk/
+Training: src/training/index.html  >  build/training/index.html  >  www.ebi.ac.uk/training
 ```
 
 ## Use of branches

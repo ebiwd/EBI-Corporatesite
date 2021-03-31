@@ -17,16 +17,16 @@ gulp.task('watch', function() {
 });
 
 gulp.task('apache-config', function(cb) {
-  const fileName = 'dist/.htaccess';
+  const fileName = 'build/.htaccess';
   const endOfLine = '\r\n';
   require('fs').writeFileSync(fileName, '# Static page mappings built with gulp');
   require('fs').appendFileSync(fileName, endOfLine); // new line
   require('fs').appendFileSync(fileName, 'AddOutputFilterByType DEFLATE text/html');
   require('fs').appendFileSync(fileName, endOfLine); // new line
   require('fs').appendFileSync(fileName, 'RewriteCond %{QUERY_STRING} !(^|&)q=');
-  return gulp.src(['dist/*.{html,jpg,png,gif,pdf,mp4}','dist/**/*.{html,svg,jpg,png,gif,pdf,mp4}'])
+  return gulp.src(['build/*.{html,jpg,png,gif,pdf,mp4}','build/**/*.{html,svg,jpg,png,gif,pdf,mp4}'])
     .pipe(through.obj(function (file, enc, cb) {
-      const localFilePath = file.path.split('/dist/')[1];
+      const localFilePath = file.path.split('/build/')[1];
       gutil.log(gutil.colors.green('Mapping:',localFilePath));
       require('fs').appendFileSync(fileName, endOfLine); // new line
       require('fs').appendFileSync(fileName, 'RewriteRule ^/'+localFilePath.split('index.htm')[0]+'?$ /staticpages/'+localFilePath+' [L]');

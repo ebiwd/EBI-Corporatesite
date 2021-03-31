@@ -1,6 +1,6 @@
 {
   "name": "EBI-Corporatesite",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Static pages for the main www.ebi.ac.uk site",
   "main": "gulpfile.js",
   "vfConfig": {

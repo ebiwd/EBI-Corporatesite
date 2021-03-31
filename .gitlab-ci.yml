@@ -28,7 +28,7 @@ build:
       - node_modules
   artifacts:
     paths:
-      - dist
+      - build
 
 test:
   stage: test
@@ -36,9 +36,9 @@ test:
     - docker
   script:
     # test .htaccess has been generated
-    - if [ ! -f ${CI_PROJECT_DIR}/dist/.htaccess ]; then echo "Missing .htaccess"; exit 1; fi
+    - if [ ! -f ${CI_PROJECT_DIR}/build/.htaccess ]; then echo "Missing .htaccess"; exit 1; fi
     # test index.html has been generated
-    - if [ ! -f ${CI_PROJECT_DIR}/dist/index.html ]; then echo "Missing index.html"; exit 1; fi
+    - if [ ! -f ${CI_PROJECT_DIR}/build/index.html ]; then echo "Missing index.html"; exit 1; fi
 
 # setup ssh keys
 .deploy_template: &deploy
@@ -82,7 +82,7 @@ validate_dev:
   stage: validate
   script:
     - set -a; source ${CI_PROJECT_DIR}/.env; set +a;
-    - curl -L "${DEV_SITE_URL}?${CI_COMMIT_SHA}" | cmp ${CI_PROJECT_DIR}/dist/index.html -
+    - curl -L "${DEV_SITE_URL}?${CI_COMMIT_SHA}" | cmp ${CI_PROJECT_DIR}/build/index.html -
   only:
     - master
 
@@ -90,6 +90,6 @@ validate_prod:
   stage: validate
   script:
     - set -a; source ${CI_PROJECT_DIR}/.env; set +a;
-    - curl -L "${PROD_SITE_URL}?${CI_COMMIT_SHA}" | cmp ${CI_PROJECT_DIR}/dist/index.html -
+    - curl -L "${PROD_SITE_URL}?${CI_COMMIT_SHA}" | cmp ${CI_PROJECT_DIR}/build/index.html -
   only:
     - tags
