@@ -64,3 +64,8 @@ gulp.task('dev', gulp.series(
   'eleventy:develop',
   gulp.parallel('watch','vf-watch')
 ));
+
+// Build it all
+gulp.task('default', gulp.series(
+  'build'
+));
