@@ -66,7 +66,7 @@ templateEngineOverride: njk
   <!-- end CSS-->
 </head>
 
-<body class="level2 embl-compatibility-ebivf  ebi-vf1-integration"><!-- add any of your classes or IDs -->
+<body class="level2 ebi-vf1-integration"><!-- add any of your classes or IDs -->
   <div id="skip-to">
     <ul>
       <li><a href="#content">Skip to main content</a></li>
@@ -220,46 +220,44 @@ templateEngineOverride: njk
         </div>
         <div class="vf-grid vf-grid__col-3 tackle">
           <style>
-          .tackle .vf-card {
+          {# .tackle .vf-card {
             grid-template-rows: 170px 1fr
-          }
+          } #}
           </style>
-          <article class="vf-card">
-            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/covid19_portal_banner_transparent3.png?func=crop&w=500&h=460" alt="Image alt text" class="vf-card__image" loading="lazy">
-            <div class="vf-card__content | vf-stack vf-stack--400">
-              <h3 class="vf-card__title"><a class="vf-card__link" href="https://www.covid19dataportal.org/">COVID-19 Data Portal</a></h3>
-              <p class="vf-card__text">We have launched a collaborative space for sharing and analysing COVID-19 related data.</p>
-              <p class="vf-card__text">
-                <a class="vf-button vf-button--primary vf-button--sm" href="https://www.covid19dataportal.org/">Explore</a> 
-              </p>
-            </div>
-          </article>
-                        
-          <article class="vf-card">
-            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/covid19-portal-norway.jpg" alt="YouTube video image" class="vf-card__image" loading="lazy">
-            <div class="vf-card__content | vf-stack vf-stack--400">
-              <h3 class="vf-card__title"><a class="vf-card__link" href="http://www.youtube.com/watch?v=iYHCrwxb0pk&feature=emb_logo">COVID-19 data sharing: National efforts</a></h3>
-              <p class="vf-card__text">Building on the COVID-19 Data Portal, a number of countries have launched their own national portals.</p>
-              <p class="vf-card__text">
-                <a class="vf-button vf-button--primary vf-button--sm" href="http://www.youtube.com/watch?v=iYHCrwxb0pk&feature=emb_logo">Watch the video</a> 
-              </p>
-            </div>
-          </article>
-
-          <article class="vf-card">
-            <img src="https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/CABANA_group02438.jpg" alt="EMBL-EBI staff" class="vf-card__image" loading="lazy">
-            <div class="vf-card__content | vf-stack vf-stack--400">
-              <h3 class="vf-card__title"><a class="vf-card__link" href="mailto:virus-dataflow@ebi.ac.uk">Become a collaborator</a></h3>
-              <p class="vf-card__text">Interested in getting involved in the COVID-19 Data Portal?</p>
-              <p class="vf-card__text">
-                <a class="vf-button vf-button--primary vf-button--sm" href="mailto:virus-dataflow@ebi.ac.uk">Contact us</a> 
-              </p>
-            </div>
-          </article>
+          {% render '@vf-card', {
+            "card_heading": "COVID-19 Data Portal",
+            "card_subheading": "",
+            "variant": "bordered",
+            "newTheme": "primary",
+            "card_href": "https://www.covid19dataportal.org",
+            "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/2020/04/covid19_portal_banner_transparent3.png?func=crop&w=500&h=300",
+            "card_text": "We have launched a collaborative space for sharing and analysing COVID-19 related data.",
+            "card_image__alt": "COVID-19"
+          } %}
+          {% render '@vf-card', {
+            "card_heading": "COVID-19 data sharing: National efforts",
+            "card_subheading": "",
+            "variant": "bordered",
+            "newTheme": "primary",
+            "card_href": "http://www.youtube.com/watch?v=iYHCrwxb0pk&feature=emb_logo",
+            "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/covid19-portal-norway.jpg",
+            "card_text": "Building on the COVID-19 Data Portal, a number of countries have launched their own national portals. Watch the video.",
+            "card_image__alt": "YouTube video image"
+          } %}
+          {% render '@vf-card', {
+            "card_heading": "Become a collaborator",
+            "card_subheading": "",
+            "variant": "bordered",
+            "newTheme": "primary",
+            "card_href": "mailto:virus-dataflow@ebi.ac.uk",
+            "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/CABANA_group02438.jpg",
+            "card_text": "Interested in getting involved in the COVID-19 Data Portal? Contact us.",
+            "card_image__alt": "EMBL-EBI staff"
+          } %}
         </div>
       </section>
 
-      <style>
+      {# <style>
       .vf-card__image {
         /* this works better when a square-ish image cover needs to be cropped */
         object-position: bottom;
@@ -284,7 +282,7 @@ templateEngineOverride: njk
       .ebi-vf1-integration .vf-button--primary.vf-button--outline:hover, .ebi-vf1-integration .vf-button--primary.vf-button--outline:visited {
         color: var(--vf-button-border-color) !important;
       }
-      </style>
+      </style> #}
   
       <!-- Collaborations and publications -->
       <section class="embl-grid embl-grid--has-sidebar" id="collaborations">
@@ -341,8 +339,8 @@ templateEngineOverride: njk
             <li><a href="https://www.ebi.ac.uk/chembl/">ChEMBL SARS-CoV-2 data</a></li>
             <li><a href="https://www.ebi.ac.uk/intact/query/annot:%22dataset:coronavirus%22">IntAct coronavirus dataset</a></li>
             <li><a href="https://www.ebi.ac.uk/complexportal/complex/CPX-5683">Complex Portal dataset</a></li>
-            <li><a href="https://reactome.org/about/news/161-version-74-released">SARS-CoV-2 infection pathways in Reactome</li>
-            <li><a href="https://www.ebi.ac.uk/gxa/sc/experiments?experimentProjects=%22Covid-19%22">Gene expression in SARS-Cov-2</li>
+            <li><a href="https://reactome.org/about/news/161-version-74-released">SARS-CoV-2 infection pathways in Reactome</a></li>
+            <li><a href="https://www.ebi.ac.uk/gxa/sc/experiments?experimentProjects=%22Covid-19%22">Gene expression in SARS-Cov-2</a></li>
           </ul>
           <br/>
         </div>
@@ -350,12 +348,9 @@ templateEngineOverride: njk
 
       <!-- Additional resources -->
       <section class="embl-grid | vf-u-fullbleed vf-u-background-color--grey--lightest vf-u-padding__top--800 vf-u-padding__bottom--800" id="additional">
-        <div>
           <h4 class="vf-text vf-text-heading--3">
             Additional resources
           </h4>
-          <!-- <span class="vf-text">EMBL-EBI at a glance</span> -->
-        </div>
           <section class="vf-grid vf-grid__col-3">
             <div class="vf-box vf-box-theme--primary vf-box--easy vf-box--is-link">
               <h3 class="vf-box__heading"><a href="https://www.ebi.ac.uk/pdbe/covid-19" class="vf-box__link">PDBe COVID-19 Portal</a></h3>
@@ -391,67 +386,46 @@ templateEngineOverride: njk
         </div>
         <div class="">
           <section class="vf-grid vf-grid__col-2 | ebi-coronavirus-missions">
-
-            <article class="vf-card vf-card--primary vf-card--bordered">
-              <a href="/services" class="vf-card__image">
-                <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/services-green-4.jpg" alt="" class="vf-card__image">
-              </a>
-              <div class="vf-card__content | vf-stack vf-stack--400">
-                <h3 class="vf-card__title"><a class="vf-card__link" href="/services">Data resources</a></h3>
-                <p class="vf-card__text">
-                  We are working extremely hard to ensure users continue to have access to our data and tools, but some services may experience reduced service or support during this time.
-                </p>
-                <p class="vf-card__text">
-                  <a href="/support" class="vf-button vf-button--sm">Contact help desk for support</a>
-                </p>
-              </div>
-            </article>
-            
-            <article class="vf-card vf-card--primary vf-card--bordered">
-              <a href="/training" class="vf-card__image">
-                <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/training-yellow-5.jpg" alt="" class="vf-card__image">
-              </a>
-              <div class="vf-card__content | vf-stack vf-stack--400">
-                <h3 class="vf-card__title"><a class="vf-card__link" href="/training">Training</a></h3>
-                <p class="vf-card__text">
-                  EMBL-EBI Training has paused its programme of onsite courses and is running a lively programme of virtual courses and webinars. You can also train anytime using our free elearning courses at Train online.
-                </p>
-                <p class="vf-card__text">
-                  <a href="/training/online" class="vf-button vf-button--sm">Browse online courses</a>
-                </p>
-              </div>
-            </article>
-
-            <article class="vf-card vf-card--primary vf-card--bordered">
-              <a href="/research" class="vf-card__image">
-                <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/research-green-4.jpg" alt="" class="vf-card__image">
-              </a>
-              <div class="vf-card__content | vf-stack vf-stack--400">
-                <h3 class="vf-card__title"><a class="vf-card__link" href="/research">Research</a></h3>
-                <p class="vf-card__text">
-                  Research at EMBL-EBI is heavily computational. Our expectation is that our research groups will continue to function as normally, while working from home
-                </p>
-                <p class="vf-card__text">
-                  <a href="/research" class="vf-button vf-button--sm">Explore our research</a>
-                </p>
-              </div>
-            </article>
-
-            <article class="vf-card vf-card--primary vf-card--bordered">
-              <a href="/industry" class="vf-card__image">
-                <img src="//www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/industry-blue-4.jpg" alt="" class="vf-card__image">
-              </a>
-              <div class="vf-card__content | vf-stack vf-stack--400">
-                <h3 class="vf-card__title"><a class="vf-card__link" href="/industry">Industry</a></h3>
-                <p class="vf-card__text">
-                  EMBL-EBI is delivering its Industry Programme workshops and Quarterly meetings virtually until further notice.
-                </p>
-                <p class="vf-card__text">
-                  <a href="/industry" class="vf-button vf-button--sm">Explore industry partnerships</a>
-                </p>
-              </div>
-            </article>
-
+            {% render '@vf-card', {
+              "card_heading": "Data resources",
+              "card_subheading": "",
+              "variant": "bordered",
+              "newTheme": "primary",
+              "card_href": "/services",
+              "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/services-green-4.jpg?w=500&h=280&func=crop&gravity=east",
+              "card_text": "We are working extremely hard to ensure users continue to have access to our data and tools, but some services may experience reduced service or support during this time. Contact our help desk for support.",
+              "card_image__alt": "Resources image"
+            } %}
+            {% render '@vf-card', {
+              "card_heading": "Online training course",
+              "card_subheading": "",
+              "variant": "bordered",
+              "newTheme": "primary",
+              "card_href": "/training",
+              "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/training-yellow-5.jpg?w=500&h=280&func=crop&gravity=east",
+              "card_text": "EMBL-EBI Training has paused its programme of onsite courses and is running a lively programme of virtual courses and webinars. You can also train anytime using our free elearning courses at Train online.",
+              "card_image__alt": "Training image"
+            } %}
+            {% render '@vf-card', {
+              "card_heading": "Explore our research",
+              "card_subheading": "",
+              "variant": "bordered",
+              "newTheme": "primary",
+              "card_href": "/research",
+              "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/research-green-4.jpg?w=500&h=280&func=crop&gravity=east",
+              "card_text": "Research at EMBL-EBI is heavily computational. Our expectation is that our research groups will continue to function as normally, while working from home.",
+              "card_image__alt": "Research image"
+            } %}
+            {% render '@vf-card', {
+              "card_heading": "Explore industry partnerships",
+              "card_subheading": "",
+              "variant": "bordered",
+              "newTheme": "primary",
+              "card_href": "/industry",
+              "card_image": "https://acxngcvroo.cloudimg.io/v7/https://www.ebi.ac.uk/web_guidelines/EBI-Framework/v1.1/images/backgrounds/industry-blue-4.jpg?w=500&h=280&func=crop&gravity=east",
+              "card_text": "EMBL-EBI is delivering its Industry Programme workshops and Quarterly meetings virtually until further notice.",
+              "card_image__alt": "Industry image"
+            } %}
           </section>
         </div>
       </section>
@@ -482,7 +456,7 @@ templateEngineOverride: njk
         <div class="vf-content">
           <div class="vf-section-content">
             <div class="embl-content-hub-loader | vf-grid vf-grid__col-3" style="display: block; display: unset;">
-              <link rel="import" href="https://www.embl.org/api/v1/pattern.html?pattern=vf-news-item-default&filter-content-type=article&filter-fields-exists=field_display_publication&sort-field-value[created]=DESC&filter-all-fields=covid&limit=3&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+              <link rel="import" href="https://www.embl.org/api/v1/pattern.html?pattern=vf-news-item-default&filter-content-type=article&filter-fields-exists=field_display_publication&sort-field-value[created]=DESC&filter-all-fields=covid&filter-field-value[field_display_publication]=EMBL%20News&limit=3&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
             </div>
 
             <a href="https://www.embl.org/news/tag/covid-19/" class="vf-button--primary vf-button vf-button--sm">See more news about COVID-19 across EMBL</a>
@@ -509,9 +483,8 @@ templateEngineOverride: njk
   </footer>
 
   <!-- VF 2.0 CSS, JS -->
-  <!-- <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.7/css/styles.css" /> -->
-  <link rel="stylesheet" href="https://assets.emblstatic.net/vf/v2.4.7/css/styles.css" />
-  <script src="https://assets.emblstatic.net/vf/v2.4.7/scripts/scripts.js"></script>
+  <link rel="stylesheet" href="https://assets.emblstatic.net/vf/v2.4.11/css/styles.css" />
+  <script src="https://assets.emblstatic.net/vf/v2.4.11/scripts/scripts.js"></script>
 
   <!-- JavaScript -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
