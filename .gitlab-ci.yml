@@ -21,7 +21,7 @@ build:
   tags:
     - docker
   script:
-    - npm install
+    - yarn install
     - gulp
   cache:
     paths:
