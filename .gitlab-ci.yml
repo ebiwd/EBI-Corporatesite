@@ -21,6 +21,7 @@ build:
   tags:
     - docker
   script:
+    - yarn global add gulp-cli
     - yarn install
     - gulp
   cache:
