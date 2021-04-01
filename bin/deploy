@@ -41,7 +41,7 @@ esac;
 for _SERVER in ${SERVER};
 do
   # copy code to VM
-  rsync -acv --delete-after ${CI_PROJECT_DIR}/dist/. ${SSH_OWNER}@${_SERVER}:${VM_CORE_PATH}/;
+  rsync -acv --delete-after ${CI_PROJECT_DIR}/build/. ${SSH_OWNER}@${_SERVER}:${VM_CORE_PATH}/;
 
   # stop apache, etc
   APACHEVER=$(ssh -tt ${SSH_APACHE}@${_SERVER} '[ -f /bin/systemctl ] && echo -n apache24 || echo -n apache22');

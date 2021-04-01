@@ -1,20 +1,24 @@
+# Deploy to gh-pages
+dist: trusty
 language: node_js
-
 node_js:
-  - 10
+  - 12
+cache: npm
 
-install:
-  - npm install
+stages:
+  - deploy
 
 before_script:
-  - npm install -g gulp
+  - yarn install 
+  - yarn run build
 
-script: gulp
-
-# deploy:
-#   provider: pages
-#   skip_cleanup: true
-#   target_branch: gh-pages
-#   github_token: $GITHUB_TOKEN # Set in travis-ci.org dashboard
-#   on:
-#     branch: master
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN #https://docs.travis-ci.com/user/deployment/pages/
+  keep-history: true
+  target-branch: gh-pages
+  local-dir: build
+  on:
+    branch:
+      - master

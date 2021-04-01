@@ -38,6 +38,8 @@ jspm_packages
 
 # Build files
 dist
+build
+temp
 
 # Jekyll
 _site
