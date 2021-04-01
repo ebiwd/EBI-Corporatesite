@@ -1,4 +1,4 @@
-image: ebiwd/alpine-ssh:3.6
+image: node:12.21.0
 
 #project specific variables can be defined here, or overridden project settings
 variables:
@@ -17,10 +17,10 @@ stages:
 
 build:
   stage: build
-  image: ebiwd/node-bower-gulp:10
   tags:
     - docker
   script:
+    - yarn global add gulp-cli
     - yarn install
     - gulp
   cache:
