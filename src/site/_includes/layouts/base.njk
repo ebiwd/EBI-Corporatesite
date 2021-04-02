@@ -39,16 +39,9 @@
     <meta name="msapplication-TileColor" content="#2b5797" /> <!-- MS Icons -->
     <meta name="msapplication-TileImage" content="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/mstile-144x144.png" />
 
-    <!-- CSS: implied media=all -->
-    <!-- CSS concatenated and minified via ant build script-->
-
-    <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="https://dev.ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.2/fonts.css" type="text/css" media="all" />
-
-    <!-- Use this CSS file for any custom styling -->
-    <!--
-      <link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
-    -->
+    <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/css/ebi-global.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://assets.emblstatic.net/vf/v2.4.11/css/styles.css" />
 
     <!-- If you have a custom header image or colour -->
     <!--
@@ -56,24 +49,20 @@
     <meta name="ebi:masthead-image" content="//www.ebi.ac.uk/web_guidelines/EBI-Framework/images/backgrounds/embl-ebi-background.jpg" />
     -->
 
-    <!-- you can replace this with theme-[projectname].css. See http://www.ebi.ac.uk/web/style/colour for details of how to do this -->
-    <!-- also inform ES so we can host your colour palette file -->
-    <!-- <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/theme-embl-petrol.css" type="text/css" media="all" /> -->
+    <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/theme-embl-petrol.css" type="text/css" media="all" />
     <!-- end CSS-->
-
-
   </head>
-  <body class="{{ bodyClass }}">
+  <body class="{{ bodyClass }} ebi-vf1-integration">
     <header id="masthead-black-bar" class="clearfix masthead-black-bar">
     </header>
 
     <div id="content">
-      <div data-sticky-container>
+      {# <div data-sticky-container>
         <header id="masthead" class="masthead" data-sticky data-sticky-on="large" data-top-anchor="content:top" data-btm-anchor="content:bottom">
           <div class="masthead-inner row">
             <!-- local-title -->
             <div class="columns medium-12" id="local-title">
-              <h1><a href="../../" title="Back to [service-name] homepage">EBI Framework</a></h1>
+              <h1><a href="../../" title="Back to the EMBL-EBI homepage">EMBL-EBI</a></h1>
             </div>
             <!-- /local-title -->
             <!-- local-nav -->
@@ -87,19 +76,19 @@
             <!-- /local-nav -->
           </div>
         </header>
-      </div>
+      </div> #}
       <!-- Suggested layout containers -->
       <section id="main-content-area" class="row" role="main">
-        <!-- Your menu structure should make a breadcrumb redundant, but if a breadcrump is needed uncomment the below -->
+        {# <!-- Your menu structure should make a breadcrumb redundant, but if a breadcrump is needed uncomment the below -->
         <nav aria-label="You are here:" role="navigation">
           <ul class="breadcrumbs columns">
-            <li><a href="../../">EBI Framework</a></li>
+            <li><a href="../../">EMBL-EBI</a></li>
             <li><a href="../">Sample pages</a></li>
             <li>
               <span class="show-for-sr">Current: </span> Blank boilerplate
             </li>
           </ul>
-        </nav>
+        </nav> #}
 
         <div class="columns">
           <div class="vf-grid">
@@ -122,7 +111,7 @@
     </div>
     <!-- End suggested layout containers / #content -->
 
-
+    {% include "footer-js.njk" %}
     {% include "footer.njk" %}
   </body>
 </html>
