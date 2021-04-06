@@ -47,7 +47,6 @@ templateEngineOverride: njk
   <!--
     <link rel="stylesheet" href="css/custom.css" type="text/css" media="all" />
   -->
-
   <meta name="ebi:masthead-color" content="#000000" />
   <meta name="ebi:masthead-image" content="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.1/images/backgrounds/embl-ebi-background-4.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -59,14 +58,13 @@ templateEngineOverride: njk
   <meta name="twitter:url" content="https://www.ebi.ac.uk/about/our-impact" />
   <meta name="twitter:description" content="Read about the impact of EMBL-EBI on society and the economy: reports, facts and figures" />
 
-
   <!-- you can replace this with theme-[projectname].css. See http://www.ebi.ac.uk/web/style/colour for details of how to do this -->
   <!-- also inform ES so we can host your colour palette file -->
   <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/theme-embl-petrol.css" type="text/css" media="all" />
   <!-- end CSS-->
 </head>
 
-<body class="level2  ebi-vf1-integration"><!-- add any of your classes or IDs -->
+<body class="ebi-vf1-integration"><!-- add any of your classes or IDs -->
   <div id="skip-to">
     <ul>
       <li><a href="#content">Skip to main content</a></li>
@@ -138,11 +136,10 @@ templateEngineOverride: njk
 
       <!-- Content updates https://docs.google.com/document/d/1jzdtrkrA6TLC6oG2VipOKA6NqYo-pbu9Wf3ptsJDzMI/edit -->
 
-
       <!--.l-main -->
       <main id="main-content-area" role="main" class="row l-main">
 
-        <div class="secondary-menu vf-u-padding__top--sm">
+        <div class="secondary-menu vf-u-padding__top--400">
           <div class="menu-block-wrapper menu-block-4 menu-name-main-menu parent-mlid-0 menu-level-3">
           <ul class="menu menu-tree-menu"><li class="first leaf has-children menu-mlid-3057"><a href="/about/leadership" title="Leadership and guidance structure">Leadership</a></li>
           <li class="leaf menu-mlid-3075"><a href="/about/funding" title="Funding of EMBL-EBI">Funding</a></li>
@@ -157,9 +154,8 @@ templateEngineOverride: njk
       <!-- Beta banner -->
       <!-- <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=9102&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader> -->
 
-
       <!-- Intro -->
-      <section class="vf-intro | embl-grid embl-grid--has-centered-content | row">
+      <section class="vf-intro | embl-grid embl-grid--has-centered-content">
         <div>
           <!-- empty -->
         </div>
@@ -173,13 +169,6 @@ templateEngineOverride: njk
           <p class="vf-intro__text">We develop databases, tools and software that make it possible to align, verify and visualise the diverse data produced in publicly-funded research, and make that information freely available to all.</p>
         </div>
       </section>
-
-      <style>
-        body .vf-intro {
-          margin-bottom: 75px;
-        }
-
-      </style>
 
       <!-- Navigation -->
       <section class="embl-grid">
@@ -235,36 +224,6 @@ templateEngineOverride: njk
         </div>
       <div class="">
         <section class="vf-grid vf-grid__col-2">
-          <!-- <div class="vf-card vf-card--by-the-numbers">
-            <div class="vf-card__image vf-u-background-color--blueX">
-              <i class="icon icon-common icon-analyse"></i>
-
-              <h3 class="vf-card__title">
-                20 <br/>million
-              </h3>
-              <p class="vf-card__text">
-                unique IP addresses accessed EMBL-EBI websites in 2018
-              </p>
-            </div>
-            <div class="vf-card__content">
-            </div>
-          </div> -->
-
-          <!-- <div class="vf-card vf-card--by-the-numbers">
-            <div class="vf-card__image vf-u-background-color--blueX">
-              <i class="icon icon-conceptual icon-structures-3d"></i>
-
-              <h3 class="vf-card__title">
-                23 <br/>billion
-              </h3>
-              <p class="vf-card__text">
-                web requests in 2018
-              </p>
-            </div>
-            <div class="vf-card__content">
-            </div>
-          </div> -->
-
           <div class="vf-card vf-card--by-the-numbers">
             <div class="vf-card__image vf-u-background-color--blueX">
               <i class="icon icon-common icon-database"></i>
@@ -375,7 +334,7 @@ templateEngineOverride: njk
       </style>
 
       <!-- COVID-19 -->
-      <section class="embl-grid embl-grid--has-centered-content vf-u-padding__top--xl">
+      <section class="embl-grid embl-grid--has-centered-content vf-u-padding__top--1000">
         <div class="vf-section-header">
           <h3 class="vf-section-header__heading" id="response"> COVID-19 response </h3>
         </div>
@@ -659,8 +618,8 @@ templateEngineOverride: njk
   </footer>
 
   <!-- VF 2.0 CSS, JS -->
-  <link rel="stylesheet" href="https://dev.assets.emblstatic.net/embl-design-system/v1.0.0-alpha.8/css/styles.css" />
-  <script src="https://dev.assets.emblstatic.net/embl-design-system/develop/scripts/scripts.js"></script>
+  <link rel="stylesheet" href="https://assets.emblstatic.net/vf/v2.4.11/css/styles.css" />
+  <script src="https://assets.emblstatic.net/vf/v2.4.11/scripts/scripts.js"></script>
 
   <!-- JavaScript -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
