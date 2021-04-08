@@ -112,9 +112,9 @@ templateEngineOverride: njk
           <div class="medium-12 columns analytics-content-main">
             <div class="panel-pane pane-custom pane-1" id="hero-unit">
               <div class="pane-content">
-                <div class="inner white-background columns small-3 padding-top-large">
-                  <h3><a href="#upcoming-wraper" class="no-underline">Courses, seminars and public events <br />on <span
-                        class="topic-count">many</span> topics</a></h3>
+                <div class="inner white-background padding-top-large">
+                  <h2><a href="#upcoming-wraper" class="no-underline">Courses, seminars and public events <br />on <span
+                        class="topic-count">many</span> topics</a></h2>
                   <small>EMBL-EBI events provide opportunities for you to learn new skills and experience some of the
                     creativity and ambitious thinking of the <a href="https://www.ebi.ac.uk/about">Wellcome Genome
                       Campus
@@ -135,7 +135,7 @@ templateEngineOverride: njk
                 </form>
               </div>
               <div id="upcoming-events-content-placeholder"></div>
-              <p class="">Looking for a past event? <a class="" href="https://www.ebi.ac.uk/training/past-events">View past events</a></p>
+              <p class=""><br>Looking for a past event? <a class="" href="https://www.ebi.ac.uk/training/past-events">View past events</a></p>
             </div>
 
             {% raw %}
@@ -184,13 +184,14 @@ templateEngineOverride: njk
 
       #hero-unit .inner {
         min-width: 300px;
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 1) 30%);
+        background: white;
+        padding: 1em 2em;
 
-        max-width: 336px;
+        max-width: 80%;
         width: 33%;
         margin-left: 3%;
         position: absolute;
-        bottom: 0;
+        bottom: 1.5em;
         left: 0;
       }
 
@@ -220,13 +221,19 @@ templateEngineOverride: njk
         padding: 9px 0;
       }
 
+      .upcoming-event a.main-link,
+      .upcoming-event a.main-link:hover, 
+      .upcoming-event a.main-link:visited {
+        border-bottom: none;
+      }
+
       .upcoming-event a.main-link:hover {
         background: #efefef;
       }
 
       .upcoming-event a .event-name {
         min-width: 300px;
-        width: 37%;
+        width: 50%;
         display: inline-block;
         margin-left: 35px;
         margin-right: 10px;
@@ -289,7 +296,6 @@ templateEngineOverride: njk
       }
 
       .upcoming-event a:hover .event-register {
-        border-bottom: 1px dashed #0b7b7d;
       }
 
       #upcoming-wraper .select2-container-multi .select2-choices .select2-search-choice {
