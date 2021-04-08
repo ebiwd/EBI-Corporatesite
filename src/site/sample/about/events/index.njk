@@ -125,9 +125,6 @@ templateEngineOverride: njk
                 </div>
               </div>
             </div>
-            <div class="panel-pane pane-custom pane-2 featured-event-group">
-              <div id="featured-events-content-placeholder"></div>
-            </div>
             <div id="upcoming-wraper">
 
               <div class="filter">
@@ -147,25 +144,6 @@ templateEngineOverride: njk
             </div>
 
             {% raw %}
-            <!-- Handlebars template for featured events -->
-            <script id="featured-events-template" type="text/x-handlebars-template">
-              {{#each (limit nodes 2)}}
-                  <div class="columns medium-6 padding-top-large padding-bottom-large padding-right-xlarge">
-                    <a href="https://www.ebi.ac.uk/{{path}}" class="featured-event no-underline">
-                      {{#featured_image}}
-                        <div class="image-wrapper"><img src="{{uri}}" width={{width}}px height={{height}}px /></div>
-                      {{/featured_image}}
-                      <h5>{{title}}</h4>
-                      <p>{{smartDescription title short_description}}</p>
-                      <div class="button">Learn more</div>
-                      {{#starts}}
-                        <span class="date">{{smartDates value value2}}</span>
-                      {{/starts}}
-                    </a>
-                  </div>
-                {{/each}}
-              </script>
-
             <!-- Handlebars template for the events listing -->
             <script id="upcoming-events-template" type="text/x-handlebars-template">
               {{#nodes}}
@@ -202,79 +180,12 @@ templateEngineOverride: njk
     <section class="row l-footer-columns">
       <div class="footer columns">
         <section class="block block-block block-block-90">
-          <!-- 
-            2018-05-16
-            Adds the now removed with-overlay pattern while we migrate content from it 
-            -->
           <style>
-            .medium-4>.with-overlay,
-            .medium-3>.with-overlay {
-              margin-bottom: .75rem;
-            }
-
-            .with-overlay {
-              position: relative;
-            }
-
-            .with-overlay .caption {
-              background: -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-              background: -o-linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-              background: -moz-linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-              background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-              position: absolute;
-              top: 0;
-              height: 100%;
-              width: 100%;
-              padding: 5% 5%;
-              color: #fff;
-              opacity: 1;
-              text-shadow: 0 2px 0 rgba(0, 0, 0, 0.8);
-            }
-
-            .with-overlay .caption:hover {
-              background: -webkit-linear-gradient(rgba(0, 0, 0, 0.6), rgba(100, 100, 100, 0.3));
-              background: -o-linear-gradient(rgba(0, 0, 0, 0.6), rgba(100, 100, 100, 0.3));
-              background: -moz-linear-gradient(rgba(0, 0, 0, 0.6), rgba(100, 100, 100, 0.3));
-              background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(100, 100, 100, 0.3));
-              color: #FFF;
-            }
-
-            .with-overlay .caption .inner {
-              position: absolute;
-              bottom: 5%;
-              width: 95%;
-              padding-right: 4rem;
-            }
-
-            .with-overlay .caption>a.inner {
-              color: #fff;
-              text-decoration: none;
-              border-bottom: none;
-              font-size: 1.4rem;
-              line-height: 1.4em;
-              padding-top: 50%;
-            }
-
-            .with-overlay .caption>a:after {
-              font-family: "EBI-Functional";
-              content: " >";
-              display: inline-block;
-              float: right;
-              font-size: 1.7rem;
-              position: relative;
-              top: -.1rem;
-              left: 2rem;
-            }
-
-            .with-overlay .caption:hover>a.inner {
-              color: #fff;
-            }
-
             #hero-unit {
               width: 100%;
               height: 370px;
               position: relative;
-              background: url('images/Events_page_HERO.jpg') 50% 50%;
+              background: url('https://www.ebi.ac.uk/web_guidelines/js/events/images/Events_page_HERO.jpg') 50% 50%;
               background-size: cover;
               margin: 0 -35px 13px;
               padding: 0 35px;
@@ -351,7 +262,6 @@ templateEngineOverride: njk
 
             .upcoming-event a .event-date,
             .upcoming-event a .event-type {
-              /*color: rgb(54,107,113);*/
               position: static;
               display: inline-block;
               padding: 0;
@@ -926,7 +836,6 @@ templateEngineOverride: njk
         $.getJSON(
           "https://www.ebi.ac.uk/sites/ebi.ac.uk/files/data/events-common-fields-feed-upcoming-events.json",
           function (data) {
-            // $.getJSON("/sites/ebi.ac.uk/files/data/events-common-fields-feed-upcoming-events-3-month.json", function(data) {
             var parsedData = {
               "nodes": data
             };
@@ -943,30 +852,8 @@ templateEngineOverride: njk
             $(split_at).each(function () {
               $(this).add($(this).nextUntil(split_at)).wrapAll("<div class='month-group'/>");
             });
-          });
-
-        // ----------------
-        // Invoke the handlebars template for the featured events list
-        // ----------------
-        var sourceFeaturedEvents = $("#featured-events-template").html();
-        var templateFeaturedEvents = Handlebars.compile(sourceFeaturedEvents);
-
-        $.getJSON(
-          "https://www.ebi.ac.uk/sites/ebi.ac.uk/files/data/events-featured-events-feed-featured-events.json",
-          function (data) {
-            var now = $.now(); // Get current time
-            var featuredData = data.filter(function (elem) { // Remove featured events older than now
-              var eventDate = new Date(elem.starts.value);
-              return eventDate.getTime() > now;
-            });
-
-            var parsedData = {
-              "nodes": featuredData
-            };
-            //var parsedData = { "nodes" : data };
-            // console.log(data);
-            $("#featured-events-content-placeholder").html(templateFeaturedEvents(parsedData));
-          });
+          }
+        );
 
         // ----------------
         // Show the last-chance topic bar as user scrolls
