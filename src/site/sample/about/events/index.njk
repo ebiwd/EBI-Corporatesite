@@ -1,5 +1,6 @@
 ---
-subtitle: Events
+title: Events
+subtitle: Courses, seminars and public events on many topics
 date: 2021-04-09 12:24:50
 layout: layouts/full.njk
 templateEngineOverride: njk
@@ -10,7 +11,7 @@ templateEngineOverride: njk
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="ImageToolbar" content="false" />
-  <meta name="keywords" content="Industry, Training, Seminar, Events, External" />
+  <meta name="keywords" content="Courses, seminars and public events on many topics" />
   <link rel="canonical" href="https://www.ebi.ac.uk/about/events" />
   <meta name="ebi:masthead-color" content="#111111" />
   <meta name="ebi:masthead-image"
@@ -25,37 +26,9 @@ templateEngineOverride: njk
   <meta name="twitter:description" content="The latest training and industry events, including external seminars" />
   <title>{{ title }} | EMBL’s European Bionformatics Institute</title>
   <link rel="stylesheet" href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css" />
-  <link rel="stylesheet" href="//ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" />
   <link rel="stylesheet"
     href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/css/theme-ebi-services-about.css" />
-
-  <!-- If you have custom icon, replace these as appropriate.
-       You can generate them at realfavicongenerator.net -->
-  <link rel="icon" type="image/x-icon"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/favicon.ico" />
-  <link rel="icon" type="image/png"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="192×192"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/android-chrome-192x192.png" />
-  <!-- Android (192px) -->
-  <link rel="apple-touch-icon-precomposed" sizes="114x114"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-114x114.png" />
-  <!-- For iPhone 4 Retina display (114px) -->
-  <link rel="apple-touch-icon-precomposed" sizes="72x72"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-72x72.png" />
-  <!-- For iPad (72px) -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-144x144.png" />
-  <!-- For iPad retinat (144px) -->
-  <link rel="apple-touch-icon-precomposed"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-57x57.png" />
-  <!-- For iPhone (57px) -->
-  <link rel="mask-icon"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/safari-pinned-tab.svg"
-    color="#ffffff" /> <!-- Safari icon for pinned tab -->
-  <meta name="msapplication-TileColor" content="#2b5797" /> <!-- MS Icons -->
-  <meta name="msapplication-TileImage"
-    content="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/mstile-144x144.png" />
+  {% include "header.njk" %}
 </head>
 
 <body
@@ -142,16 +115,12 @@ templateEngineOverride: njk
             <!-- Handlebars template for the events listing -->
             <script id="upcoming-events-template" type="text/x-handlebars-template">
               {{#nodes}}
-                  {{#starts}}
-                    {{{headerMonth value}}}
-                  {{/starts}}
+                  {{{headerMonth field_event_start_date_time}}}
                   <div class="upcoming-event {{toLowerCase bundle_name}} {{#starts}} {{cssMonth value}} {{/starts}}">
-                    <a href="https://www.ebi.ac.uk/{{path}}" class="main-link">
+                    <a href="{{field_event_more_information}}" class="main-link">
                       <span class="event-name {{toLowerCase bundle_name}}">{{smartEventsName title}}</span>
                       <span class="event-type">{{bundle_name}}</span>
-                      {{#starts}}
-                        <span class="event-date">{{smartDates value value2}}</span>
-                      {{/starts}}
+                        <span class="event-date">{{smartDates field_event_start_date_time field_event_end_date_time}}</span>
                       <span class="event-register">Learn more &raquo;</span>
                     </a>
 
@@ -295,9 +264,6 @@ templateEngineOverride: njk
         vertical-align: top;
       }
 
-      .upcoming-event a:hover .event-register {
-      }
-
       #upcoming-wraper .select2-container-multi .select2-choices .select2-search-choice {
         font-size: 13px;
         margin-top: 7px;
@@ -323,28 +289,18 @@ templateEngineOverride: njk
       .lifefilter-drop {
         display: none !important;
       }
-
     </style>
-
   </div>
   <!--/.page -->
   {% include "footer-js.njk" %}
 
-  <script src="https://www.ebi.ac.uk/web_guidelines/js/events/jquery-1.11.3.min.js"></script>
-  <script>
-    jq111 = jQuery.noConflict(true);
-  </script>
-  <!-- code for select2 drop downs -->
-  <link href="https://www.ebi.ac.uk/web_guidelines/js/events/select2/select2.css" rel="stylesheet" />
-  <script src="https://www.ebi.ac.uk/web_guidelines/js/events/select2/select2.js"></script>
+  {# https://cdnjs.com/libraries/select2/3.5.2 #}
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.js"></script>
 
   <!-- code for handlebars -->
   <script src="https://www.ebi.ac.uk/web_guidelines/js/events/handlebars-v3.0.3.js"></script>
   <script>
-    // A text filter that also utilizes a tokenized string
-    // Note: currently requires Select2, but that could be removed
-    // Form elements should have a parent of #filter-buttons
-
     (function ($) {
       // This runs the keyword filter.
       // High level: 
@@ -453,9 +409,7 @@ templateEngineOverride: njk
                   return false; // aka break
                 }
               }
-
             });
-
           });
 
           // conditionally hide the month header
@@ -472,10 +426,9 @@ templateEngineOverride: njk
         }
       }
 
-    }(jq111));
+    }(jQuery));
 
     // The main thread
-    // again, note that we've used jquery no conflict with the variable jq111 - :(..
     (function ($) {
       $(document).ready(function () {
         function drupalStyleIDs(data) {
@@ -499,8 +452,20 @@ templateEngineOverride: njk
         var sourceUpcomingEvents = $("#upcoming-events-template").html();
         var templateUpcomingEvents = Handlebars.compile(sourceUpcomingEvents);
         $.getJSON(
-          "https://www.ebi.ac.uk/sites/ebi.ac.uk/files/data/events-common-fields-feed-upcoming-events.json",
+          // "https://www.ebi.ac.uk/sites/ebi.ac.uk/files/data/events-common-fields-feed-upcoming-events.json",
+          "https://www.embl.org/api/v1/events?_format=json&body=0&start_date=today&source=contenthub",
           function (data) {
+
+            // only event where field_event_unique_identifier is a training contenthub, TH-5556063c-0870-4135-81b4-54d7f6514d3b
+            data = data.filter(function(item){
+              return item.field_event_unique_identifier.indexOf("TH-") >= 0;
+            });
+
+            // sort by date
+            data = data.sort(function(a,b){
+              return new Date(a.field_event_start_date_time) - new Date(b.field_event_start_date_time);
+            });
+
             var parsedData = {
               "nodes": data
             };
@@ -521,24 +486,6 @@ templateEngineOverride: njk
         );
 
         // ----------------
-        // Show the last-chance topic bar as user scrolls
-        // ----------------
-        var scrolledAmount = 0,
-          eventsListingPosition = $('#upcoming-wraper').position();
-
-        //pad position by ###px so it starts after the user scrolls past
-        eventsListingPosition.top += 250;
-
-        $(window).scroll(function (event) {
-          scrolledAmount = $(window).scrollTop();
-          if (scrolledAmount > eventsListingPosition.top) {
-            $('.topic-bar').addClass('active');
-          } else {
-            $('.topic-bar').removeClass('active');
-          }
-        });
-
-        // ----------------
         // Smooth scroll anchor links
         // ----------------
         $('a[href*=#]:not([href=#])').click(function () {
@@ -556,9 +503,8 @@ templateEngineOverride: njk
             }
           }
         });
-
       });
-    }(jq111));
+    }(jQuery));
   </script>
   <script>
     // Registers new helper methods on the Handlebars template
@@ -621,10 +567,12 @@ templateEngineOverride: njk
       if (typeof (date) == "undefined") {
         return "Unknown";
       }
+      if (date == "") {
+        return "Unknown";
+      }
 
       date = date.replace(" ", "T"); // drupal date format needs a "T"
       // "2015-10-19 08:15:00" >> "2015-10-19T08:15:00"
-
       var dateAway = new Date(date),
         date = dateAway.getDate(),
         month = "January,February,March,April,May,June,July,August,September,October,November,December"
@@ -648,6 +596,7 @@ templateEngineOverride: njk
 
     // we want to show a start and end, a la: Oct 16th; Oct 12th-15th, Oct 21st - Nov 1st
     Handlebars.registerHelper("smartDates", function (date1, date2) {
+      var date2 = date2 || date1; // if no end date, use the start date
 
       // if start = end, just return the first
       if (date1 == date2) {
@@ -757,6 +706,7 @@ templateEngineOverride: njk
     });
 
     Handlebars.registerHelper('toLowerCase', function (passedString) {
+      var passedString = passedString || "";
       return passedString.toLowerCase();
     });
 
