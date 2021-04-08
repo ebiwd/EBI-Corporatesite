@@ -104,10 +104,8 @@ templateEngineOverride: njk
   <div id="content" role="document" class="page">
     <!--.l-main -->
     <main id="main-content-area" role="main" class="row l-main" about="/about/events" typeof="sioc:Item foaf:Document">
-
       <!-- .l-main region -->
       <div class=" main columns">
-
         <a id="main-content"></a>
         <span property="dc:title" content="Events" class="rdf-meta element-hidden"></span>
         <div class="row">
@@ -126,10 +124,8 @@ templateEngineOverride: njk
               </div>
             </div>
             <div id="upcoming-wraper">
-
               <div class="filter">
-                <input id="livefilter" class="filter" name="livefilter" multiple="multiple" style="width:300px"
-                  class="populate placeholder" />
+                <input id="livefilter" name="livefilter" multiple="multiple" style="" class="populate placeholder" />
                 <form id="filter-buttons">
                   <input type="radio" name="type" value="reset" checked>All
                   <input type="radio" name="type" value="public event">Public event
@@ -139,8 +135,7 @@ templateEngineOverride: njk
                 </form>
               </div>
               <div id="upcoming-events-content-placeholder"></div>
-              <div class="events-archive-link">Looking for a past event? <a class="button"
-                  href="/about/events/archive">View the event archive &raquo;</a></div>
+              <p class="">Looking for a past event? <a class="" href="https://www.ebi.ac.uk/training/past-events">View past events</a></p>
             </div>
 
             {% raw %}
@@ -176,170 +171,154 @@ templateEngineOverride: njk
     </main>
     <!--/.l-main -->
 
-    <!--.footer-columns -->
-    <section class="row l-footer-columns">
-      <div class="footer columns">
-        <section class="block block-block block-block-90">
-          <style>
-            #hero-unit {
-              width: 100%;
-              height: 370px;
-              position: relative;
-              background: url('https://www.ebi.ac.uk/web_guidelines/js/events/images/Events_page_HERO.jpg') 50% 50%;
-              background-size: cover;
-              margin: 0 -35px 13px;
-              padding: 0 35px;
-            }
+    <style>
+      #hero-unit {
+        width: 100%;
+        height: 370px;
+        position: relative;
+        background: url('https://www.ebi.ac.uk/web_guidelines/js/events/images/Events_page_HERO.jpg') 50% 50%;
+        background-size: cover;
+        margin: 0 -35px 13px;
+        padding: 0 35px;
+      }
 
-            #hero-unit .inner {
-              min-width: 300px;
-              background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 1) 30%);
+      #hero-unit .inner {
+        min-width: 300px;
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 1) 30%);
 
-              max-width: 336px;
-              width: 33%;
-              margin-left: 3%;
-              position: absolute;
-              bottom: 0;
-              left: 0;
-            }
+        max-width: 336px;
+        width: 33%;
+        margin-left: 3%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+      }
 
-            #upcoming-wraper {
-              margin-top: 3em;
-              border-top: 1px solid #999;
-              padding-top: 1em;
-            }
+      #upcoming-wraper .filter {
+        margin-top: 1em;
+        margin-bottom: 1em;
+      }
 
-            #upcoming-wraper input.filter {
-              width: 400px;
-            }
+      #upcoming-wraper .filter.select2-container {
+        width: 500px !important;
+        font-size: 20px;
+      }
 
-            #upcoming-wraper .filter {
-              display: inline-block;
-            }
+      #upcoming-wraper .filter #filter-buttons {
+        margin-top: .35em;
+        color: #555;
+      }
 
-            #upcoming-wraper .filter.select2-container {
-              width: 500px !important;
-              font-size: 20px;
-            }
+      #upcoming-wraper .filter #filter-buttons input[type="radio"] {
+        margin: 0 6px 0 13px;
+        position: relative;
+        top: -1px;
+      }
 
-            #upcoming-wraper .filter #filter-buttons {
-              margin-top: .35em;
-              color: #555;
-            }
+      .upcoming-event a.main-link {
+        display: block;
+        padding: 9px 0;
+      }
 
-            #upcoming-wraper .filter #filter-buttons input[type="radio"] {
-              margin: 0 6px 0 13px;
-              position: relative;
-              top: -1px;
-            }
+      .upcoming-event a.main-link:hover {
+        background: #efefef;
+      }
 
-            .upcoming-event a.main-link {
-              display: block;
-              padding: 9px 0;
-            }
+      .upcoming-event a .event-name {
+        min-width: 300px;
+        width: 37%;
+        display: inline-block;
+        margin-left: 35px;
+        margin-right: 10px;
+        vertical-align: top;
+      }
 
-            .upcoming-event a.main-link:hover {
-              background: #efefef;
-            }
+      .upcoming-event a .event-date,
+      .upcoming-event a .event-type {
+        position: static;
+        display: inline-block;
+        padding: 0;
+        font-size: 100%;
+        font-weight: normal;
+        float: none;
+        width: 12%;
+        min-width: 100px;
+        max-width: 130px;
+        text-align: left;
+        vertical-align: top;
+      }
 
-            .upcoming-event a .event-name {
-              min-width: 300px;
-              width: 37%;
-              display: inline-block;
-              margin-left: 35px;
-              margin-right: 10px;
-              vertical-align: top;
-            }
+      .placeholder {
+        width: 500px;
+        max-width: 100%;
+      }
 
-            .upcoming-event a .event-date,
-            .upcoming-event a .event-type {
-              position: static;
-              display: inline-block;
-              padding: 0;
-              font-size: 100%;
-              font-weight: normal;
-              float: none;
-              width: 12%;
-              min-width: 100px;
-              max-width: 130px;
-              text-align: left;
-              vertical-align: top;
-            }
+      .upcoming-event a .event-name:before {
+        font-family: 'EBI-Generic';
+        color: #0b7b7d;
+        font-size: 19px;
+        position: relative;
+        top: 1px;
+        margin-left: -19px;
+        left: -8px;
+      }
 
-            .upcoming-event a .event-name:before {
-              font-family: 'EBI-Generic';
-              color: #0b7b7d;
-              font-size: 19px;
-              position: relative;
-              top: 1px;
-              margin-left: -19px;
-              left: -8px;
-            }
+      .upcoming-event a .event-name.course:before {
+        content: "G";
+      }
 
-            .upcoming-event a .event-name.course:before {
-              content: "G";
-            }
+      .upcoming-event a .event-name.seminar:before {
+        content: "t";
+      }
 
-            .upcoming-event a .event-name.seminar:before {
-              content: "t";
-            }
+      .upcoming-event a .event-name.training:before {
+        content: "A";
+      }
 
-            .upcoming-event a .event-name.training:before {
-              content: "A";
-            }
+      .upcoming-event a .event-name.event:before {
+        content: "}";
+      }
 
-            .upcoming-event a .event-name.event:before {
-              content: "}";
-            }
+      .upcoming-event a .event-name.webinar:before {
+        content: "T";
+      }
 
-            .upcoming-event a .event-name.webinar:before {
-              content: "T";
-            }
+      .upcoming-event a .event-register {
+        color: #0b7b7d;
+        vertical-align: top;
+      }
 
-            .upcoming-event a .event-register {
-              color: #0b7b7d;
-              vertical-align: top;
-            }
+      .upcoming-event a:hover .event-register {
+        border-bottom: 1px dashed #0b7b7d;
+      }
 
-            .upcoming-event a:hover .event-register {
-              border-bottom: 1px dashed #0b7b7d;
-            }
+      #upcoming-wraper .select2-container-multi .select2-choices .select2-search-choice {
+        font-size: 13px;
+        margin-top: 7px;
+      }
 
-            #upcoming-wraper .select2-container-multi .select2-choices .select2-search-choice {
-              font-size: 13px;
-              margin-top: 7px;
-            }
+      .topic-bar {
+        background: #0b7b7d;
+        color: #fff;
+        width: 100%;
+        position: fixed;
+        bottom: -100px;
+        z-index: 100;
+        left: 0;
+        padding: 12px 10%;
+        -webkit-transition: all 2s;
+        transition: all 2s;
+      }
 
-            .events-archive-link {
-              margin-top: 3em;
-            }
+      .topic-bar.active {
+        bottom: 0;
+      }
 
-            .topic-bar {
-              background: #0b7b7d;
-              color: #fff;
-              width: 100%;
-              position: fixed;
-              bottom: -100px;
-              z-index: 100;
-              left: 0;
-              padding: 12px 10%;
-              -webkit-transition: all 2s;
-              transition: all 2s;
-            }
+      .lifefilter-drop {
+        display: none !important;
+      }
 
-            .topic-bar.active {
-              bottom: 0;
-            }
-
-            .lifefilter-drop {
-              display: none !important;
-            }
-
-          </style>
-        </section>
-      </div>
-    </section>
-    <!--/.footer-columns-->
+    </style>
 
   </div>
   <!--/.page -->
