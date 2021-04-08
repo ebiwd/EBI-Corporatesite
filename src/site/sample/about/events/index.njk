@@ -81,7 +81,7 @@ templateEngineOverride: njk
       <div class=" main columns">
         <a id="main-content"></a>
         <span property="dc:title" content="Events" class="rdf-meta element-hidden"></span>
-        <div class="row">
+        <div class="row padding-top-large">
           <div class="medium-12 columns analytics-content-main">
             <div class="panel-pane pane-custom pane-1" id="hero-unit">
               <div class="pane-content">
@@ -89,9 +89,7 @@ templateEngineOverride: njk
                   <h2><a href="#upcoming-wraper" class="no-underline">Courses, seminars and public events <br />on <span
                         class="topic-count">many</span> topics</a></h2>
                   <small>EMBL-EBI events provide opportunities for you to learn new skills and experience some of the
-                    creativity and ambitious thinking of the <a href="https://www.ebi.ac.uk/about">Wellcome Genome
-                      Campus
-                      community</a>.</small>
+                    creativity and ambitious thinking of the <a href="https://www.ebi.ac.uk/about">Wellcome Genome Campus community</a>.</small>
                   {# <div><a class="button" href="#upcoming-wraper">Find an upcoming event &raquo;</a></div> #}
                 </div>
               </div>
@@ -101,10 +99,11 @@ templateEngineOverride: njk
                 <input id="livefilter" name="livefilter" multiple="multiple" style="" class="populate placeholder" />
                 <form id="filter-buttons">
                   <input type="radio" name="type" value="reset" checked>All
-                  <input type="radio" name="type" value="public event">Public event
-                  <input type="radio" name="type" value="seminar">Seminar
+                  {# <input type="radio" name="type" value="public event">Public event #}
+                  {# <input type="radio" name="type" value="seminar">Seminar #}
                   <input type="radio" name="type" value="course">Course
                   <input type="radio" name="type" value="webinar">Webinar
+                  &nbsp;&nbsp;<a class="readmore" href="seminars">Seminars</a>
                 </form>
               </div>
               <div id="upcoming-events-content-placeholder"></div>
@@ -116,10 +115,10 @@ templateEngineOverride: njk
             <script id="upcoming-events-template" type="text/x-handlebars-template">
               {{#nodes}}
                   {{{headerMonth field_event_start_date_time}}}
-                  <div class="upcoming-event {{toLowerCase bundle_name}} {{#starts}} {{cssMonth value}} {{/starts}}">
+                  <div class="upcoming-event {{toLowerCase field_event_type}} {{#starts}} {{cssMonth value}} {{/starts}}">
                     <a href="{{field_event_more_information}}" class="main-link">
-                      <span class="event-name {{toLowerCase bundle_name}}">{{smartEventsName title}}</span>
-                      <span class="event-type">{{bundle_name}}</span>
+                      <span class="event-name {{toLowerCase field_event_type}}">{{smartEventsName title}}</span>
+                      <span class="event-type">{{field_event_type}}</span>field_event_type
                         <span class="event-date">{{smartDates field_event_start_date_time field_event_end_date_time}}</span>
                       <span class="event-register">Learn more &raquo;</span>
                     </a>
@@ -445,7 +444,7 @@ templateEngineOverride: njk
         function filterByCount(obj) {
           return (obj.count > 0) ? true : false;
         }
-
+ 
         // ----------------
         //invoke the handlebars template for the upcoming events list
         // ----------------
