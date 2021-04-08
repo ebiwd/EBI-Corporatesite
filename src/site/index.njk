@@ -24,37 +24,8 @@ templateEngineOverride: njk
   <meta name="ebi:last-review" content="2017-05-02" /> <!-- The last time the content was reviewed -->
   <meta name="ebi:expiry" content="2017-06-20" /> <!-- When this content is no longer relevant -->
 
-  <link rel="icon" type="image/x-icon"
-    href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/favicon.ico" />
-  <link rel="icon" type="image/png"
-    href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="192×192"
-    href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/android-chrome-192x192.png" />
-  <!-- Android (192px) -->
-  <link rel="apple-touch-icon-precomposed" sizes="114x114"
-    href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-114x114.png" />
-  <!-- For iPhone 4 Retina display (114px) -->
-  <link rel="apple-touch-icon-precomposed" sizes="72x72"
-    href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-72x72.png" />
-  <!-- For iPad (72px) -->
-  <link rel="apple-touch-icon-precomposed" sizes="144x144"
-    href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-144x144.png" />
-  <!-- For iPad retinat (144px) -->
-  <link rel="apple-touch-icon-precomposed"
-    href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/apple-icon-57x57.png" />
-  <!-- For iPhone (57px) -->
-  <link rel="mask-icon"
-    href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/safari-pinned-tab.svg"
-    color="#ffffff" /> <!-- Safari icon for pinned tab -->
-  <meta name="msapplication-TileColor" content="#2b5797" /> <!-- MS Icons -->
-  <meta name="msapplication-TileImage"
-    content="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/images/logos/EMBL-EBI/favicons/mstile-144x144.png" />
-
-  <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.min.css"
-    type="text/css" media="all" />
-  <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Icon-fonts/v1.3/fonts.css" type="text/css"
-    media="all" />
-  <link rel="stylesheet" href="https://assets.emblstatic.net/vf/v2.4.1/css/styles.css" />
+  {% include "header.njk" %}
+  <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.min.css" type="text/css" media="all" />
 </head>
 
 <body class="ebi-vf1-integration">
@@ -423,10 +394,10 @@ templateEngineOverride: njk
   </script>
   <script id="template-upcoming-events" type="text/x-handlebars-template">
     {{#each this}}
-      <span class="vf-summary__date">{{smartDates json.starts json.ends}}</span>
-      <span class="vf-summary__date">| {{json.bundle_name}}</span>
-      <h6><a href="//www.ebi.ac.uk/{{this.json.path}}">{{json.title}}</a></h6>
-      <!--<p><a class="no-underline" href="//www.ebi.ac.uk/{{this.json.path}}">{{{truncate json.short_description 150}}}</a></p>-->
+      <span class="vf-summary__date">{{smartDates field_event_start_date_time field_event_end_date_time}}</span>
+      <span class="vf-summary__date">| {{field_event_type}}</span>
+      <h6><a href="//www.ebi.ac.uk/{{this.json.path}}">{{title}}</a></h6>
+      <!--<p><a class="no-underline" href="//www.ebi.ac.uk/{{this.json.path}}">{{{truncate field_event_summary 150}}}</a></p>-->
     {{/each}}
   </script>
   {% endraw %}
@@ -474,6 +445,7 @@ templateEngineOverride: njk
         var unixMinute = Math.floor(Date.now() / 1000 / 300);
         // handlebars stuff
         Handlebars.registerHelper('truncate', function(str, len) {
+          var str = str || "";
           if (str.length > len) {
             var new_str = str.substr(0, len + 1);
             while (new_str.length) {
@@ -494,6 +466,9 @@ templateEngineOverride: njk
         function formatDate(date) {
           if (typeof(date) == "undefined") {
             return "Unknown";
+          }
+          if (date == "") {
+            return "";
           }
           date = date.replace(" ", "T"); // drupal date format needs a "T"
           // "2015-10-19 08:15:00" >> "2015-10-19T08:15:00"
@@ -520,6 +495,8 @@ templateEngineOverride: njk
         }
         // we want to show a start and end, a la: Oct 16th; Oct 12th-15th, Oct 21st - Nov 1st
         Handlebars.registerHelper("smartDates", function(date1, date2) {
+          var date2 = date2 || date1; // if no end date, use the start date
+    
           // if start = end, just return the first
           if (date1 == date2) {
             return formatDate(date1);
@@ -533,12 +510,12 @@ templateEngineOverride: njk
               return formatDate(date1);
             }
             //don't return the month on the second date..
-            jointDate = formatDate(date1) + ' - ' + formatDate(date2).split(' ')[0] + ' ' + formatDate(date2)
+            jointDate = formatDate(date1) + " - " + formatDate(date2).split(' ')[0] + ' ' + formatDate(date2)
               .split(' ')[1];
             return jointDate;
           }
           // ok, so just tell us it all
-          jointDate = formatDate(date1) + ' - ' + formatDate(date2);
+          jointDate = formatDate(date1) + " - " + formatDate(date2);
           return jointDate;
         });
         // simple filter for json data
@@ -553,7 +530,8 @@ templateEngineOverride: njk
         // pull json from http://www.ebi.ac.uk/admin/structure/views/view/news_rollup/edit/page_1
         function getNewsData() {
           // $.getJSON("/feed.json?cachedate="+unixMinute, function(data) { // local testing
-          $.getJSON("https://www.ebi.ac.uk/about/news/feed.json?cachedate=" + unixMinute, function(data) {
+          var jsonFeed = "https://www.ebi.ac.uk/about/news/feed.json";
+          $.getJSON(jsonFeed + "?cachedate=" + unixMinute, function(data) {
             // keep only press releases
             var topNewsItem = simpleFilter(data.nodes, function(node) {
               return (node.node.type === 'News');
@@ -581,9 +559,20 @@ templateEngineOverride: njk
 
         function getEventData() {
           // /api/v1/events/home
-          $.getJSON("https://www.ebi.ac.uk/api/v1/events/home", function(data) {
+          //var jsonFeed = "https://www.ebi.ac.uk/api/v1/events/home";
+          var jsonFeed = "https://www.embl.org/api/v1/events?_format=json&body=0&start_date=today&source=contenthub";
+          $.getJSON(jsonFeed, function(data) {
               var itemsPassed = 0; // so wec can keep just five items
-              var eventsToShow = simpleFilter(data.results, function(node) {
+              // only event where field_event_unique_identifier is a training contenthub, TH-5556063c-0870-4135-81b4-54d7f6514d3b
+              data = data.filter(function(item){
+                return item.field_event_unique_identifier.indexOf("TH-") >= 0;
+              });
+
+              // sort by date
+              data = data.sort(function(a,b){
+                return new Date(a.field_event_start_date_time) - new Date(b.field_event_start_date_time);
+              });
+              var eventsToShow = simpleFilter(data, function(node) {
                 if (itemsPassed >= 3) { // we can do any other filtering we might need here...
                   return false;
                 }

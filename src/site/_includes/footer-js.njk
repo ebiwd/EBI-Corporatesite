@@ -7,7 +7,7 @@
 //--><!]]>
 </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script defer="defer" src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/js/script.js"></script>
 
 <!-- The Foundation theme JavaScript -->
@@ -17,4 +17,12 @@
 <script type="text/JavaScript">$(document).foundationExtendEBI();</script>
 
 <!-- VF 2.0 JS -->
-<script src="https://assets.emblstatic.net/vf/v2.4.7/scripts/scripts.js"></script>
+{# <!-- Disable 1.x cookie banner -->
+<span data-protection-message-disable="true"></span> #}
+<style>
+.vf-banner.vf-banner--fixed.vf-banner--bottom.vf-banner--notice {
+  display: none !important;
+  /* never show 2.x banner for now */
+}
+</style>
+<script src="https://assets.emblstatic.net/vf/v2.4.12/scripts/scripts.js"></script>
