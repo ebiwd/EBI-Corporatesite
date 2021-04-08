@@ -451,7 +451,7 @@ templateEngineOverride: njk
         var templateUpcomingEvents = Handlebars.compile(sourceUpcomingEvents);
         $.getJSON(
           // "https://www.ebi.ac.uk/sites/ebi.ac.uk/files/data/events-common-fields-feed-upcoming-events.json",
-          "https://www.embl.org/api/v1/events?_format=json&body=0&start_date=today&source=contenthub",
+          "https://www.embl.org/api/v1/events?_format=json&hide_body=1&start_date=today&source=contenthub",
           function (data) {
 
             // only event where field_event_unique_identifier is a training contenthub, TH-5556063c-0870-4135-81b4-54d7f6514d3b
