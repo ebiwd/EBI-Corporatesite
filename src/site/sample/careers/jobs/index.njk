@@ -111,8 +111,8 @@ templateEngineOverride: njk
         <div class="secondary-menu vf-u-padding__top--200">
           <div class="menu-block-wrapper menu-block-4 menu-name-main-menu parent-mlid-0 menu-level-3">
             <ul class="menu menu-tree-menu">
-              <li class="first leaf "><a href="/about/jobs" class="">Careers</a></li>
-              <li class="first leaf active-trail active"><a href="/about/jobs" class="active-trail active">Job vacancies</a></li>
+              <li class="first leaf "><a href=".." class="">Careers</a></li>
+              <li class="first leaf active-trail active"><a href="/careers/jobs" class="active-trail active">Job vacancies</a></li>
               <li class="leaf has-children menu-mlid-17998"><a href="/about/jobs/internships" title="">Internships</a></li>
               <li class="leaf has-children menu-mlid-3404"><a href="/about/jobs/career-profiles">Life at EMBL-EBI</a></li>
               <li class="first leaf"><a href="/about/jobs/recruitment-covid19" class="">Recruitment during COVID-19</a></li>
@@ -121,6 +121,11 @@ templateEngineOverride: njk
             </ul>
           </div>
         </div>
+
+        <p>Note: this does not yet work fully, the JS file below needs to go on the embl.org jobs iframe page</p>
+        <p>
+        https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.min.js 
+        </p>
   
         {# Iframe of jobs #}
         {# https://cdnjs.com/libraries/iframe-resizer #}
@@ -136,10 +141,6 @@ templateEngineOverride: njk
         <script>
           iFrameResize({ log: true }, '#jobsIframe')
         </script>
-        {# 
-          Note: the JS file below needs to go on the embl.org jobs ifram page
-          https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.min.js 
-        #}
       </main>
     </section>
     <!-- End optional local footer -->
