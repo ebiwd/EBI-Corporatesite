@@ -91,16 +91,20 @@ templateEngineOverride: njk
     "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');"
   }
   %}
-  {% include "../../../../components/vf-core-components/vf-hero/vf-hero.njk" %}
+  {% include "../../../components/vf-core-components/vf-hero/vf-hero.njk" %}
 
   {% set context = {
     "component-type": "block",
     "classModifier": "main",
     "navigation": [
       {
-        "text": "Vacancies",
-        "navigation_href": "/jobs",
+        "text": "Careers",
+        "navigation_href": "/careers",
         "currentPage": "true"
+      },
+      {
+        "text": "Vacancies",
+        "navigation_href": "/careers/jobs"
       },
       {
         "text": "Internships",
@@ -125,11 +129,12 @@ templateEngineOverride: njk
     ]
   }
   %}
-  {% include "../../../../components/vf-core-components/vf-navigation/vf-navigation.njk" %}
+  {% include "../../../components/vf-core-components/vf-navigation/vf-navigation.njk" %}
                   
   <main id="main-content-area" role="main" class="row l-main">
     <!-- Import article from contentHub  -->
-    <link rel="import" href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=108062&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
+    <!-- https://www.embl.org/editorhub/wp-admin/post.php?post=4674&action=edit -->
+    <link rel="import" href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=122468&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
   </main>
 
   <!-- embl-ebi global footer -->
