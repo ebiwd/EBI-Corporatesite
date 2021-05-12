@@ -79,16 +79,16 @@ templateEngineOverride: njk
   </nav>
 
   {% set context = {
-    "vf_hero_kicker": "<a href=\"JavaScript:Void(0);\">VF Hamburg</a> | Structural Biology",
+    "vf_hero_kicker": "",
     "spacing": 400,
-    "vf_hero_heading": "Jobs",
-    "vf_hero_subheading": "an example of some ancillary text",
+    "vf_hero_heading_href": "/careers",
+    "vf_hero_heading": "EMBL-EBI Careers",
+    "vf_hero_subheading": "At EMBL-EBI you can use your energy and skills to make a valuable contribution to science and technology and be part of a new generation: digital science.",
     "vf_hero_text": [
-      "The group combines biochemical and <a href=\"JavaScript:Void(0);\">systems–level approaches</a> to investigate the connections between <a href=\"JavaScript:Void(0);\">gene expression</a> and <a href=\"JavaScript:Void(0);\">cell metabolism</a>, and their roles in human disease."
     ],
-    "vf_hero_link_text": "Learn more",
-    "vf_hero_link_href": "JavaScript:Void(0);",
-    "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/vf-hero-intense.png');"
+    "vf_hero_link_text": "",
+    "vf_hero_link_href": "",
+    "vf_hero_image": "url('https://acxngcvroo.cloudimg.io/v7/https://www.embl.org/files/wp-content/uploads/embl-ebi-job-hero-scaled.jpg');"
   }
   %}
   {% include "../../../components/vf-core-components/vf-hero/vf-hero.njk" %}
@@ -98,12 +98,7 @@ templateEngineOverride: njk
     "classModifier": "main",
     "navigation": [
       {
-        "text": "Careers",
-        "navigation_href": "/careers",
-        "currentPage": "true"
-      },
-      {
-        "text": "Vacancies",
+        "text": "Job vacancies",
         "navigation_href": "/careers/jobs"
       },
       {
@@ -130,6 +125,10 @@ templateEngineOverride: njk
   }
   %}
   {% include "../../../components/vf-core-components/vf-navigation/vf-navigation.njk" %}
+
+  <style>
+  .vf-intro { display: none; }
+  </style>
                   
   <main id="main-content-area" role="main" class="row l-main">
     <!-- Import article from contentHub  -->
