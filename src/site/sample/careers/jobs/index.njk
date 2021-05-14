@@ -122,11 +122,6 @@ templateEngineOverride: njk
           </div>
         </div>
 
-        <p>Note: this does not yet work fully, the JS file below needs to go on the embl.org jobs iframe page</p>
-        <p>
-        https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.3.1/iframeResizer.contentWindow.min.js 
-        </p>
-  
         {# Iframe of jobs #}
         {# https://cdnjs.com/libraries/iframe-resizer #}
         {# https://github.com/davidjbradshaw/iframe-resizer #}
@@ -137,7 +132,7 @@ templateEngineOverride: njk
             min-width: 100%;
           }
         </style>
-        <iframe id="jobsIframe" allowfullscreen frameborder="0" scrolling="no" width="100%" src="https://www.embl.org/jobs"></iframe>
+        <iframe id="jobsIframe" allowfullscreen frameborder="0" scrolling="no" width="100%" src="https://wwwdev.embl.org/jobs/ebi/iframe"></iframe>
         <script>
           iFrameResize({ log: true }, '#jobsIframe')
         </script>
