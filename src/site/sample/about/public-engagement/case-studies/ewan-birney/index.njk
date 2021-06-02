@@ -125,65 +125,15 @@ templateEngineOverride: njk
     <!-- Suggested layout containers -->
     <section id="main-content-area" class="vf-body" role="main">
       <br/>
-      <!-- Your menu structure should make a breadcrumb redundant, but if a breadcrumb is needed uncomment the below -->
-      <!-- <nav aria-label="You are here:" role="navigation">
-        <ul class="breadcrumbs">
-          <li><a href="../../">EBI Framework</a></li>
-          <li><a href="../">Sample pages</a></li>
-          <li>
-            <span class="show-for-sr">Current: </span> Blank boilerplate
-          </li>
-        </ul>
-      </nav> -->
 
-      <!-- BEGIN VF 2.0 -->
       <!-- Import article from contentHub  -->
       <link rel="import" href="https://www.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=110698&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader>
       
-      <link rel="stylesheet" href="https://assets.emblstatic.net/vf/v2.4.9/css/styles.css" />
-      <script src="https://assets.emblstatic.net/vf/v2.4.9/scripts/scripts.js"></script>
-      <!-- END VF 2.0 -->
-
     </section>
-    <!-- Optional local footer (insert citation / project-specific copyright / etc here -->
-    <!--
-    <footer id="local-footer" class="local-footer" role="local-footer">
-      <div class="row">
-        <span class="reference">How to reference this page: ...</span>
-      </div>
-    </footer>
-    -->
-    <!-- End optional local footer -->
   </div>
   <!-- End suggested layout containers / #content -->
 
-  <footer>
-    <div id="global-footer" class="global-footer">
-      <nav id="global-nav-expanded" class="global-nav-expanded row">
-        <!-- Footer will be automatically inserted by footer.js -->
-      </nav>
-      <section id="ebi-footer-meta" class="ebi-footer-meta row">
-        <!-- Footer meta will be automatically inserted by footer.js -->
-      </section>
-    </div>
-  </footer>
-
-  <!-- JavaScript -->
-  <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-  <!--
-  <script>window.jQuery || document.write('<script src="../js/libs/jquery-1.10.2.min.js"><\/script>')</script>
-  -->
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
-  <script defer="defer" src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/js/script.js"></script>
-
-  <!-- The Foundation theme JavaScript -->
-  <script src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/libraries/foundation-6/js/foundation.js"></script>
-  <script src="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/js/foundationExtendEBI.js"></script>
-  <script type="text/JavaScript">$(document).foundation();</script>
-  <script type="text/JavaScript">$(document).foundationExtendEBI();</script>
-
-  <!-- Google Analytics details... -->
-  <script type="text/javascript">!function(e,a,n,t,i,o,c){e.GoogleAnalyticsObject=i,e[i]=e[i]||function(){(e[i].q=e[i].q||[]).push(arguments)},e[i].l=1*new Date,o=a.createElement(n),c=a.getElementsByTagName(n)[0],o.async=1,o.src="//www.google-analytics.com/analytics.js",c.parentNode.insertBefore(o,c)}(window,document,"script",0,"ga"),ga("create","UA-629242-1",{cookieDomain:"auto"}),ga("require","linkid","linkid.js"),ga("set","anonymizeIp",!0),ga("send","pageview");</script>
+  {% include "footer.njk" %}
+  {% include "footer-js.njk" %}
 </body>
 </html>
