@@ -30,14 +30,7 @@ templateEngineOverride: njk
 
 <body class="ebi-vf1-integration">
   <!-- add any of your classes or IDs -->
-  <div id="skip-to">
-    <ul>
-      <li><a href="#content">Skip to main content</a></li>
-      <li><a href="#local-nav">Skip to local navigation</a></li>
-      <li><a href="#global-nav">Skip to EBI global navigation menu</a></li>
-      <li><a href="#global-nav-expanded">Skip to expanded EBI global navigation menu (includes all sub-sections)</a></li>
-    </ul>
-  </div>
+{% include "skip-to.njk" %}
   <header id="masthead-black-bar" class="clearfix masthead-black-bar"></header>
   <style type="text/css">
     .ebi-vf1-integration .homepage-masthead a.button {

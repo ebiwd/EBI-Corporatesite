@@ -33,7 +33,6 @@
   <meta name="twitter:url" content="http://www.ebi.ac.uk/about/contact" />
   <meta name="twitter:description" content="Contact details for EMBL-EBI" />
 
-
   <!-- you can replace this with theme-[projectname].css. See http://www.ebi.ac.uk/web/style/colour for details of how to do this -->
   <!-- also inform ES so we can host your colour palette file -->
   <link rel="stylesheet" href="https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/css/theme-embl-petrol.css" type="text/css" media="all" />
@@ -41,14 +40,7 @@
 </head>
 
 <body class=""><!-- add any of your classes or IDs -->
-  <div id="skip-to">
-    <ul>
-      <li><a href="#content">Skip to main content</a></li>
-      <li><a href="#local-nav">Skip to local navigation</a></li>
-      <li><a href="#global-nav">Skip to EBI global navigation menu</a></li>
-      <li><a href="#global-nav-expanded">Skip to expanded EBI global navigation menu (includes all sub-sections)</a></li>
-    </ul>
-  </div>
+{% include "skip-to.njk" %}
 
   <header id="masthead-black-bar" class="clearfix masthead-black-bar">
     <nav class="row">
@@ -85,11 +77,8 @@
           <!-- local-nav -->
           <nav>
             <ul id="local-nav" class="dropdown menu float-left" data-description="navigational">
-              <li><a href="/covid-19" class="active-trail active first">Home</a></li>
-<!--
-              <li><a href="/covid-19/action-plan" class="active-trail active last">Action Plan Summary</a></li>
--->
-              </ul>
+              <li><a href="/covid-19" class="active">Home</a></li>
+            </ul>
           </nav>
           <!-- /local-nav -->
         </div>
@@ -97,16 +86,7 @@
     </div>
     <!-- Suggested layout containers -->
     <section id="main-content-area" class="" role="main">
-      <!-- Your menu structure should make a breadcrumb redundant, but if a breadcrump is needed uncomment the below -->
-      <!-- <nav aria-label="You are here:" role="navigation">
-        <ul class="breadcrumbs">
-          <li><a href="../../">EBI Framework</a></li>
-          <li><a href="../">Sample pages</a></li>
-          <li>
-            <span class="show-for-sr">Current: </span> Blank boilerplate
-          </li>
-        </ul>
-      </nav> -->
+      
 
       <section>
         <div class="row">

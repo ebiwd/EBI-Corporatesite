@@ -66,38 +66,9 @@ templateEngineOverride: njk
 </head>
 
 <body class="ebi-vf1-integration"><!-- add any of your classes or IDs -->
-  <div id="skip-to">
-    <ul>
-      <li><a href="#content">Skip to main content</a></li>
-      <li><a href="#local-nav">Skip to local navigation</a></li>
-      <li><a href="#global-nav">Skip to EBI global navigation menu</a></li>
-      <li><a href="#global-nav-expanded">Skip to expanded EBI global navigation menu (includes all sub-sections)</a></li>
-    </ul>
-  </div>
+{% include "skip-to.njk" %}
 
-  <header id="masthead-black-bar" class="clearfix masthead-black-bar">
-    <nav class="row">
-      <ul id="global-nav" class="menu">
-        <!-- set active class as appropriate -->
-        <li class="home-mobile"><a href="//www.ebi.ac.uk"></a></li>
-        <li class="home"><a href="//www.ebi.ac.uk">EMBL-EBI</a></li>
-        <li class="services"><a href="//www.ebi.ac.uk/services">Services</a></li>
-        <li class="research"><a href="//www.ebi.ac.uk/research">Research</a></li>
-        <li class="training"><a href="//www.ebi.ac.uk/training">Training</a></li>
-        <li class="about active"><a href="//www.ebi.ac.uk/about">About us</a></li>
-        <li class="search">
-          <a href="#" data-toggle="search-global-dropdown"><span class="show-for-small-only">Search</span></a>
-          <div id="search-global-dropdown" class="dropdown-pane" data-dropdown data-options="closeOnClick:true;">
-          <!-- The dropdown menu will be programatically added by script.js -->
-          </div>
-        </li>
-        <li class="float-right show-for-medium embl-selector">
-          <button class="button float-right" type="button" data-toggle="embl-dropdown">Hinxton</button>
-          <!-- The dropdown menu will be programatically added by script.js -->
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <header id="masthead-black-bar" class="clearfix masthead-black-bar"></header>
   <div data-sticky-container>
     <header id="masthead" class="masthead" data-sticky data-sticky-on="large" data-top-anchor="content:top" data-btm-anchor="content:bottom">
       <div class="masthead-inner row">
@@ -109,10 +80,10 @@ templateEngineOverride: njk
         <!-- local-nav -->
         <nav>
           <ul id="local-nav" class="dropdown menu float-left" data-description="navigational">
-            <li class="menu-3038 active-trail first active"><a href="/industry" class="active-trail active">Overview</a></li>
-            <li class="menu-3133"><a href="/industry/private" title="Industry Programme member login">Members area</a></li>
-            <li class="menu-3131"><a href="/industry/workshops" title="Industry programme workshops">Workshops</a></li>
-            <li class="menu-3130"><a href="/industry/sme-forum" title="EMBL-EBI: supporting small and medium-sized enterprise">SMEs</a></li>
+            <li class="active"><a href="/industry" class="active">Overview</a></li>
+            <li><a href="/industry/private" title="Industry Programme member login">Members area</a></li>
+            <li><a href="/industry/workshops" title="Industry programme workshops">Workshops</a></li>
+            <li><a href="/industry/sme-forum" title="EMBL-EBI: supporting small and medium-sized enterprise">SMEs</a></li>
             <li class="menu-3132 last"><a href="/industry/contact" title="Contact the Industry Programme">Contact us</a></li>
           </ul>
         </nav>
@@ -123,16 +94,7 @@ templateEngineOverride: njk
   <div id="content">
     <!-- Suggested layout containers -->
     <section id="main-content-area" class="" role="main">
-      <!-- Your menu structure should make a breadcrumb redundant, but if a breadcrump is needed uncomment the below -->
-      <!-- <nav aria-label="You are here:" role="navigation">
-        <ul class="breadcrumbs">
-          <li><a href="../../">EBI Framework</a></li>
-          <li><a href="../">Sample pages</a></li>
-          <li>
-            <span class="show-for-sr">Current: </span> Blank boilerplate
-          </li>
-        </ul>
-      </nav> -->
+      
 
       <!--.l-main -->
       <main id="main-content-area" role="main" class="row l-main">
