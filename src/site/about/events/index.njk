@@ -25,14 +25,13 @@ templateEngineOverride: njk
   <meta name="twitter:url" content="https://www.ebi.ac.uk/about/events" />
   <meta name="twitter:description" content="The latest training and industry events, including external seminars" />
   <title>{{ title }} | EMBL’s European Bionformatics Institute</title>
-  <link rel="stylesheet" href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/css/ebi-global.css" />
-  <link rel="stylesheet"
-    href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/css/theme-ebi-services-about.css" />
   {% include "header.njk" %}
+  <link rel="stylesheet" href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/css/ebi-global.css" />
+  <link rel="stylesheet" href="//ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.4/css/theme-ebi-services-about.css" />
 </head>
 
 <body
-  class="html not-front not-logged-in no-sidebars page-node page-node- page-node-15915 node-type-panel section-about role-anonymous-user user-0 page-about-events section-about subsection-events subdomain-none subsite-none level1 datacentre-none environment-none">
+  class="section-about role-anonymous-user user-0 page-about-events section-about subsection-events subdomain-none subsite-none level1 datacentre-none environment-none">
   <div id="skip-to">
     <ul>
       <li><a href="#content">Skip to main content</a></li>
@@ -290,7 +289,6 @@ templateEngineOverride: njk
     </style>
   </div>
   <!--/.page -->
-  {% include "footer-js.njk" %}
 
   {# https://cdnjs.com/libraries/select2/3.5.2 #}
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" rel="stylesheet" />
@@ -715,5 +713,6 @@ templateEngineOverride: njk
     });
   </script>
   {% include "footer.njk" %}
+  {% include "footer-js.njk" %}
 </body>
 </html>
