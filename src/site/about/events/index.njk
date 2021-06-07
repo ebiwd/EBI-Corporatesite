@@ -101,7 +101,7 @@ templateEngineOverride: njk
                   {# <input type="radio" name="type" value="seminar">Seminar #}
                   <input type="radio" name="type" value="course">Course
                   <input type="radio" name="type" value="webinar">Webinar
-                  &nbsp;&nbsp;<a class="readmore" href="seminars">Seminars</a>
+                  &nbsp;&nbsp;<a class="readmore" href="/about/events/seminars">Seminars</a>
                 </form>
               </div>
               <div id="upcoming-events-content-placeholder"></div>
@@ -288,6 +288,8 @@ templateEngineOverride: njk
     </style>
   </div>
   <!--/.page -->
+
+  {% include "footer-js.njk" %}
 
   {# https://cdnjs.com/libraries/select2/3.5.2 #}
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.5.2/select2.min.css" rel="stylesheet" />
@@ -712,6 +714,5 @@ templateEngineOverride: njk
     });
   </script>
   {% include "footer.njk" %}
-  {% include "footer-js.njk" %}
 </body>
 </html>
