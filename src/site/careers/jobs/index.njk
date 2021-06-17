@@ -124,6 +124,50 @@ templateEngineOverride: njk
     iFrameResize({ log: true }, '#jobsIframe')
   </script>
 
+  <div id="content vf-body">
+    <style>
+    .vf-card-container.vf-u-fullbleed .vf-section-header__heading { color: #fff }
+      body h2 {
+        color: #222;
+      }
+    </style>
+    <section id="main-content-area" class="vf-body" role="main">
+      <div class="embl-grid embl-grid--has-sidebar" style="--embl-grid: var(--embl-grid-module--prime) [main-start] 1fr [main-end] auto;">
+        <div class="vf-section-header">
+          <h2 class="vf-section-header__heading">Stay up to date</h2>
+        </div>
+        <div class="vf-content vf-grid vf-grid__col-3">
+            <div>
+              <div class="vf-content">
+                <h3>
+                  <a rel="noreferrer noopener" href="https://twitter.com/emblebijobs" target="_blank">Follow us on Twitter</a>
+                </h3>
+                <p>Find the latest vacancies and meet some of the recruiting teams.<br></p>
+              </div>
+            </div>
+
+            <div>
+              <div class="vf-content">
+                <h3>
+                  <a href="https://www.embl.org/jobs/alerts" target="_blank" rel="noreferrer noopener">Sign up for jobs alerts</a>
+                </h3>
+                <p>Tailor your search and get notified right away when something juicy opens up.</p>
+              </div>
+            </div>
+
+            <div>
+              <div class="vf-content">
+                <h3>
+                  <a href="mailto:recruitment@ebi.ac.uk">Questions?</a>
+                </h3>
+                <p>Drop us a line at recruitment@ebi.ac.uk</p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
   {% include "footer.njk" %}
   {% include "footer-js.njk" %}
 </body>
