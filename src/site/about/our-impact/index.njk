@@ -1,4 +1,5 @@
 ---
+tile: Our impact
 subtitle: No homepage, yet.
 date: 2018-08-22 12:24:50
 layout: layouts/full.njk
@@ -8,7 +9,7 @@ templateEngineOverride: njk
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Our impact | European Bioinformatics Institute</title>
+  <title>{{title}} | European Bioinformatics Institute</title>
   <meta name="description" content="Read about the impact of EMBL-EBI on society and the economy: reports, facts and figures" />
   <meta name="keywords" content="impact, innovation, translation, Industry, annual report" />
   <meta name="author" content="EMBL-EBI" /><!-- Your [project-name] here -->
@@ -35,7 +36,7 @@ templateEngineOverride: njk
   <meta name="twitter:site:id" content="123582098" />
   <meta name="twitter:creator" content="@emblebi" />
   <meta name="twitter:creator:id" content="123582098" />
-  <meta name="twitter:title" content="Our impact" />
+  <meta name="twitter:title" content="{{ title }}" />
   <meta name="twitter:url" content="https://www.ebi.ac.uk/about/our-impact" />
   <meta name="twitter:description" content="Read about the impact of EMBL-EBI on society and the economy: reports, facts and figures" />
 </head>
@@ -90,21 +91,15 @@ templateEngineOverride: njk
           </ul></div>
         </div>
 
-      <!-- Beta banner -->
-      <!-- <link rel="import" href="https://dev.beta.embl.org/api/v1/pattern.html?filter-content-type=article&filter-id=9102&pattern=node-body&source=contenthub" data-target="self" data-embl-js-content-hub-loader> -->
-
       <!-- Intro -->
       <section class="vf-intro | embl-grid embl-grid--has-centered-content">
         <div>
           <!-- empty -->
         </div>
         <div>
-          <h1 class="black-color vf-intro__heading">EMBL-EBI: Our impact</h1>
-
+          <h1 class="black-color vf-intro__heading">EMBL-EBI: {{ title }}</h1>
           <p class="vf-lede">We collaborate with scientists and engineers all over the world, and provide the infrastructure needed to share data openly in the life sciences.</p>
-
           <p class="vf-intro__text">Understanding how genetics affects the health of humans, plants and animals is essential to advances in disease prevention, food security and biodiversity.</p>
-
           <p class="vf-intro__text">We develop databases, tools and software that make it possible to align, verify and visualise the diverse data produced in publicly-funded research, and make that information freely available to all.</p>
         </div>
       </section>
